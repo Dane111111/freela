@@ -126,10 +126,10 @@
         }];
         label;
     });
-    UIButton*linQu_button=({
-        UIButton*btn=[UIButton buttonWithType:UIButtonTypeCustom];
-        []
-    })
+//    UIButton*linQu_button=({
+//        UIButton*btn=[UIButton buttonWithType:UIButtonTypeCustom];
+//        []
+//    })
 
 }
 @end
