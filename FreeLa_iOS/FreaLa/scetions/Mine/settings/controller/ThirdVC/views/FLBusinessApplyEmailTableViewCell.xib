@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="107" id="KGk-i7-Jjw" customClass="FLBusinessApplyEmailTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="126"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="125.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oae-Rb-tUA">
+                        <rect key="frame" x="38" y="18" width="307" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定邮箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNH-B0-vpO">
+                                <rect key="frame" x="8" y="13" width="48" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="邮箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIx-5w-fvH">
+                                <rect key="frame" x="68" y="6" width="239" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PIx-5w-fvH" secondAttribute="trailing" id="FBL-mB-uYt"/>
+                            <constraint firstAttribute="bottom" secondItem="TNH-B0-vpO" secondAttribute="bottom" constant="13.5" id="GPX-xd-iDa"/>
+                            <constraint firstAttribute="height" constant="41" id="Gel-FE-POn"/>
+                            <constraint firstItem="PIx-5w-fvH" firstAttribute="top" secondItem="oae-Rb-tUA" secondAttribute="top" constant="6" id="Jfy-Tg-EeC"/>
+                            <constraint firstItem="PIx-5w-fvH" firstAttribute="leading" secondItem="TNH-B0-vpO" secondAttribute="trailing" constant="12" id="Rqb-71-3h2"/>
+                            <constraint firstItem="PIx-5w-fvH" firstAttribute="leading" secondItem="TNH-B0-vpO" secondAttribute="trailing" constant="12" id="Ule-Km-5kh"/>
+                            <constraint firstItem="TNH-B0-vpO" firstAttribute="top" secondItem="oae-Rb-tUA" secondAttribute="top" constant="13" id="WVB-gl-y72"/>
+                            <constraint firstItem="TNH-B0-vpO" firstAttribute="leading" secondItem="oae-Rb-tUA" secondAttribute="leading" constant="8" id="kS2-Lr-1cF"/>
+                            <constraint firstAttribute="bottom" secondItem="PIx-5w-fvH" secondAttribute="bottom" constant="5" id="qbz-oO-J8j"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NUw-Wd-lBP">
+                        <rect key="frame" x="38" y="68" width="307" height="40"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入6到16位密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UcW-Vi-4uc">
+                                <rect key="frame" x="8" y="5" width="279" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="GkI-Je-ETA"/>
+                            <constraint firstItem="UcW-Vi-4uc" firstAttribute="centerY" secondItem="NUw-Wd-lBP" secondAttribute="centerY" id="Xtm-D4-O3p"/>
+                            <constraint firstAttribute="trailing" secondItem="UcW-Vi-4uc" secondAttribute="trailing" constant="20" id="aX0-J7-Lc7"/>
+                            <constraint firstItem="UcW-Vi-4uc" firstAttribute="leading" secondItem="NUw-Wd-lBP" secondAttribute="leading" constant="8" id="ufa-Lw-7Mc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="NUw-Wd-lBP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="2RA-n2-qdY"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="NUw-Wd-lBP" secondAttribute="trailing" constant="29" id="4Xq-Ea-fI5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="NUw-Wd-lBP" secondAttribute="bottom" constant="14.5" id="7mP-TR-Q59"/>
+                    <constraint firstItem="oae-Rb-tUA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="Z2J-8R-QRD"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="oae-Rb-tUA" secondAttribute="trailing" constant="29" id="Z4P-Pg-7Cg"/>
+                    <constraint firstItem="NUw-Wd-lBP" firstAttribute="top" secondItem="oae-Rb-tUA" secondAttribute="bottom" constant="9" id="fCT-yq-TkV"/>
+                    <constraint firstItem="oae-Rb-tUA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="hGx-xE-03V"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="NUw-Wd-lBP" secondAttribute="bottom" constant="20.5" id="jiH-tJ-mZb"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="7mP-TR-Q59"/>
+                        <exclude reference="jiH-tJ-mZb"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="flemailText" destination="PIx-5w-fvH" id="kto-qa-e3v"/>
+                <outlet property="flemailView" destination="oae-Rb-tUA" id="Hol-To-DWW"/>
+                <outlet property="flpasswordText" destination="UcW-Vi-4uc" id="BLD-kx-yv0"/>
+                <outlet property="flpasswordView" destination="NUw-Wd-lBP" id="3Eq-3b-3L1"/>
+            </connections>
+            <point key="canvasLocation" x="386" y="225"/>
+        </tableViewCell>
+    </objects>
+</document>

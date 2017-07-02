@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="206" id="KGk-i7-Jjw" customClass="FLLiceneImageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="205.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传营业执照" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xia-Iw-tQy">
+                        <rect key="frame" x="33" y="18" width="102" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="102" id="8DO-oz-sZT"/>
+                            <constraint firstAttribute="height" constant="21" id="cMh-lx-1n4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp6-Ve-IjA">
+                        <rect key="frame" x="184" y="0.0" width="14" height="205.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="14" id="Hwx-Kn-ogO"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnO-kU-AiI">
+                        <rect key="frame" x="206" y="18" width="84" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="f6j-sr-6Be"/>
+                            <constraint firstAttribute="width" constant="84" id="wxd-gC-bcQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7e-Fs-8lW">
+                        <rect key="frame" x="8" y="47" width="168" height="150.5"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUD-mn-gOh">
+                                <rect key="frame" x="30" y="21" width="108" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="q9c-V7-mo9"/>
+                                    <constraint firstAttribute="height" constant="108" id="trL-hW-Ye8"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="business_licene_img">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="flliceneImageBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d5o-Dj-JWD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IUD-mn-gOh" firstAttribute="centerY" secondItem="Y7e-Fs-8lW" secondAttribute="centerY" id="jpT-XB-zYv"/>
+                            <constraint firstItem="IUD-mn-gOh" firstAttribute="centerX" secondItem="Y7e-Fs-8lW" secondAttribute="centerX" id="qUB-fY-JMo"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaG-qe-728">
+                        <rect key="frame" x="206" y="47" width="175" height="150.5"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SY3-bG-7T9">
+                                <rect key="frame" x="33.5" y="21.5" width="108" height="108"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="PLN-C0-8kg"/>
+                                    <constraint firstAttribute="height" constant="108" id="hlQ-gO-xHp"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="business_licene_img"/>
+                                <connections>
+                                    <action selector="flchooseHeader:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fcd-9G-avL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SY3-bG-7T9" firstAttribute="centerY" secondItem="AaG-qe-728" secondAttribute="centerY" id="d0O-YL-Kxo"/>
+                            <constraint firstItem="SY3-bG-7T9" firstAttribute="centerX" secondItem="AaG-qe-728" secondAttribute="centerX" id="iXt-r9-XS6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="AaG-qe-728" secondAttribute="trailing" constant="-7" id="21L-md-dUm"/>
+                    <constraint firstItem="AaG-qe-728" firstAttribute="top" secondItem="Y7e-Fs-8lW" secondAttribute="top" id="2HK-ye-Nac"/>
+                    <constraint firstItem="AaG-qe-728" firstAttribute="bottom" secondItem="Y7e-Fs-8lW" secondAttribute="bottom" id="3Ot-nf-NnM"/>
+                    <constraint firstItem="Y7e-Fs-8lW" firstAttribute="top" secondItem="xia-Iw-tQy" secondAttribute="bottom" constant="8" id="4gT-3S-c2u"/>
+                    <constraint firstItem="HnO-kU-AiI" firstAttribute="leading" secondItem="Kp6-Ve-IjA" secondAttribute="trailing" constant="8" id="64d-Tn-JEe"/>
+                    <constraint firstItem="xia-Iw-tQy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="AG1-nk-lvb"/>
+                    <constraint firstItem="Y7e-Fs-8lW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="BHk-jw-cPR"/>
+                    <constraint firstItem="HnO-kU-AiI" firstAttribute="centerY" secondItem="xia-Iw-tQy" secondAttribute="centerY" id="EhV-Mr-nNx"/>
+                    <constraint firstItem="Kp6-Ve-IjA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="OdW-74-0et"/>
+                    <constraint firstItem="Kp6-Ve-IjA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="QdF-Ea-gT8"/>
+                    <constraint firstItem="Kp6-Ve-IjA" firstAttribute="leading" secondItem="Y7e-Fs-8lW" secondAttribute="trailing" constant="8" id="V04-jF-gDl"/>
+                    <constraint firstItem="Y7e-Fs-8lW" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="bYX-cT-R53"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Kp6-Ve-IjA" secondAttribute="bottom" constant="-8" id="cTQ-5g-uxS"/>
+                    <constraint firstItem="xia-Iw-tQy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="25" id="eZq-wp-2Dv"/>
+                    <constraint firstItem="AaG-qe-728" firstAttribute="leading" secondItem="Kp6-Ve-IjA" secondAttribute="trailing" constant="8" id="v9T-mG-NGi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="flheaderImageBtn" destination="SY3-bG-7T9" id="753-u7-iCr"/>
+                <outlet property="flliceneImageBtn" destination="IUD-mn-gOh" id="poZ-bj-tLu"/>
+            </connections>
+            <point key="canvasLocation" x="284" y="172"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="business_licene_img" width="108" height="108"/>
+    </resources>
+</document>

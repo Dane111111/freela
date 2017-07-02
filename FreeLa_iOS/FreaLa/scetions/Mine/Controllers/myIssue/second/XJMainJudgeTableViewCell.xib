@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="92" id="KGk-i7-Jjw" customClass="XJMainJudgeTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="339" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="339" height="95.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RH3-Mt-FoM">
+                        <rect key="frame" x="8" y="8" width="44" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="3Bj-j9-mdM"/>
+                            <constraint firstAttribute="height" constant="43.5" id="vUk-g5-8qU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgk-xu-h4f">
+                        <rect key="frame" x="74" y="12" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JN8-ij-9ys">
+                        <rect key="frame" x="295" y="12" width="32" height="22"/>
+                        <state key="normal" image="btn_judge_gray"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014-19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2P-6j-20k">
+                        <rect key="frame" x="74" y="33" width="48" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atC-yV-uyk">
+                        <rect key="frame" x="74" y="72.5" width="245.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xgk-xu-h4f" firstAttribute="top" secondItem="RH3-Mt-FoM" secondAttribute="top" constant="4" id="7Rm-Rj-fSA"/>
+                    <constraint firstItem="JN8-ij-9ys" firstAttribute="top" secondItem="xgk-xu-h4f" secondAttribute="top" id="B04-EM-qXS"/>
+                    <constraint firstItem="xgk-xu-h4f" firstAttribute="leading" secondItem="RH3-Mt-FoM" secondAttribute="trailing" constant="22" id="KhI-vY-g9R"/>
+                    <constraint firstItem="q2P-6j-20k" firstAttribute="leading" secondItem="xgk-xu-h4f" secondAttribute="leading" id="Kz5-Dr-6mu"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="atC-yV-uyk" secondAttribute="trailing" constant="11.5" id="TkJ-jS-hd9"/>
+                    <constraint firstItem="RH3-Mt-FoM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZuO-wi-j4V"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="atC-yV-uyk" secondAttribute="bottom" constant="0.5" id="dYK-Jk-Vcd"/>
+                    <constraint firstItem="atC-yV-uyk" firstAttribute="leading" secondItem="xgk-xu-h4f" secondAttribute="leading" id="fFe-Qm-PQA"/>
+                    <constraint firstItem="RH3-Mt-FoM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="frs-WX-Omo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JN8-ij-9ys" secondAttribute="trailing" constant="4" id="g5c-8m-uGG"/>
+                    <constraint firstItem="q2P-6j-20k" firstAttribute="top" secondItem="xgk-xu-h4f" secondAttribute="bottom" constant="4" id="uAr-u0-fCp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="xjCreatTimeLabel" destination="q2P-6j-20k" id="9F5-dd-WRu"/>
+                <outlet property="xjHeaderIage" destination="RH3-Mt-FoM" id="spI-O3-z6K"/>
+                <outlet property="xjReJudgeBtn" destination="JN8-ij-9ys" id="tMt-gO-RP9"/>
+                <outlet property="xjcontent" destination="atC-yV-uyk" id="zfg-kP-yln"/>
+                <outlet property="xjname" destination="xgk-xu-h4f" id="Cgn-YU-NDn"/>
+            </connections>
+            <point key="canvasLocation" x="354.5" y="287"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="btn_judge_gray" width="32" height="15"/>
+    </resources>
+</document>

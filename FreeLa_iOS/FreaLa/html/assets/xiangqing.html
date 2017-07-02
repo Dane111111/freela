@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN"
+        "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>pr-xiangqing</title>
+    <link href="css/xiangqing.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="css/yicanyu.css" rel="stylesheet" type="text/css"/>-->
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <!--左滑样式-->
+    <link rel="stylesheet" href="css/luara.left.css"/>
+    <!-- 轮播图样式-->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/zepto.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/xiangqing.js"></script>
+    <script src="js/Method.js"></script>
+    <script src="js/gundong.js"></script>
+
+    <style>
+        body {
+        background: #eee;
+        font-family: Helvetica Neue,Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+        }
+
+        .swiper-container {
+        width: 100%;
+        height: 400px;
+        margin: 0px auto;
+        z-index:1;
+        }
+        .column {
+        width: 98%;
+        padding: 10px 0;
+        overflow: hidden;
+        }
+        .column p {
+        width:100%;
+        float:left;
+        padding: 3% 0;
+        text-align: center;
+        }
+        .column p a {
+        color: #666;
+        display: inline-block;
+        }
+        .column p a img {
+        border-radius: 50%;
+        width:38px;
+
+        }
+        .swiper-container1 {
+        width: 100%;
+        height: 70px;
+        margin: 0px auto;
+        z-index:1;
+        }
+        .swiper-wrapper{
+            height:100% !important;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <div class="pull-left11"></div>
+<!--    <div class="pull-left" style="position: absolute;z-index:10;"></div>-->
+ <!--   <div class="pull-right" style="position: absolute;z-index:10;right: 0;">-->
+
+        <div class="fenxiang-btn11" id="right"></div>
+        <div class="fenxiang-btn" style="right: 10px;top:30px;"></div>
+
+</div>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="banner">
+            <!--<div class="swiper-slide"-->
+                 <!--style="background-image:url(./images/kiss.png);background-size:100% 100%;"></div>-->
+            <!--<div class="swiper-slide"-->
+                 <!--style="background-image:url(./images/kiss.png);background-size:100% 100%;"></div>-->
+            <!--<div class="swiper-slide"-->
+                 <!--style="background-image:url(./images/kiss.png);background-size:100% 100%;"></div>-->
+            <!--<div class="swiper-slide"-->
+                 <!--style="background-image:url(./images/kiss.png);background-size:100% 100%;"></div>-->
+        </div>
+    </div>
+    <div id="z_mask" style="display: none;"></div>
+    <div id="z_show" style="display: none;">
+        <!--<img src="./images/kui.png" alt=""/>-->
+        <!--<img src="./images/234.png" alt=""/>-->
+        <!--<img src="./images/arrow.png" alt=""/>-->
+        <!--<img src="./images/kiss.png" alt=""/>-->
+    </div>
+
+    <script src="js/swiper.min.js"></script>
+
+    <div class="pr-wrapper pr-media-width">
+        <div class="pr-title" style="width: 96%;margin: 0 auto;">
+            <div class="pr-price1" style="float:left;width:100%;padding-bottom:6px;">
+                <span class="pr-spot-desc free_dis" id="topicTheme">金家纺创意书架全新无任何磕碰划痕自用的免费领取</span>
+                <span style="font-size:14px;color:#6f6f6f; " id="price_0">[价值</span>
+                <span style="font-size:20px;color:#f82f2d;" id="price">￥50</span>
+                <span style="font-size:14px;color:#6f6f6f;" id="price_1">]</span>
+            </div>
+        </div>
+        <div class="rule x" id="rule"><span class="txtred1" style="font-size:14px;padding-left:4px"
+                                            id="pubName">[金家纺]</span>
+            <span style="font-size:14px;color:#6f6f6f;" id="rule_exp">每人每天一次</span>
+            <span style="font-size:14px;color:#6f6f6f;">仅限</span>
+            <span style="font-size:16px;color:#f82f2d;" id="rule_num">5</span>
+            <span style="font-size:14px;color:#6f6f6f;">份!</span>
+        </div>
+        <div style="width:96%;margin:0 auto">
+            <div class="pr-adress" style="display:none;">
+                <img src="images/Address-ico.png" width="14" height="14"
+                     style="padding-right:1px;padding-top: 2px;"/>
+                <a href="#" class="pr-spot-desc3 free_dis3" id="address" style="padding-left: 3px;">
+                    北京市东城区科林大厦B座云耘众智科技有限公司</a>
+            </div>
+            <div class="pr-time">
+                <span class="pr-spot-desc3 free_dis3" id="endTime">09/11 18:00-09/11 21:00</span>
+            </div>
+            <div class="pr-rate">
+                <!-- 进度条的父控件 -->
+                <div id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="pr-count">
+            <div class="yuedu-nub">
+                <p><span class="pr-spot-desc3 free_dis4">热度</span></p>
+
+                <p><span class="pr-spot-desc4 free_dis4" id="readnum" style="font-size:16px;">1136</span></p>
+            </div>
+            <div class="fenxiang-nub">
+                <p><span class="pr-spot-desc3 free_dis4">剩余数量</span></p>
+
+                <p><span class="pr-spot-desc4 free_dis4" id="surplus" style="font-size:16px;">1136</span></p>
+            </div>
+            <div class="shengyutianshu-nub">
+                <p><span class="pr-spot-desc3 free_dis4">剩余时间</span></p>
+
+                <p><span class="pr-spot-desc4 free_dis4" id="diff" style="font-size:16px;">3天15小时21分</span></p>
+            </div>
+        </div>
+        <div id="detailsInfo" style="border-top:6px solid #f0eff4;">
+            <div class="watch_img" style="padding-top: 6px;word-wrap: break-word;" id="tuwen">
+
+            </div>
+            <div style="height:1px;background:#f0eff4;width:100%;" id="gouxian"></div>
+            <div id="instructions" style="display:none;">
+                <!--<div class="pr-pingjia">-->
+                    <!--<p style="border-bottom:1px solid #f0eff4;"></p>-->
+                    <!--<div id="missborder" style="display:none">-->
+                        <!--<p class="pr-spot-desc2 free_dis2"-->
+                           <!--style="margin-left:9px;border-bottom:1px solid #f0eff4;margin-top:2px;">使用说明:</p>-->
+                        <!--<p class="free_dis2" id="jianjie"></p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <p style="border-bottom:1px solid #f0eff4;">
+                </p>
+                <div class="pr-pingjia" style="border-bottom: 0px solid #e3e3e3;">
+                    <p class="pr-spot-desc2 free_dis2" style="margin-left:9px;color:#535353;margin-top:-5px;">使用说明:</p>
+                    <p class="pr-spot-desc99 free_dis2 "  id="jianjie">asdakjdlaksjd</p>
+                </div>
+            </div>
+            <div class="pr-pingjia" id="pingjia-div" style="border-bottom:6px solid #f0eff4;padding-bottom: 16px;">
+                <div style="margin:0px 16px 10px 10px;">
+                    <div>
+                        <img src="images/start-five.png" alt="" id="stare"
+                             style="width:100px;float:left"/>
+                    </div>
+                    <strong id="starCount" style="font-size:24px;margin-left:8px;margin-top:-4px;">5.0</strong>
+
+                    <div class="pingjia-link" id="pingjia-num" style="">
+                        <a class="pr-spot-desc2 free_dis2" href="judgelist.html" id="pingjianum"
+                           style="color:#a9d9d9d;margin-right:-5px;">128人评价&nbsp;></a>
+                    </div>
+                </div>
+            </div>
+            <div id="boder" style="width:100%;height:6px;background-color:#f0eff4;display:none">
+            </div>
+        </div>
+        <div class="pr-fabuzhe pr-media-width" id="comment_zero1">
+            <div class="pr-container">
+                <div style="padding-top:5px;">
+                    <div class="title-ico"></div>
+                    <span class="free_dis0">发布者</span>
+                </div>
+                <div class="user-pinglun2 user-pinglun10">
+                    <div class="head-user2" id="comp-head">
+                        <img class="tx1" src="images/head-img.png" width="50" height="50"
+                             id="publisher-head">
+                        <div class="head-mask2"></div>
+                    </div>
+                    <div class="head-name2" style="width:66%;float:left; margin-left:13px">
+                        <p class="pr-spot-desc2 free_dis4">
+                            <span id="publisher-name" style="color:#535353">KUS官方</span>
+                        </p>
+                        <p>
+                            <span class="gfinfo" style="margin-right: 3px;"><b class="x_bj" style="margin-right: 5px;">发布</b><strong
+                                    style="font-weight: normal;padding-left: 2px;color: #9d9d9d;"
+                                    id="pubnum">126</strong></span>
+                            <span class="gfinfo"><b class="x_bj"
+                                                    style="background:#f6ac4e; margin-left: 10px;">热度</b><strong
+                                    style="font-weight: normal; padding-left: 6px;color: #9d9d9d;"
+                                    id="pubpv">2345</strong></span>
+                        </p>
+
+                        <p class="pr-spot-desc3 free_dis4" id="publisher-discribe"
+                           style="margin-top: 3px;font-size:12px;color:#cecece;margin-bottom:8px;">源自韩国的健</p>
+                    </div>
+
+
+                    <div style="float: right;text-align: center;margin-top: 8px;border-left: 1px solid #e3e3e3;padding-left: 10px;margin-right:-8px;width:13%;">
+                        <a class="btn-guanzhu">
+                            <img src="images/Love.png" style="display:inline-block; width: 24px;"
+                                 id="comp_look">
+
+                            <p style="color:#9d9d9d; font-size:11px" id="guanzhustate">已关注</p>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="pr-paiming pr-media-width" style="display:none" id="zhuliliebiao">
+        <div class="pr-container">
+            <div>
+                <div style="padding-top:10px;">
+                    <div class="title-ico"></div>
+                    <span class="free_dis0">参与<b
+                            style="float: right;color:#9d9d9d;font-weight: normal;font-size:12px;margin-right:-4px;"
+                            id="ZLQnum">(128人)</b></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="z_portrait">
+            <ul id="zhuliqiangliebiao">
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kui.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kui.png" alt=""/></li>-->
+                <!--<li><img src="./images/kui.png" alt=""/></li>-->
+                <!--<li><img src="./images/kui.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kui.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+                <!--<li><img src="./images/kiss.png" alt=""/></li>-->
+            </ul>
+        </div>
+        <!--<div class="column ">-->
+        <!--<div class="swiper-container1">-->
+        <!--<div class="swiper-wrapper" id="zhuliqiangliebiao">-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--<div>-->
+        <!--<p><a href="javascript:;"><img src="images/head-img.png" alt=""></a></p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+
+    </div>
+    <div class="pr-pinglun pr-media-width" id="comment-zero"
+         style="margin-bottom:45px; padding-bottom: 5px;">
+        <div class="pr-container">
+            <div style="padding-top:10px;">
+                <div class="title-ico"></div>
+                <span class="free_dis0"> 评论<b
+                        style="float:right;color: #9d9d9d;font-weight: normal;font-size:12px;margin-right:-4px;">(10人) </b></span>
+            </div>
+
+            <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+            <div class="user-pinglun">
+                <img src="" width=46" height="46" >
+                <div class="head-name">
+                    <div class="replay-btn4"></div>
+                   <p class="pr-spot-desc1 free_dis4">1</p>
+                  <p class="pr-spot-desc3 free_dis4">2</p>
+                <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+                  </div>
+               </div>
+            <div class="pinglun-container">
+               </div>
+            <div>
+               </div>
+            </div>
+            
+            <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+            <div class="user-pinglun">
+            <img src="" width=46" height="46" >
+            <div class="head-name">
+                <div class="replay-btn4"></div>
+                <p class="pr-spot-desc1 free_dis4">1</p>
+                <p class="pr-spot-desc3 free_dis4">2</p>
+                <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+            </div>
+            </div>
+            <div class="pinglun-container">
+            </div>
+            <div>
+            </div>
+            </div>
+            
+            <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+                <div class="user-pinglun">
+                    <img src="" width=46" height="46" >
+                        <div class="head-name">
+                        <div class="replay-btn4"></div>
+                        <p class="pr-spot-desc1 free_dis4">1</p>
+                        <p class="pr-spot-desc3 free_dis4">2</p>
+                        <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+                        </div>
+                        </div>
+                        <div class="pinglun-container">
+                        </div>
+                        <div>
+                        </div>
+                        </div>
+                        
+                        <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+                        <div class="user-pinglun">
+                        <img src="" width=46" height="46" >
+                        <div class="head-name">
+                            <div class="replay-btn4"></div>
+                            <p class="pr-spot-desc1 free_dis4">1</p>
+                            <p class="pr-spot-desc3 free_dis4">2</p>
+                            <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+                        </div>
+                        </div>
+                <div class="pinglun-container">
+                </div>
+                <div>
+                </div>
+            </div>
+            
+            <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+                <div class="user-pinglun">
+                    <img src="" width=46" height="46" >
+                        <div class="head-name">
+                        <div class="replay-btn4"></div>
+                        <p class="pr-spot-desc1 free_dis4">1</p>
+                        <p class="pr-spot-desc3 free_dis4">2</p>
+                        <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+                        </div>
+                        </div>
+                        <div class="pinglun-container">
+                        </div>
+                        <div>
+                        </div>
+                        </div>
+                        
+                        
+                        <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+                        <div class="user-pinglun">
+                        <img src="" width=46" height="46" >
+                        <div class="head-name">
+                            <div class="replay-btn4"></div>
+                            <p class="pr-spot-desc1 free_dis4">1</p>
+                            <p class="pr-spot-desc3 free_dis4">2</p>
+                            <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+                        </div>
+                        </div>
+                <div class="pinglun-container">
+                </div>
+                <div>
+                </div>
+            </div>
+            
+            
+            <div class="pr-container" style="border-bottom:1px solid #e3e3e3; padding-bottom: 0px;">
+                <div class="user-pinglun">
+                    <img src="" width=46" height="46" >
+                        <div class="head-name">
+                        <div class="replay-btn4"></div>
+                        <p class="pr-spot-desc1 free_dis4">1</p>
+                        <p class="pr-spot-desc3 free_dis4">2</p>
+                        <p class="pr-spot-desc2 free_dis4" style="word-wrap:break-word;">33333</p>
+                        </div>
+                        </div>
+                        <div class="pinglun-container">
+                        </div>
+                        <div>
+                        </div>
+                        </div>
+                        
+                        <div class="lookpinglun" style="border-top:1px solid #e3e3e3;">
+            <a class="pr-spot-desc4 free_dis19 "
+               style="display:block;width: 34%;margin: 0 auto;margin-top:10px;margin-bottom: 10px;">查看全部评论</a>
+        </div>
+
+    </div>
+    
+</div>
+
+</div>
+
+<footer id="footer" id="footer">
+<div class="footer_left" style="border-top: 1px #e3e3e3 solid;">
+<div class="mune" id="xqfooter" style="display:block; text-align:center;">
+<div style="position: relative;height:35px;" id="pinglun-2">
+<img src="images/comment_icon.png" style="width: 22px;height: 22px;position: absolute;top: 5px;left: 34px;">
+</div>
+<p style="font-size:10px;" id="commentnum">评论(j23)</p>
+</div>
+<div class="mune" style="display:block; text-align:center;">
+<div style="position: relative;height:35px;" id="fenxiang">
+<img src="images/share_icon.png" style="width: 24px;height: 24px;position: absolute;top: 5px;left: 34px;">
+</div>
+<p style="font-size:10px;" id="sharenum">分享(2j3)</p>
+</div>
+<div class="mune" style="display:block; text-align:center;">
+<div style="position: relative;height:35px;" id="shoucang">
+<img src="images/collect.png" style="width: 24px;height: 24px;position: absolute;top: 5px;left: 34px;" id="shoucang_src">
+</div>
+<p style="font-size:10px;" id="shoucangnum">收藏(2j3)</p>
+</div>
+</div>
+<div class="mune" style="border-top:1px solid  #ff3838">
+
+<div class="pr-get" id="hahahaha">
+<p><a class="pr-spot-desc4 free_dis5" id="receive"
+style="display:block;">前往领取</a></p>
+</div>
+</div>
+</footer>
+</body>
+</html>
+
+
+
+
+

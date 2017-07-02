@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="background-color:white">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>助力抢-已参与</title>
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="css/xiangqing.css" rel="stylesheet" type="text/css"/>
+    <link href="css/zhuanfaye.css" rel="stylesheet" type="text/css"/>
+    <link href="css/yicanyu.css" rel="stylesheet" type="text/css"/>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/zhuliqiang.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/Method.js"></script>
+    <script type="text/javascript" src="js/gauge.min.js"></script>
+    <script src="js/banyuan.js"></script>
+</head>
+<body>
+<div class="pr-banner2 pr-media-width">
+    <div class="pr-head-width" >
+        <div>
+            <div class="pull-left10" onclick="xjGoBackBtnClick()" style="margin-top:30px;"></div>
+
+            <div><p id="poorzl" style="text-align:center;font-size:14px;margin-top:30px;">最低助力数200,先到先得</p></div>
+            <div class="pull-right3"></div>
+            <div >
+                <img src="images/search-ico3.png" width="24" height="24" alt="" style="float:right"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dd">
+    <div class="zb">
+        <div style="margin-top: 40px;text-align:center;font-size: 10px;line-height: 10px;">
+            <span style="color:#cecece;" id="ptPeople">已获助力数</span>
+        </div>
+        <div style="margin-top:10px;">
+            <span class="z_sp1" style="line-height: 36px;font-size:42px;color:#ea6133"
+                  id="receiveNum">33</span>
+        </div>
+        <div style="line-height: 10px;">
+            <span style="font-size:10px;color:#cecece;" id="ParticipateNum">已参与100人</span>
+        </div>
+        <div class="z_sp2">
+            <p id="bigrank">第 <span style="color:#ea6133;font-size:28px;" id="rank">N</span> 名</p>
+        </div>
+        <div style="left: 25px;margin-top:45px;">
+            <p style="width:280px;margin-left:-75px;color:#cecece;margin-top:-40px;" id="whyreceive"><span>您还没有领取资格,只差</span><span
+                    style="font-size:14px;color:#B8B8B8;" id="multiple">N</span>个助力</p>
+        </div>
+    </div>
+    <!--<canvas id="z_bg" style="width:100%;margin-left:-19%;left:50%;">-->
+
+    <!--</canvas>-->
+    <div id="preview" class="z_can">
+        <canvas id="canvas-preview" style="margin-top:36px;"></canvas>
+    </div>
+</div>
+<div style="line-height:30px;height: 30px;border: 1px solid white;" id="gundongdiv">
+    <p style="float:left;margin-left: 10px;" id="diff">距离活动结束还有
+        <span style="font-size:14px;color:#9F9F9F" id="dhtime">03</span>
+        <span id="dhlock">小时</span><span style="font-size:14px;color:#9F9F9F"
+                                         id="hmtime">36</span><span id="hmlock">分</span></p>
+    <span style="float:right;margin-right: 10px;">分享更多好友</span>
+</div>
+<div class="can_main" style=" height:100%;width:auto;" id="goperzhuli">
+<!--    <div class="can_lun" >-->
+<!--    <h1 style="color:#2d2d2d">21</h1>-->
+<!--    <div class="box_1" >-->
+<!--        <div style="width: 46px;height: 46px;border-radius:46px;overflow: hidden;background-size: contain;float: left;">-->
+<!--            <img src="" alt="" style="float: left;width:50px;height:50px;">-->
+<!--            l</div>-->
+<!--         <div class="can_lun2">-->
+<!--            <span class="span_1">呵呵呵呵</span>-->
+<!--           </div>-->
+<!--        <div class="bb"><img src="images/zan-ico.png" ></div>-->
+<!--        <div class="bb">10</div>-->
+<!--        </div>-->
+<!--</div>-->
+    <!--<div class="can_lun" >-->
+        <!--<h1 style="color:#2d2d2d">21</h1>-->
+        <!--<div class="box_1" >-->
+            <!--<div style="width: 46px;height: 46px;border-radius:46px;overflow: hidden;background-size: contain;float: left;">-->
+                <!--<img src="" alt="" style="float: left;width:50px;height:50px;">-->
+                <!--l</div>-->
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">呵呵呵呵</span>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png" ></div>-->
+            <!--<div class="bb">10</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun" >-->
+        <!--<h1 style="color:#2d2d2d">21</h1>-->
+        <!--<div class="box_1" >-->
+            <!--<div style="width: 46px;height: 46px;border-radius:46px;overflow: hidden;background-size: contain;float: left;">-->
+                <!--<img src="" alt="" style="float: left;width:50px;height:50px;">-->
+                <!--l</div>-->
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">呵呵呵呵</span>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png" ></div>-->
+            <!--<div class="bb">10</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun" >-->
+        <!--<h1 style="color:#2d2d2d">21</h1>-->
+        <!--<div class="box_1" >-->
+            <!--<div style="width: 46px;height: 46px;border-radius:46px;overflow: hidden;background-size: contain;float: left;">-->
+                <!--<img src="" alt="" style="float: left;width:50px;height:50px;">-->
+                <!--l</div>-->
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">呵呵呵呵</span>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png" ></div>-->
+            <!--<div class="bb">10</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+        <!--<h1>1</h1>-->
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+        <!--<h1>1</h1>-->
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+        <!--<h1>1</h1>-->
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="can_lun">-->
+
+        <!--<h1>1</h1>-->
+
+        <!--<div class="box_1">-->
+            <!--&lt;!&ndash;<img src="images/can1.png" alt="" style="float: left;width:50px;height: 50px;">&ndash;&gt;-->
+
+            <!--<div class="can_lun2">-->
+                <!--<span class="span_1">王小慧</span>-->
+
+                <!--<h2 class="can_date">达到时间 ：5月3日 12:26:32</h2>-->
+            <!--</div>-->
+            <!--<div class="bb"><img src="images/zan-ico.png"></div>-->
+            <!--<div class="bb" style="color: #f87d7b">375</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+
+</div>
+<div  class="ipt">
+    <input type="search"  placeholder="搜索参与人..." type="search" name="search" value="" id="findHelper" style="-webkit-appearance: none;position:absolute;left:8%;width: 76%;height: 30px;font-size: 15px;background:#e3e3e3;border-radius: 22px;border:1px solid #FF3030;margin-top:39px;">
+<!--<input placeholder="这是搜索框" style="width:78%;height:40px;border-radius:25px;border:none;background:#e3e3e3;" type="search" name="search" value="" id="findHelper"/>-->
+<button style="height:34px;width:40px;border-radius:25px;background:#e3e3e3;border:1px solid #FF3030;float:right;margin-top:37px;" id="sousuo">搜索</button>
+</div>
+
+</body>
+
+</html>

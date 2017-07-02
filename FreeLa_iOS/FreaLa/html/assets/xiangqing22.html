@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:overflow="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>pr-xiangqing</title>
+    <link href="css/xiangqing.css" rel="stylesheet" type="text/css"/>
+    <link href="css/reset.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <!--左滑样式-->
+    <link rel="stylesheet" href="css/luara.left.css"/>
+    <!-- 轮播图样式-->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/xiangqing.js"></script>
+    <!--Luara js文件-->
+    <script src="js/jquery.luara.0.0.1.min.js"></script>
+    <!--<script src="js/swiper.min.js"></script>-->
+
+    <style>
+        body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+        }
+        .swiper-container {
+        width: 100%;
+        height: 800px;
+        margin: 0px auto;
+        z-index:1;
+        }
+        .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #000;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="pull-left" style="position: absolute;z-index:10;"></div>
+    <div class="pull-right" style="position: absolute;z-index:10;">
+        <div class="fenxiang-btn"></div>
+        <div class="shoucang-btn" id="shoucang"></div>
+        <div id="head-img"></div>
+    </div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" id="banner">
+        </div>
+    </div>
+    <script src="js/swiper.min.js"></script>
+    <script>
+    </script>
+
+
+    <div class="pr-wrapper pr-media-width">
+        <div class="pr-container">
+            <div class="pr-title">
+                <div class="pr--price1"><span class="pr-spot-desc free_dis" id="topicTheme">金家纺创意书架免费领取
+                </span>
+                <span class="pr-txtred" id="topic-num">[数量10]</span>
+                </div>
+                <div class="pr--price2">价值<span class="pr-color-01" id="price">¥1135</span></div>
+            </div>
+            <p class="pr-spot-desc2 free_dis2" id="rule"><span class="txtred1" id="pubName">金家纺</span>哈哈哈哈哈哈哈哈哈和</p>
+
+            <div class="pr-adress" style="display:none;">
+                <img src="images/Address-ico.png" width="43" height="43"/>
+                <a href="#" class="pr-spot-desc3 free_dis3" id="address">北京市东城区科林大厦B座云耘众智科技有限公司</a>
+            </div>
+            <div class="pr-time">
+                <img src="images/time-ico.png" width="43" height="43"/>
+                <span class="pr-spot-desc3 free_dis3" id="endTime">09/11 18:00-09/11 21:00</span>
+
+                <div class="pr-get" id="hahahaha">
+                    <span><a class="pr-spot-desc4 free_dis5" id="receive"
+                             style="display:block;">领取</a></span>
+                </div>
+            </div>
+
+            <div class="Progress-bar">
+                <div style="width:80%" id="progress"></div>
+            </div>
+        </div>
+        <div class="pr-count">
+            <div class="yuedu-nub">
+                <img src="images/canyu-ico.png" width="88" height="70"/>
+
+                <p><span class="pr-spot-desc3 free_dis3">阅读</span><span
+                        class="pr-spot-desc4 free_dis3" id="readnum">1136</span></p>
+            </div>
+            <div class="fenxiang-nub">
+                <img src="images/fenxiang-ico.png" width="88" height="70"/>
+
+                <p><span class="pr-spot-desc3 free_dis3">分享</span><span
+                        class="pr-spot-desc4 free_dis3" id="sharenum">1136</span></p>
+            </div>
+            <div class="shengyutiansh-nub">
+                <img src="images/tianshu-ico.png" width="88" height="70"/>
+
+                <p><span class="pr-spot-desc3 free_dis3">剩余</span><span
+                        class="pr-spot-desc4 free_dis3" id="diff">3天15小时21分</span></p>
+            </div>
+        </div>
+
+
+        <div width="100%" id="tuwen" class="pr-pingjia"></div>
+
+        <div class="pr-pinglun pr-media-width" id="comment_zero1" style="margin-bottom: 0;">
+            <span> 发布者 </span>
+            <div class="user-pinglun" style="padding-bottom: 70px;border-bottom: 0 none;">
+                <div class="head-user">
+                    <img src="images/head-img.png" width="120" height="120" id="publisher-head">
+                    <div class="head-mask"></div>
+                </div>
+                <div class="head-name">
+                    <p class="pr-spot-desc2 free_dis4" id="publisher-name">KUS官方</p>
+
+                    <div style="float:left">
+                        <p class="pr-spot-desc3 free_dis4" id="publisher-discribe">源自韩国的健康生活品牌</p>
+                        <p class="pr-spot-desc3"><span class="gfinfo" id="pubnum">发布：<i>16个</i></span><span class="gfinfo" id="pubpv">热度：<i>16个</i></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pr-pingjia">
+            <div class="commstar" id="stare">
+                <span class="star4 active" _val="4"></span>
+            </div>
+            <strong id="starCount">4.0</strong>
+            <div class="pingjia-link" id="pingjia-num">
+                <a class="pr-spot-desc2 free_dis2" href="judgelist.html" id="pingjianum">128人评价&nbsp;></a>
+            </div>
+        </div>
+        <div style="display:none" id="instructions" class="pr-pingjia">
+            <p class="pr-spot-desc2 free_dis2">使用说明:</p>
+
+            <p class="pr-spot-desc2 free_dis2" id="jianjie"></p>
+        </div>
+    </div>
+    <!--<div style="float:right;margin-right:20px">-->
+        <!--<a class="pr-spot-desc2 free_dis2" href="judgelist.html">128人评价&nbsp;></a>-->
+    <!--</div>-->
+    <div class="pr-paiming pr-media-width" style="display:none" id="zhuliliebiao">
+    <span style=""> 参与·排名[10]&nbsp; </span>
+
+        <div class="paiming-group" id="zhuliqiangliebiao">
+            <ul class="head-user2_group">
+                <li>
+                    <div class="head-user2">
+                        <img src="images/head-img.png" width="140" height="140">
+                        <div class="head-mask2"></div>
+                    </div>
+                </li>
+                <li><span class="head_name2">小北</span></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+</div>
+<div class="pr-pinglun pr-media-width" id="comment-zero">
+    <span  id="canyupl" style="display:none"> 参与·评论 </span>
+    <div class="user-pinglun" style="padding-bottom: 50px;">
+        <div class="head-user">
+            <img src="images/head-img.png" width="100" height="100">
+
+            <div class="head-mask"></div>
+        </div>
+        <div class="head-name txtsel">
+            <p class="pr-spot-desc2 free_dis13">小北</p>
+            <a href="#" class="replay-btn3"></a>
+            <p class="pr-spot-desc6 free_dis13">2015-09-10</p>
+            <div>
+                <p class="pr-spot-desc7 free_dis13">大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？大家都获得了多少助力？</p>
+            </div>
+        </div>
+        <div class="pinglun-container">
+        </div>
+    </div>
+
+</div>
+
+
+
+<footer>
+    <div class="mune" id="xqfooter" style="display:block;">
+        <a class="d-menu1" id="pinglun-2"></a>
+    </div>
+    <div class="mune">
+        <a class="d-menu2" id="comp_look"></a>
+    </div>
+    <div class="mune">
+        <a class="d-menu3" href="jubao.html"></a>
+    </div>
+</footer>
+
+</body>
+</html>

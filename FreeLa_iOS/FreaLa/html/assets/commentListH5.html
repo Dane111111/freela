@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0"/>
+    <link rel="stylesheet" href="./css/z_comment0.css"/>
+    <link href="css/xiangqing.css" rel="stylesheet" type="text/css"/>
+    <link href="css/yicanyu.css" rel="stylesheet" type="text/css"/>
+    <link href="css/sweetalert.css" rel="stylesheet" type="text/css" />
+    <script src="js/zepto.min.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/commentListH5.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script>
+        window.onload = function () {
+              var z_btn = document.querySelector(".z_btn");
+            var z_ipt = document.querySelector(".z_ipt");
+            z_btn.addEventListener("click", function () {
+                if (z_ipt.value.trim() == "") {
+                    <!--alert("内容不能为空！！！");-->
+                    return false;
+                }
+            });
+
+            var z_release = document.querySelector(".z_release");
+            var set = "", innerheight = 0, set1 = "";
+            z_ipt.addEventListener("blur", function () {
+                setTimeout(function () {
+                    z_release.style.position = "fixed";
+                    z_release.style.top = (window.innerHeight - (z_release.offsetHeight)) + "px";
+                    document.querySelector("#z_content").style.marginBottom = 56 + "px";
+                    clearInterval(set1);
+                }, 350)
+
+            });
+
+            z_ipt.addEventListener("click", function () {
+
+                setTimeout(function () {
+                           alert(z_Height);
+                    console.log("虚拟键盘高度："+z_Height);
+                    z_release.style.position = "absolute";
+                    <!--z_release.style.top = window.pageYOffset + (window.innerHeight - (z_release.offsetHeight)) + "px";-->
+                    innerheight = window.innerHeight;
+                    set = setInterval(function () {
+                        if (window.innerHeight != innerheight) {
+                            z_release.style.position = "ƒfixed";
+                            document.querySelector("#z_content").style.marginBottom = 0;
+                            z_release.style.top = (window.innerHeight - (z_release.offsetHeight)) + "px";
+
+                            <!--z_release.style.top = z_Height + "px";-->
+                            clearInterval(set);
+                            clearInterval(set1);
+                        }
+                    }, 350);
+                    clearInterval(set1);
+                    set1 = setInterval(function () {
+                        z_release.style.position = "fixed";
+                        z_release.style.top = (window.innerHeight - z_release.offsetHeight) + "px";
+<!--                        console.log("可视化高度："+window.pageYOffset + (window.innerHeight - (z_release.offsetHeight)));-->
+<!--                        console.log("可视化高度："+window.innerHeight);-->
+<!--                                       var commandName = 'xjAlertInfoWithStr';-->
+                                       
+<!--                                       location.href = 'js-call:' + commandName + ':' + encodeURIComponent(("可视化高度："+window.pageYOffset + (window.innerHeight - (z_release.offsetHeight))));-->
+                    }, 150)
+                }, 350)
+            });
+        }
+
+    </script>
+</head>
+<body>
+<div id="z_content">
+    <div class="pr-jubao pr-media-width" style="height:65px;line-height:92px;">
+        <div class="pr-container">
+            <div class="pull-left2" onclick="xjGoBackBtnClickInHfive()" style="top:30px;"></div>
+            <div class="pull-left11"  onclick="xjGoBackBtnClickInHfive()" style="display:none"></div>
+            <div class="lv-jubao"><span class="t1" >评论列表</span></div>
+        </div>
+    </div>
+    
+    <div id="commentLayout">
+        <div class="z_comment">
+        <span class="z_sp"><img src="./images/01.gif" alt=""/></span>
+
+        <div class="z_conts">
+        <p class="z_p1">小南</p>
+
+        <p class="z_p2">2016-5-20 9:00</p>
+
+        <p class="z_p3">大家获得了多少个助力？</p>
+        </div>
+        <div class="z_conright">
+        <a href="javascript:void(0)"><img src="./images/weixin.png" alt=""/></a>
+        </div>
+        </div>
+
+        <!--<div class="z_comment">-->
+        <!--<span class="z_sp"><img src="./images/01.gif" alt=""/></span>-->
+
+        <!--<div class="z_conts">-->
+        <!--<p class="z_p1">小南</p>-->
+
+        <!--<p class="z_p2">2016-5-20 9:00</p>-->
+
+        <!--<p class="z_p3">这是一款APP</p>-->
+        <!--</div>-->
+        <!--<div class="z_conright">-->
+        <!--<a href="javascript:void(0)"><img src="./images/z_ws.png" alt=""/></a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="z_comment">-->
+        <!--<span class="z_sp"><img src="./images/01.gif" alt=""/></span>-->
+
+        <!--<div class="z_conts">-->
+        <!--<p class="z_p1">小南</p>-->
+
+        <!--<p class="z_p2">2016-5-20 9:00</p>-->
+
+        <!--<p class="z_p3">大家获得了多少个助力？</p>-->
+        <!--</div>-->
+        <!--<div class="z_conright">-->
+        <!--<a href="javascript:void(0)"><img src="./images/z_ws.png" alt=""/></a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="z_comment">-->
+        <!--<span class="z_sp"><img src="./images/01.gif" alt=""/></span>-->
+
+        <!--<div class="z_conts">-->
+        <!--<p class="z_p1">小南</p>-->
+
+        <!--<p class="z_p2">2016-5-20 9:00</p>-->
+
+        <!--<p class="z_p3">这是一款APP</p>-->
+        <!--</div>-->
+        <!--<div class="z_conright">-->
+        <!--<a href="javascript:void(0)"><img src="./images/z_ws.png" alt=""/></a>-->
+        <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="z_comment">-->
+        <!--<span class="z_sp"><img src="./images/01.gif" alt=""/></span>-->
+
+        <!--<div class="z_conts">-->
+        <!--<p class="z_p1">小南</p>-->
+
+        <!--<p class="z_p2">2016-5-20 9:00</p>-->
+
+        <!--<p class="z_p3">这是一款APP</p>-->
+        <!--</div>-->
+        <!--<div class="z_conright">-->
+        <!--<a href="javascript:void(0)"><img src="./images/z_ws.png" alt=""/></a>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+
+<div class="z_release" style="top: 588px;height: 53px;">
+    <div id="commentText" class="z_ipt"
+        style="background:#FFFFFF;text-align:left;padding-top:6px;width:68%;margin:5px;min-height:20px;height:auto;border:1px solid #e4e4e4;float:left;font-size:14px;margin-top: 13px;"
+        contenteditable="true"></div>
+    <div class="z_btn" >发表</div>
+</div>
+</div>
+<script>
+    document.querySelector(".z_release").style.top = (window.innerHeight - document.querySelector(".z_release").offsetHeight) + "px";
+
+</script>
+</body>
+</html>
