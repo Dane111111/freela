@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DECollectStarCtr : UIViewController
+@property(nonatomic,strong)NSDictionary*jinXingZhu_dic;
 
 @end

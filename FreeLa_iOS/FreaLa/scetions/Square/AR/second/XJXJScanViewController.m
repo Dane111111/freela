@@ -18,6 +18,7 @@
 #import "XJVersionTPickSuccessView.h"
 #import "LewPopupViewController.h"
 #import "XJHFiveCallLocationJsController.h"
+#import "DECollectStarCtr.h"
 
 #define xj_tag  193992
 
@@ -52,6 +53,7 @@
 @property(nonatomic,assign)BOOL isCameraOpen;
 
 @property(nonatomic,strong)UIButton*xingxing_Btn;
+@property(nonatomic,strong)NSDictionary*jinXingZhu_dic;
 @end
 
 @implementation XJXJScanViewController
@@ -92,7 +94,9 @@
     return _xingxing_Btn;
 }
 -(void)xingxing_btnAction{
-    
+    DECollectStarCtr*vc=[[DECollectStarCtr alloc] init];
+    vc.jinXingZhu_dic=self.jinXingZhu_dic;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (FLMyReceiveListModel *)flmyReceiveMineModel {
     if (!_flmyReceiveMineModel) {
@@ -178,6 +182,7 @@
         if ([data[FL_NET_KEY_NEW] boolValue]) {
             NSArray * dataArr=data[@"data"];
             if (dataArr&&dataArr.count>0) {
+                self.jinXingZhu_dic=dataArr[0];
                 self.xingxing_Btn.hidden=NO;
             }
         }
