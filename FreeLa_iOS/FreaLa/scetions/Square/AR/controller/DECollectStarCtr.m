@@ -25,17 +25,18 @@
 @property (nonatomic, strong)FLMyReceiveListModel* flmyReceiveMineModel;
 
 @property(nonatomic,assign)BOOL isShareSccuess;
-//@property(nonatomic,strong)
+@property(nonatomic,strong)UIImageView*backgroundView;
 @end
 
 @implementation DECollectStarCtr
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self xjreturnModelForTicketsWithData:self.jinXingZhu_dic];
+
     [self createUI];
     [self setData];
     [self jiXing_ziHuoDong];
-    [self xjreturnModelForTicketsWithData:self.jinXingZhu_dic];
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -182,7 +183,7 @@
     _sumNumber=sumNumber;
     [self.collectView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(sumNumber*40, 75));
-        make.centerX.mas_equalTo(DEVICE_WIDTH*0.5);
+        make.centerX.equalTo(self.backgroundView);
         make.top.equalTo(self.failureLabel.mas_bottom).offset(0);
     }];
 
@@ -207,6 +208,7 @@
         imagV;
 
     });
+    self.backgroundView=backguoundView;
     self.leftIconImageView=({
         UIImageView*imageV=[[UIImageView alloc]init];
         imageV.layer.masksToBounds=YES;
@@ -399,7 +401,56 @@
         }];
     }
 }
+#pragma  mark ----------------------_request
+// 领取资格
+- (void)checkTakeCanOrNot {
+    //    [self xj_testToShowOK];
+    FL_Log(@"this web view begin to reload for test");
+    //检查领取资格
+    NSDictionary* parm = @{@"participate.topicId": self.flmyReceiveMineModel.flMineIssueTopicIdStr,
+                           @"participate.userId":FLFLIsPersonalAccountType? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID,
+                           @"participate.userType":FLFLIsPersonalAccountType ? FLFLXJUserTypePersonStrKey : FLFLXJUserTypeCompStrKey,
+                           @"participate.creator":FLFLIsPersonalAccountType ? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID};
+    [FLNetTool checkReceiveInfoInHTMLWithParm:parm success:^(NSDictionary *data) {
+        FL_Log(@"data in check pi22ck topic =%@",data);
+        [FLTool showWith:[NSString stringWithFormat:@"%@",data[@"msg"]]];
 
+        if ([data[FL_NET_KEY_NEW] boolValue]) {
+            if ([data[@"buttonKey"] isEqualToString: @"b11"]) {
+                                //可以领取，查看是否有领取信息
+                if (self.isShareSccuess) {
+                    [self FLFLHTMLHTMLsaveTopicClickOn:nil];
+                    [self FLFLHTMLInsertParticipate];
+                }else{
+                    [self showMenu];
+                }
+            }else if ([data[@"buttonKey"] isEqualToString: @"b10"]){
+                [self lingQuGuoHouZhiJieTiaoPiaoQuanYe];
+            }
+            
+        } else if ([data[@"buttonKey"] isEqualToString: @"b10"]){
+            [self lingQuGuoHouZhiJieTiaoPiaoQuanYe];
+
+        }else {
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)lingQuGuoHouZhiJieTiaoPiaoQuanYe{
+    NSDictionary*dic=@{@"topicId":self.flmyReceiveMineModel.flMineIssueTopicIdStr,@"userId":FLFLIsPersonalAccountType? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID};
+    [FLNetTool xjxjGetDetailsIdWith:dic success:^(NSDictionary *data) {
+        if ([data[FL_NET_KEY_NEW] boolValue]) {
+            self.flmyReceiveMineModel.flDetailsIdStr=data[@"data"];
+                XJTicketHTMLViewController* ticketVC = [[XJTicketHTMLViewController alloc] init];
+                ticketVC.flmyReceiveMineModel = self.flmyReceiveMineModel;
+                [self.navigationController pushViewController:ticketVC animated:YES];
+
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 -(void)wenhaoAction{
     InstructionViewController*vc=[[InstructionViewController alloc]init];
     vc.detilStr=self.jinXingZhu_dic[@"topicExplain"];
@@ -407,14 +458,7 @@
 }
 -(void)lijiLingQuAction:(UIButton*)btn{
     if (btn.isSelected) {
-        if (self.isShareSccuess) {
-            [self FLFLHTMLHTMLsaveTopicClickOn:nil];
-            [self FLFLHTMLInsertParticipate];
-
-        }else{
-            [self showMenu];
-
-        }
+        [self checkTakeCanOrNot];
 
     }else{
         [self showMenu];
