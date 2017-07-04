@@ -352,6 +352,9 @@
 		1040A5AC1EFFCC0A003F0529 /* log_bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1040A5AB1EFFCBAC003F0529 /* log_bg.mp4 */; };
 		1041D9781F05FBEB0042BCE7 /* CollectStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1041D9771F05FBEB0042BCE7 /* CollectStarView.m */; };
 		1041D98A1F06483D0042BCE7 /* DECollectStarCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 1041D9891F06483D0042BCE7 /* DECollectStarCtr.m */; };
+		1086BE001F0A131600F758C2 /* InstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BDFF1F0A131600F758C2 /* InstructionViewController.m */; };
+		1086BE061F0A153200F758C2 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BE051F0A153200F758C2 /* Helper.m */; };
+		1086BE091F0A1CE700F758C2 /* DEBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BE081F0A1CE700F758C2 /* DEBaseViewController.m */; };
 		1E0378D61EADAD6C005919EC /* XJARSkyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0378D51EADAD6C005919EC /* XJARSkyViewController.m */; };
 		1E0378D91EADAD8C005919EC /* FINCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0378D81EADAD8C005919EC /* FINCamera.m */; };
 		1E5E46961EB9DC8D00FD330B /* XJARClickAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5E46951EB9DC8D00FD330B /* XJARClickAnimationView.m */; };
@@ -1574,6 +1577,12 @@
 		1041D9771F05FBEB0042BCE7 /* CollectStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectStarView.m; sourceTree = "<group>"; };
 		1041D9881F06483D0042BCE7 /* DECollectStarCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DECollectStarCtr.h; sourceTree = "<group>"; };
 		1041D9891F06483D0042BCE7 /* DECollectStarCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DECollectStarCtr.m; sourceTree = "<group>"; };
+		1086BDFE1F0A131600F758C2 /* InstructionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionViewController.h; sourceTree = "<group>"; };
+		1086BDFF1F0A131600F758C2 /* InstructionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionViewController.m; sourceTree = "<group>"; };
+		1086BE041F0A153200F758C2 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		1086BE051F0A153200F758C2 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		1086BE071F0A1CE700F758C2 /* DEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEBaseViewController.h; sourceTree = "<group>"; };
+		1086BE081F0A1CE700F758C2 /* DEBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEBaseViewController.m; sourceTree = "<group>"; };
 		15FC110FF06F3E790FCABBDE /* Pods-FreaLa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreaLa.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreaLa/Pods-FreaLa.release.xcconfig"; sourceTree = "<group>"; };
 		1E0378D41EADAD6C005919EC /* XJARSkyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJARSkyViewController.h; sourceTree = "<group>"; };
 		1E0378D51EADAD6C005919EC /* XJARSkyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJARSkyViewController.m; sourceTree = "<group>"; };
@@ -4402,6 +4411,8 @@
 				700693C11C2C21B800EE6B8C /* FLMineTools.m */,
 				700786D71C3E41D500944480 /* FLGrayLabel.h */,
 				700786D81C3E41D500944480 /* FLGrayLabel.m */,
+				1086BE041F0A153200F758C2 /* Helper.h */,
+				1086BE051F0A153200F758C2 /* Helper.m */,
 			);
 			name = helpers;
 			path = scetions/Mine/helpers;
@@ -5408,6 +5419,8 @@
 				1E0378D51EADAD6C005919EC /* XJARSkyViewController.m */,
 				1041D9881F06483D0042BCE7 /* DECollectStarCtr.h */,
 				1041D9891F06483D0042BCE7 /* DECollectStarCtr.m */,
+				1086BDFE1F0A131600F758C2 /* InstructionViewController.h */,
+				1086BDFF1F0A131600F758C2 /* InstructionViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -6720,6 +6733,8 @@
 				70B5A7471C44FCF60067A7F5 /* FLMineViewController.xib */,
 				702A851C1CF580C3005DB6F8 /* XJBusinessMineViewController.h */,
 				702A851D1CF580C3005DB6F8 /* XJBusinessMineViewController.m */,
+				1086BE071F0A1CE700F758C2 /* DEBaseViewController.h */,
+				1086BE081F0A1CE700F758C2 /* DEBaseViewController.m */,
 				7006AB1F1C90417F00E09C17 /* myCollecion */,
 				70DA65921C4E31CD0038CEEE /* myReceive */,
 				7045F3C11C30EBE3004B37DE /* myIssue */,
@@ -7617,6 +7632,7 @@
 				01CDC5581C48960800399A9B /* EaseEmotionEscape.m in Sources */,
 				70AD78011E13CA4B00FF8123 /* LewPopupViewAnimationDrop.m in Sources */,
 				012294791C48B9CD0010D81C /* CYChatListCell.m in Sources */,
+				1086BE091F0A1CE700F758C2 /* DEBaseViewController.m in Sources */,
 				70264E591CEB079400A8DBCC /* XJMyIssueCellModel.m in Sources */,
 				708849481BF4338D00E5A5A0 /* FLAboutBusAccountViewController.m in Sources */,
 				70C3C1C21CEEBF2500DD2114 /* XJMyIssueControlModel.m in Sources */,
@@ -7919,6 +7935,7 @@
 				014DF90A1C3E05AC00A8B94C /* CYItemCell.m in Sources */,
 				01CDC5491C48960800399A9B /* EaseSDKHelper.m in Sources */,
 				70030A0A1C624ADB00038EB7 /* FLCheckVersionViewController.m in Sources */,
+				1086BE061F0A153200F758C2 /* Helper.m in Sources */,
 				70416DC01CBF526300A569C4 /* HRBrightnessCursor.m in Sources */,
 				01CDC5511C48960800399A9B /* UIViewController+DismissKeyboard.m in Sources */,
 				700656F51C4637A10079DB48 /* SDCycleScrollView.m in Sources */,
@@ -7952,6 +7969,7 @@
 				70E8E0CE1C2A92DA005CD83E /* FLIssueBaseInfoViewController.m in Sources */,
 				7092D9721CF81825005DE034 /* XJNaviViewSearchBar.m in Sources */,
 				70B5A7481C44FCF60067A7F5 /* FLMineViewController.m in Sources */,
+				1086BE001F0A131600F758C2 /* InstructionViewController.m in Sources */,
 				703F75CA1D766A3300820D09 /* XJAddBzInfoCell.m in Sources */,
 				01CDC56C1C48960800399A9B /* EaseChatToolbarItem.m in Sources */,
 				012294901C48BCDA0010D81C /* CYChatListViewController.m in Sources */,
