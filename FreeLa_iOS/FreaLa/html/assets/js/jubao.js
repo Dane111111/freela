@@ -90,14 +90,18 @@ function checkInfoToSubmitToPart(){
 var info="";
 var ssss=""
 function writeReceiveInJubaoJS(receiveInfo){
+    
     var layout="";
-    var aaa=receiveInfo+"";
+//    var aaa=receiveInfo.replace('"', '');
+    var aaa=receiveInfo.replace(/"/g, '');
+
     var arr = aaa.split(',');   // 字符串就转换成Array数组了。
     for(var i=0;i<arr.length;i++){
-        var arrs=arr[i].split('#&#');
+        var arrs=arr[i].split(':');
+        var arrss=arrs[0].split('#&#');
         layout+='<dl >'
-        layout+='<dt><span class="pr-spot-desc3 free_dis8">'+arrs[0]+'</span></dt>'
-        layout+='<dd><input type="text" maxlength="35" key="'+arrs[0]+'" keyName="'+arrs[1]+'"></dd>'
+        layout+='<dt><span class="pr-spot-desc3 free_dis8">'+arrss[0]+'</span></dt>'
+        layout+='<dd><input type="text" maxlength="35" key="'+arrss[0]+'" keyName="'+arrss[1]+'" value="'+arrs[1]+'"></dd>'
         layout+='</dl>'
     }
     

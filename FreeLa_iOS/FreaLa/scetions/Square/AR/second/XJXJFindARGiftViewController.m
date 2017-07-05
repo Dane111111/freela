@@ -21,7 +21,7 @@
 #import "XJHFiveCallLocationJsController.h"
 #import "XJXJScanViewController.h"
 
-@interface XJXJFindARGiftViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,FINCameraDelagate,UIAccelerometerDelegate,SDCycleScrollViewDelegate>
+@interface XJXJFindARGiftViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,FINCameraDelagate,UIAccelerometerDelegate,SDCycleScrollViewDelegate,NSURLSessionDelegate>
 {
     CMMotionManager *manager;
     NSMutableArray* _dataSource;
@@ -68,6 +68,7 @@
 @property (nonatomic , strong) UILabel* xjTipLabel;
 
 @property (nonatomic , strong) UILabel* xjTitleLabel;
+@property(nonatomic,retain)NSMutableData*HTMLdata;
 @end
 
 @implementation XJXJFindARGiftViewController
@@ -82,6 +83,9 @@
     NSInteger xj_sao_bugi;//设定两次扫描 不成功
     UIImage* xj_compareImg; //线索图片，需要对比的网络图
     UIImage* xj_VideoImg; //视频流 取出 的图片
+    
+    
+    NSString*_FLFLHTML_topId;
 }
 - (FLMyReceiveListModel *)flmyReceiveMineModel {
     if (!_flmyReceiveMineModel) {
@@ -236,12 +240,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
     self.navigationController.navigationBar.hidden = YES;
-    if (self.camera) {
-        [self.camera startSession];
-    }
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    
     if (self.isHtmlPop) {
         [self xj_clickToShowPickSuccess];
         self.isHtmlPop=NO;
@@ -253,9 +255,25 @@
             scCtr.isHtmlPop=NO;
         }
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appHasGoneInForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appEnterBackGround)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    
+
     
 }
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _xjisCilckBtn = NO;
@@ -297,16 +315,6 @@
             [weakSelf xjSettingTileLabel:model.flMineTopicThemStr];
         }
     };
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appHasGoneInForeground)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appEnterBackGround)
-                                                 name:UIApplicationDidEnterBackgroundNotification
-                                               object:nil];
     
     
     
@@ -388,7 +396,13 @@
         if (self.xj_allBtn) {
             [self.xj_allBtn removeFromSuperview];
         }
-        
+//        for ( FLMyReceiveListModel*model  in _dataSource) {
+//            if ([model.flMineIssueTopicIdStr integerValue] ==[self.flmyReceiveMineModel.flMineIssueTopicIdStr integerValue]) {
+//                [_dataSource removeObject:model];
+//                break;
+//            }
+//        }
+
         
         //        self.xjXianSuoImgView.image = [UIImage imageNamed:@"ar_icon_xiansuo"];
         _xjIsXianSuoClicked = !_xjIsXianSuoClicked;
@@ -399,9 +413,12 @@
         self.xjClickView.hidden = NO;
         [self xjTimerRemove];
         self.xjTipLabel.hidden = _dataSource.count ==0? YES: NO;
-        self.cycleScrollView2.hidden = NO;
-        self.xjTitleLabel.hidden = NO;
-        
+        self.cycleScrollView2.hidden = _dataSource.count ==0? YES: NO;
+        self.xjTitleLabel.hidden = _dataSource.count ==0? YES: NO;
+        if (_dataSource.count) {
+            [self xjImageInit];
+
+        }
         
     } else {
         [self.navigationController popViewControllerAnimated:YES];
@@ -764,6 +781,13 @@
 }
 
 - (void)xj_clickToShowPickSuccess{
+    for ( FLMyReceiveListModel*model  in _dataSource) {
+        if ([model.flMineIssueTopicIdStr integerValue] ==[self.flmyReceiveMineModel.flMineIssueTopicIdStr integerValue]) {
+            [_dataSource removeObject:model];
+            break;
+        }
+    }
+
     [self xj_ChangePickGiftDoneStatus];
     if (self.xj_allBtn) {
         [self.xj_allBtn removeFromSuperview];
@@ -876,7 +900,7 @@
             if ([XJFinalTool xjStringSafe:xj_parinfo]) {
 //                [self  xj_showAddReceiveView];;//[self xjGetPartInfoList:xj_parinfo];//获取填写信息
                 
-                [self FLFLHTMLGetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
+                [self FLFLHTML2GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
 
             }else{
                 [self FLFLHTMLHTMLsaveTopicClickOn:@""];
@@ -937,6 +961,51 @@
         }
     } failure:^(NSError *error) {
     }];
+}
+- (void)FLFLHTML2GetPartInfoListTopid:(NSString*)topid userId:(NSString*)userId  partInfo:(NSString*)partInfo{
+    _FLFLHTML_topId=topid;
+    NSString* getURLStr = [[NSString stringWithFormat:@"%@/app/publishs!getUserReceiveInfo.action?d=%d",FLBaseUrl,randomNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString*parameter=[NSString stringWithFormat:@"topic.userId=%@&topic.partInfo=%@",userId,partInfo];
+    NSURL*getURL=[NSURL URLWithString:getURLStr];
+    NSMutableURLRequest*request=[[NSMutableURLRequest alloc]init];
+    request.URL=getURL;
+    request.HTTPMethod=@"POST";
+    request.timeoutInterval=60;
+    request.HTTPBody=[parameter dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSURLSessionConfiguration*conf=[NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession*session=[NSURLSession sessionWithConfiguration:conf delegate:self delegateQueue:[[NSOperationQueue alloc]init]];
+    NSURLSessionTask*task=[session dataTaskWithRequest:request];
+    [task resume];
+
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data{
+//    [self.HTMLdata appendData:data];
+    NSString*str=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    str=[str stringByReplacingOccurrencesOfString:@"{"withString:@"["];
+    str=[str stringByReplacingOccurrencesOfString:@"}"withString:@"]"];
+    NSArray* array1 = [str componentsSeparatedByString:@":["];
+    NSArray*array2=[array1[1] componentsSeparatedByString: @"],"];
+
+    [self performSelectorOnMainThread:@selector(pushJSCtr:) withObject:array2[0] waitUntilDone:YES];
+
+}
+-(void)pushJSCtr:(NSString*)str{
+    XJHFiveCallLocationJsController*vc=[[XJHFiveCallLocationJsController alloc] initWithTopicId:_FLFLHTML_topId];
+    vc.xjPartInfoStr=str;
+    vc.flmyReceiveMineModel=self.flmyReceiveMineModel;
+    vc.xjPushStyle=HFivePushStylePutInfoForTake;
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+ willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * __nullable cachedResponse))completionHandler{
+//    NSString*str=[[NSString alloc]initWithData:self.HTMLdata encoding:NSUTF8StringEncoding];
+//    NSDictionary*dic=[NSJSONSerialization JSONObjectWithData:self.HTMLdata options:NSJSONReadingMutableContainers error:nil];
+//    [self performSelectorOnMainThread:@selector(setTabelView:) withObject:dic waitUntilDone:YES];
+    
 }
 
 - (void)xj_getRequestDetailsOfTopicWithId:(NSString*)xjtopicid {

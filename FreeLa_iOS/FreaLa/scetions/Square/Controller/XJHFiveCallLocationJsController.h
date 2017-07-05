@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, HFivePushStyle) {
 @property (nonatomic , assign) HFivePushStyle xjPushStyle;
 @property (nonatomic , strong) NSString * xjTopicIdStr;
 @property (nonatomic , strong) NSArray* xjPartInfoArr; //是否需要填写领取信息
+@property(nonatomic,strong)NSString*xjPartInfoStr;
 /**票券需要的领取model*/
 @property (nonatomic , strong) FLMyReceiveListModel *flmyReceiveMineModel;
 /**详情Model*/

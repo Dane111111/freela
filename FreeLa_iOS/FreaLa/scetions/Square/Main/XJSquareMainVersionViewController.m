@@ -66,16 +66,6 @@
     if ([XJFinalTool xjStringSafe:xx]) {
         [self xjRequestUserInfoWithToken:xx];
     }
-    //进入前台
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appHasGoneInForeground)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appEnterBackGround)
-                                                 name:UIApplicationDidEnterBackgroundNotification
-                                               object:nil];
     
     
     [self jiXingZhuHuoDong];
@@ -166,12 +156,29 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+
 //    [self jiXingZhuHuoDong];
 
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    //进入前台
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appHasGoneInForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appEnterBackGround)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+
 }
 - (XJSquareMainView *)xjMainView {
     return nil;

@@ -31,6 +31,8 @@
     NSMutableArray* _imageViewArr;
     NSString* _xjCity;
     UIView* xjImgBaseView;
+    NSString*_FLFLHTML_topId;
+
     
 }
 @property(nonatomic,strong)FINCamera * camera;
@@ -119,7 +121,7 @@
     //底部按钮栏
     [self xjCreatBottomView];
     
-    [self startSerialLocation];
+//    [self startSerialLocation];
     
     
     
@@ -134,16 +136,6 @@
 //        NSLog(@"动画结束");
 //    }];
 //    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appHasGoneInForeground)
-                                                 name:UIApplicationWillEnterForegroundNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appEnterBackGround)
-                                                 name:UIApplicationDidEnterBackgroundNotification
-                                               object:nil];
-    
     
     
 }
@@ -176,6 +168,15 @@
     }
     NSLog(@"😝🌶%ld",_dataSource.count);
     [self jiXingZhuHuoDong];
+    
+    [_dataSource removeAllObjects];
+    if (xjImgBaseView) {
+        for (UIView*view in [xjImgBaseView subviews]) {
+            [view removeFromSuperview];
+        }
+    }
+    [self startSerialLocation];
+
 }
 -(void)jiXingZhuHuoDong{
     [FLNetTool deGetNewIsMainWith:nil success:^(NSDictionary *data) {
@@ -326,7 +327,7 @@
             xjw = 100;
         }
         FL_Log(@"thi s sis the xjxjxjxjw ==【%f】",xjw);
-        backview.frame = CGRectMake(xjx + 300 * i, xjy, xjw, xjw);
+        backview.frame = CGRectMake(xjx + 300 * i, xjy-200, xjw, xjw);
         
         //划线
         UIView* redView = [[UIView alloc] init];
@@ -568,7 +569,7 @@
             
             if (partInfo&&partInfo.length>0) {
                 
-                [self FLFLHTMLGetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
+                [self FLFLHTML2GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
                 
             }else{
                                 [self FLFLHTMLHTMLsaveTopicClickOn:nil]; //直接领取
@@ -601,6 +602,43 @@
         }
     } failure:^(NSError *error) {
     }];
+}
+- (void)FLFLHTML2GetPartInfoListTopid:(NSString*)topid userId:(NSString*)userId  partInfo:(NSString*)partInfo{
+    _FLFLHTML_topId=topid;
+    NSString* getURLStr = [[NSString stringWithFormat:@"%@/app/publishs!getUserReceiveInfo.action?d=%d",FLBaseUrl,randomNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString*parameter=[NSString stringWithFormat:@"topic.userId=%@&topic.partInfo=%@",userId,partInfo];
+    NSURL*getURL=[NSURL URLWithString:getURLStr];
+    NSMutableURLRequest*request=[[NSMutableURLRequest alloc]init];
+    request.URL=getURL;
+    request.HTTPMethod=@"POST";
+    request.timeoutInterval=60;
+    request.HTTPBody=[parameter dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURLSessionConfiguration*conf=[NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession*session=[NSURLSession sessionWithConfiguration:conf delegate:self delegateQueue:[[NSOperationQueue alloc]init]];
+    NSURLSessionTask*task=[session dataTaskWithRequest:request];
+    [task resume];
+    
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data{
+    //    [self.HTMLdata appendData:data];
+    NSString*str=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    str=[str stringByReplacingOccurrencesOfString:@"{"withString:@"["];
+    str=[str stringByReplacingOccurrencesOfString:@"}"withString:@"]"];
+    NSArray* array1 = [str componentsSeparatedByString:@":["];
+    NSArray*array2=[array1[1] componentsSeparatedByString: @"],"];
+    
+    [self performSelectorOnMainThread:@selector(pushJSCtr:) withObject:array2[0] waitUntilDone:YES];
+    
+}
+-(void)pushJSCtr:(NSString*)str{
+    XJHFiveCallLocationJsController*vc=[[XJHFiveCallLocationJsController alloc] initWithTopicId:_FLFLHTML_topId];
+    vc.xjPartInfoStr=str;
+    vc.flmyReceiveMineModel=self.flmyReceiveMineModel;
+    vc.xjPushStyle=HFivePushStylePutInfoForTake;
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 
@@ -642,9 +680,26 @@
             scCtr.isHtmlPop=NO;
         }
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appHasGoneInForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
     
-}
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appEnterBackGround)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    
 
+
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+
+}
 - (void)xj_showAddReceiveView {
     __weak typeof(self) weakSelf = self;
 //    XJGiftAddReceiveInfoView* view = [[XJGiftAddReceiveInfoView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width*0.8, 400)];

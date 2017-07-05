@@ -265,7 +265,13 @@
         [self.navigationController popViewControllerAnimated:YES];
     });
 }
+- (void)callJSInHTMLWithMethod:(NSString*)methodStr partInfoStr:(NSString*)partInfoStr {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        JSValue*function = self.flXQJSContext[methodStr];
+        JSValue*result = [function callWithArguments:@[partInfoStr]];
 
+    });
+}
 - (void)callJSInHTMLWithMethod:(NSString*)methodStr Data:(NSArray*)array {
     dispatch_async(dispatch_get_main_queue(), ^{
         JSValue* function = self.flXQJSContext[methodStr];
@@ -529,6 +535,9 @@
     if (self.xjPushStyle == HFivePushStylePutInfoForTake) {
         if (self.xjPartInfoArr) {
             [self callJSInHTMLWithMethod:@"writeReceiveInJubaoJS" Data:self.xjPartInfoArr];
+        }else if (self.xjPartInfoStr){
+            [self callJSInHTMLWithMethod:@"writeReceiveInJubaoJS" partInfoStr:self.xjPartInfoStr];
+
         }
     }
     if (_myJudgePLListArray) {
@@ -797,7 +806,7 @@
 }
 #pragma mark -----------------------JS返回
 -(void)backPop:(NSNotification*)notification{
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark --------------------------------------------给回复评论界面JS传参 同时得到评论列表

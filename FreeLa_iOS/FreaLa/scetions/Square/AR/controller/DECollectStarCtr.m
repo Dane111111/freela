@@ -168,12 +168,18 @@
 
 }
 -(void)lngqu{
+    if (self.sumNumber==0) {
+        return;
+    }
     if (self.linqu_arr.count>=self.sumNumber) {
         self.linQu_button.selected=YES;
     }
     int i=0;
     for (NSDictionary *dic in self.linqu_arr) {
         NSURL*url=[NSURL URLWithString:dic[@"thumbnail"]];
+        if (self.sumNumber<=i) {
+            return;
+        }
         UIImageView*imageV=[self.collectView subviews][i];
         [imageV sd_setImageWithURL:url];
                             i++;

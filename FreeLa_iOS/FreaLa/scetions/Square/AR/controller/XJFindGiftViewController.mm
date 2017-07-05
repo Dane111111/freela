@@ -21,7 +21,7 @@
 #import "XJHFiveCallLocationJsController.h"
 #import "XJXJScanViewController.h"
 
-@interface XJFindGiftViewController ()<UIGestureRecognizerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface XJFindGiftViewController ()<UIGestureRecognizerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,NSURLSessionDelegate>
 
 @property (strong, nonatomic)  UIView *backView;
 @property (nonatomic,weak) UIView *focusCircle;
@@ -101,6 +101,8 @@
     NSInteger xj_sao_bugi;//设定两次扫描 不成功
     UIImage* xj_compareImg; //线索图片，需要对比的网络图
     UIImage* xj_VideoImg; //视频流 取出 的图片
+    NSString*_FLFLHTML_topId;
+
 }
 
 
@@ -127,8 +129,12 @@
         [weakSelf xj_ChangeSaoStatus:YES];
     }];
     
-}
 
+}
+- (void)appHasGoneInForeground{
+    [self.centerRadarView performSelector:@selector(xj_circleStart) withObject:nil afterDelay:1.0f];
+
+}
 - (void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:YES];
@@ -176,6 +182,9 @@
         
         [self.session stopRunning];
     }
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+        
+
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -190,6 +199,12 @@
             scCtr.isHtmlPop=NO;
         }
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appHasGoneInForeground)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    
+
     
 }
 
@@ -831,7 +846,7 @@
             NSString* xj_parinfo = data[FL_NET_DATA_KEY][@"partInfo"];
             if ([XJFinalTool xjStringSafe:xj_parinfo]) {
 //                [self  xj_showAddReceiveView];;//[self xjGetPartInfoList:xj_parinfo];//获取填写信息
-                [self FLFLHTMLGetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
+                [self FLFLHTML2GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
 
             }else{
                 [self FLFLHTMLHTMLsaveTopicClickOn:@""];
@@ -859,6 +874,51 @@
         }
     } failure:^(NSError *error) {
     }];
+}
+- (void)FLFLHTML2GetPartInfoListTopid:(NSString*)topid userId:(NSString*)userId  partInfo:(NSString*)partInfo{
+    _FLFLHTML_topId=topid;
+    NSString* getURLStr = [[NSString stringWithFormat:@"%@/app/publishs!getUserReceiveInfo.action?d=%d",FLBaseUrl,randomNumber] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString*parameter=[NSString stringWithFormat:@"topic.userId=%@&topic.partInfo=%@",userId,partInfo];
+    NSURL*getURL=[NSURL URLWithString:getURLStr];
+    NSMutableURLRequest*request=[[NSMutableURLRequest alloc]init];
+    request.URL=getURL;
+    request.HTTPMethod=@"POST";
+    request.timeoutInterval=60;
+    request.HTTPBody=[parameter dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURLSessionConfiguration*conf=[NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession*session=[NSURLSession sessionWithConfiguration:conf delegate:self delegateQueue:[[NSOperationQueue alloc]init]];
+    NSURLSessionTask*task=[session dataTaskWithRequest:request];
+    [task resume];
+    
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data{
+    //    [self.HTMLdata appendData:data];
+    NSString*str=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    str=[str stringByReplacingOccurrencesOfString:@"{" withString:@"["];
+    str=[str stringByReplacingOccurrencesOfString:@"}" withString:@"]"];
+    NSArray* array1 = [str componentsSeparatedByString:@":["];
+    NSArray*array2=[array1[1] componentsSeparatedByString: @"],"];
+    
+    [self performSelectorOnMainThread:@selector(pushJSCtr:) withObject:array2[0] waitUntilDone:YES];
+    
+}
+-(void)pushJSCtr:(NSString*)str{
+    XJHFiveCallLocationJsController*vc=[[XJHFiveCallLocationJsController alloc] initWithTopicId:_FLFLHTML_topId];
+    vc.xjPartInfoStr=str;
+    vc.flmyReceiveMineModel=self.flmyReceiveMineModel;
+    vc.xjPushStyle=HFivePushStylePutInfoForTake;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+ willCacheResponse:(NSCachedURLResponse *)proposedResponse
+ completionHandler:(void (^)(NSCachedURLResponse * __nullable cachedResponse))completionHandler{
+    //    NSString*str=[[NSString alloc]initWithData:self.HTMLdata encoding:NSUTF8StringEncoding];
+    //    NSDictionary*dic=[NSJSONSerialization JSONObjectWithData:self.HTMLdata options:NSJSONReadingMutableContainers error:nil];
+    //    [self performSelectorOnMainThread:@selector(setTabelView:) withObject:dic waitUntilDone:YES];
+    
 }
 
 - (void)xj_getRequestDetailsOfTopicWithId:(NSString*)xjtopicid {
@@ -1027,12 +1087,16 @@
     //点击完成
     [view xj_findGiftSuccessDone:^{
         [weakSelf lew_dismissPopupView];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+//        [weakSelf.navigationController popViewControllerAnimated:YES];
         //跳到票券页
         XJTicketHTMLViewController* ticketVC = [[XJTicketHTMLViewController alloc] init];
         ticketVC.flmyReceiveMineModel = self.flmyReceiveMineModel;
         FL_Log(@"thi1s is te1h acti1on to push the page of ticke3t");
         [weakSelf.navigationController pushViewController:ticketVC animated:YES];
+        NSMutableArray*ctrArr=weakSelf.navigationController.viewControllers.mutableCopy;
+        [ctrArr removeObject:weakSelf];
+        [weakSelf.navigationController setViewControllers:ctrArr];
+        
         if (weakSelf.xj_searchGiftDoneImgView) {
               [weakSelf.xj_searchGiftDoneImgView removeFromSuperview];
         }
