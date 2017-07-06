@@ -132,7 +132,12 @@
 
 }
 - (void)appHasGoneInForeground{
-    [self.centerRadarView performSelector:@selector(xj_circleStart) withObject:nil afterDelay:1.0f];
+    
+
+    if (_xj_is_open_timer) {
+        [self.centerRadarView performSelector:@selector(xj_circleStart) withObject:nil afterDelay:1.0f];
+
+    }
 
 }
 - (void)viewWillAppear:(BOOL)animated{

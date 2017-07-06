@@ -240,6 +240,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear: animated];
     self.navigationController.navigationBar.hidden = YES;
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -247,6 +248,7 @@
     if (self.isHtmlPop) {
         [self xj_clickToShowPickSuccess];
         self.isHtmlPop=NO;
+        
     }
     
     for (UIViewController*ctr in [self.navigationController childViewControllers]) {
@@ -320,12 +322,13 @@
     
 }
 - (void)appHasGoneInForeground{
-    [self.camera endSession];
-    [self.camera startSession];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.camera endSession];
         [self.camera startSession];
-    });
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.camera startSession];
+        });
     
 }
 
@@ -405,7 +408,7 @@
 
         
         //        self.xjXianSuoImgView.image = [UIImage imageNamed:@"ar_icon_xiansuo"];
-        _xjIsXianSuoClicked = !_xjIsXianSuoClicked;
+//        _xjIsXianSuoClicked = !_xjIsXianSuoClicked;
         self.centerRadarView.hidden = YES;
         self.xjXianSuoView.hidden = YES;
         
@@ -819,7 +822,6 @@
         weakSelf.navigationController.navigationBar.hidden = YES;
         [weakSelf xj_start];
         _xjisCilckBtn = YES;
-        [weakSelf xj_popGoBack];
         
         //跳到票券页
         XJTicketHTMLViewController* ticketVC = [[XJTicketHTMLViewController alloc] init];
@@ -830,6 +832,7 @@
             [weakSelf.xj_searchGiftDoneImgView removeFromSuperview];
         }
         [weakSelf xj_stop];
+        [self xj_popGoBack];
     }];
 }
 #pragma mark -----------------------点击领取

@@ -131,14 +131,22 @@
     toolbar.layer.masksToBounds=YES;
     toolbar.layer.cornerRadius=15;
     [self.backImageView addSubview:toolbar];
-    UILabel*label=[[UILabel alloc] init];
-    label.text=@"关闭";
-    label.textColor=[UIColor whiteColor];
-    label.font=[UIFont systemFontOfSize:11];
-    [toolbar addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+    UIImageView*imageV=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"chachachachacha"]];
+    [toolbar addSubview:imageV];
+    
+    [imageV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(15, 15));
         make.center.equalTo(toolbar);
     }];
+    
+//    UILabel*label=[[UILabel alloc] init];
+//    label.text=@"关闭";
+//    label.textColor=[UIColor whiteColor];
+//    label.font=[UIFont systemFontOfSize:11];
+//    [toolbar addSubview:label];
+//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.equalTo(toolbar);
+//    }];
     
     
 

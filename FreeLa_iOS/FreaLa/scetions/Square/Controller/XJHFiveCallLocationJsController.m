@@ -578,7 +578,10 @@
 - (void)getDetailsInfoInFuckHtmlVC {
     NSString* xjStr = [NSString stringWithFormat:@"%@",FLFLIsPersonalAccountType ? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID];
     if (!xjStr || [xjStr isEqualToString:@"(null)"]) {
-        [self.navigationController popViewControllerAnimated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+
         return;
     }
     //    [[FLAppDelegate share] showSimplleHUDWithTitle:nil view:self.webView];
@@ -600,7 +603,10 @@
         
     } failure:^(NSError *error) {
         [FLTool showWith:@"加载失败，请重新尝试"];
-        [self.navigationController popViewControllerAnimated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+
         [FLTool hideHUD];
     }];
 }
@@ -806,7 +812,11 @@
 }
 #pragma mark -----------------------JS返回
 -(void)backPop:(NSNotification*)notification{
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.navigationController popViewControllerAnimated:YES];
+    });
+
 }
 
 #pragma mark --------------------------------------------给回复评论界面JS传参 同时得到评论列表
