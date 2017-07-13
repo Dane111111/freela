@@ -10,7 +10,7 @@
 #import "WMPlayer.h"
 
 @interface XJVersionTPickSuccessView ()
-
+@property(nonatomic,strong)UIActivityIndicatorView *testActivityIndicator;
 @end
 
 @implementation XJVersionTPickSuccessView
@@ -124,10 +124,11 @@
     self.xj_imageView.frame = CGRectMake(0, 0, xj_img_w, xj_img_w);
     [info addSubview:self.xj_imageView];
     self.xj_imageView.image = [UIImage imageNamed:@"xj_default_avator"];
+    
     self.xj_imageView.layer.cornerRadius = xj_img_w/2;
     self.xj_imageView.layer.masksToBounds = YES;
     
-    [self.xj_imageView sd_setImageWithURL:[NSURL URLWithString:[XJFinalTool xjReturnImageURLWithStr:[[XJUserAccountTool share] xj_getUserAvatar] isSite:NO]]];
+//    [self.xj_imageView sd_setImageWithURL:[NSURL URLWithString:[XJFinalTool xjReturnImageURLWithStr:[[XJUserAccountTool share] xj_getUserAvatar] isSite:NO]]];
     
     UIImageView* iiimage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"duihuakuang13"]];
     [info addSubview:iiimage];
@@ -192,9 +193,24 @@
 - (void)xj_findGiftSuccessDone:(xjPickSucessDoneAction)block {
     _block = block;
 }
+-(UIActivityIndicatorView *)testActivityIndicator{
+    if (!_testActivityIndicator) {
+        UIActivityIndicatorView *testActivityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        testActivityIndicator.center = CGPointMake(self.width/2, self.height/2-50);//只能设置中心，不能设置大小
+        testActivityIndicator.color = [UIColor redColor]; // 改变圈圈的颜色为红色； iOS5引入
+        [testActivityIndicator startAnimating]; // 开始旋转
+        [testActivityIndicator setHidesWhenStopped:YES]; //当旋转结束时隐藏
+        _testActivityIndicator=testActivityIndicator;
+
+    }
+    return _testActivityIndicator;
+}
 - (void)setXj_imgUrlStr:(NSString *)xj_imgUrlStr {
     _xj_imgUrlStr = xj_imgUrlStr;
     //判断路径的结尾是不是 .mp4
+    [self addSubview:self.testActivityIndicator];
+    [self sendSubviewToBack:self.testActivityIndicator];
+
     if([xj_imgUrlStr hasSuffix:@".mp4"]){
         self.xj_TopicImgView.hidden = YES;
         self.xjPlayView.isXunHuan=YES;
@@ -207,8 +223,11 @@
         self.xj_TopicImgView.hidden = NO;
         __weak typeof(self) weakSelf = self;
         FL_Log(@"test value in  pick success = %@",xj_imgUrlStr);
+
         [self.xj_TopicImgView sd_setImageWithURL:[NSURL URLWithString:xj_imgUrlStr] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             [weakSelf xj_addImgAnimation];
+            [_testActivityIndicator stopAnimating]; // 结束旋转
+
         }];
     }
 }

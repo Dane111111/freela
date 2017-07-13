@@ -808,7 +808,12 @@
         participateDetailes.endTime:结束时间
  */
 +(void)deTopicReceiveListWith:(NSDictionary*)parm success:(void(^)(NSDictionary *data))success failure: (void(^)(NSError *error))failure;
-
+/**
+ *  地图Mark接口
+ 接口名称:http://www.freela.com.cn/app/publishs!getAdminMark.action?
+ 接口参数:无参数
+ */
++(void)deGetAdminMarkListWith:(NSDictionary*)parm success:(void(^)(NSDictionary *data))success failure: (void(^)(NSError *error))failure;
 @end
 
 

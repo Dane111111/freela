@@ -9,7 +9,6 @@
 #import "DEBaseViewController.h"
 
 @interface DEBaseViewController ()
-@property(nonatomic,strong)UIButton*leftBtn;
 @property(nonatomic,strong)UIButton*rightBtn;
 @property(nonatomic,strong)UIView*titleView;
 
@@ -89,7 +88,7 @@
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 44)];
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.textColor = color;
-    titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

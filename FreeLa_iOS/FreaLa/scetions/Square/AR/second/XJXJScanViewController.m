@@ -19,11 +19,15 @@
 #import "LewPopupViewController.h"
 #import "XJHFiveCallLocationJsController.h"
 #import "DECollectStarCtr.h"
-
+#import "BGFillInformation.h"
+#import "BGHideOnlyAR.h"
+#import "XJPickARGiftCustiomViewController.h"
+#import "XJPickARGiftGifViewController.h"
+#import "XJHidePublishDoneView.h"
 #define xj_tag  193992
 
 
-@interface XJXJScanViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,FINCameraDelagate,UIAccelerometerDelegate>
+@interface XJXJScanViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,FINCameraDelagate,UIAccelerometerDelegate,NSURLSessionDelegate,UIActionSheetDelegate>
 {
     float _previousY;
     CMMotionManager *manager;
@@ -56,9 +60,47 @@
 
 @property(nonatomic,strong)UIButton*xingxing_Btn;
 @property(nonatomic,strong)NSDictionary*jinXingZhu_dic;
+@property(nonatomic,strong)BGFillInformation * fillInformationView;
+
+
+/**发布模型*/
+@property (nonatomic , strong) FLIssueInfoModel* xjIssueModel;
+/**弹出层*/
+@property (nonatomic , strong) BGHideOnlyAR* xjHideGiftView;
+/**用来上传的 图片识别码*/
+@property (nonatomic , strong) NSString* xj_compareImgStr;
+
+@property(nonatomic,assign)NSInteger imgeType;
+/**menu to share*/
+@property (nonatomic , strong) CHTumblrMenuView *menuView;
+
 @end
 
 @implementation XJXJScanViewController
+{
+    BOOL      xj_is_push;//是不是退出去找地址 或者 加图片
+    BOOL      _is_gif_imgupdate;//是否是 gif 格式缩略图
+    NSString* xj_locationJD;//地址经度
+    NSString* xj_locationWD;//地址纬度
+    NSString* xj_addess;
+
+}
+- (BGHideOnlyAR *)xjHideGiftView {
+    if (!_xjHideGiftView) {
+        //        _xjHideGiftView = [[BGHideARAndLBSView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width* 0.8, FLUISCREENBOUNDS.height* 0.7)];
+        _xjHideGiftView = [[BGHideOnlyAR alloc] initWithFrame:CGRectMake(0, 0, 260, 370)];
+        
+    }
+    return _xjHideGiftView;
+}
+
+-(FLIssueInfoModel *)xjIssueModel{
+    if (_xjIssueModel==nil) {
+        _xjIssueModel = [[FLIssueInfoModel alloc] init];
+        xj_is_push = NO;
+    }
+    return _xjIssueModel;
+}
 - (UILabel *)xjMiddleLabel {
     if (!_xjMiddleLabel) {
         _xjMiddleLabel = [[UILabel alloc] init];
@@ -121,7 +163,7 @@
     //底部按钮栏
     [self xjCreatBottomView];
     
-//    [self startSerialLocation];
+    [self startSerialLocation];
     
     
     
@@ -169,13 +211,6 @@
     NSLog(@"😝🌶%ld",_dataSource.count);
     [self jiXingZhuHuoDong];
     
-    [_dataSource removeAllObjects];
-    if (xjImgBaseView) {
-        for (UIView*view in [xjImgBaseView subviews]) {
-            [view removeFromSuperview];
-        }
-    }
-    [self startSerialLocation];
 
 }
 -(void)jiXingZhuHuoDong{
@@ -300,8 +335,12 @@
     if (xjImgBaseView) {
         [xjImgBaseView removeFromSuperview];
     }
+    NSInteger qq=_dataSource.count/4;
+    if (qq<1) {
+        qq=1;
+    }
     xjImgBaseView = [[UIView alloc] init];
-    xjImgBaseView.frame = CGRectMake(-self.view.frame.size.width * 2 , -self.view.frame.size.height / 2, self.view.frame.size.width * 6, -self.view.frame.size.height);
+    xjImgBaseView.frame = CGRectMake(-self.view.frame.size.width * 2 , -self.view.frame.size.height / 2, self.view.frame.size.width * 6*qq, -self.view.frame.size.height);
     [self.view insertSubview:xjImgBaseView atIndex:1];
     
     
@@ -326,8 +365,8 @@
         } else {
             xjw = 100;
         }
-        FL_Log(@"thi s sis the xjxjxjxjw ==【%f】",xjw);
-        backview.frame = CGRectMake(xjx + 300 * i, xjy-200, xjw, xjw);
+//        FL_Log(@"thi s sis the xjxjxjxjw ==【%f】",xjw);
+        backview.frame = CGRectMake(xjx + 300 * i, xjy, xjw, xjw);
         
         //划线
         UIView* redView = [[UIView alloc] init];
@@ -345,7 +384,7 @@
         UIImageView* image = [[UIImageView alloc] init];
         //        image.frame = CGRectMake(xjx + 300 * i, xjy, 200, 160);
         image.frame = CGRectMake(5, 10, xjw-10, xjw-15);
-        image.tag = xj_tag + i;
+        backview.tag=image.tag = xj_tag + i;
         image.userInteractionEnabled = YES;
         [backview insertSubview:image atIndex:1];
         FLMyReceiveListModel* model = _dataSource[i];
@@ -415,7 +454,7 @@
     FLMyReceiveListModel* model = _dataSource[tag];
     self.xj_topicId = model.flMineIssueTopicIdStr;
     [self checkTakeCanOrNot];
-    NSLog(@"😝🌶%ld",_dataSource.count);
+    NSLog(@"😝被点击了👀👀🌶");
 
 //    XJFindGiftViewController* vvc = [[XJFindGiftViewController alloc] init];
 //    [vvc xjSetModel:model];
@@ -455,7 +494,7 @@
     UIButton*  skyArBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:skyArBtn];
     skyArBtn.frame = CGRectMake(FLUISCREENBOUNDS.width / 2 - 20 - 20, FLUISCREENBOUNDS.height - 180, 80, 80);
-//    [skyArBtn addTarget:self action:@selector(xjClickToGift) forControlEvents:UIControlEventTouchUpInside];
+    [skyArBtn addTarget:self action:@selector(bendiXunBaoAction) forControlEvents:UIControlEventTouchUpInside];
     [skyArBtn setBackgroundImage:[UIImage imageNamed:@"ar_icon_xingkong"] forState:UIControlStateNormal];
     //    [skyArBtn setBackgroundImage:[UIImage imageNamed:@"tabbar_back_red_new"] forState:UIControlStateHighlighted];
     
@@ -467,6 +506,434 @@
     xjMiddleLabel.textColor = [UIColor colorWithHexString:XJ_FCOLOR_REDFONT];
     
 }
+#pragma mark  -----------------藏宝开始--------------------
+
+-(void)bendiXunBaoAction{
+    self.imgeType=2;
+    [self xj_AddImageAction];
+}
+#pragma mark  -----------------image picker
+- (void)xj_AddImageAction {
+    UIActionSheet* actionSheet;
+    if (self.imgeType==2) {
+        actionSheet = [[UIActionSheet alloc]initWithTitle:nil
+                                                 delegate:self
+                                        cancelButtonTitle:@"取消"
+                                   destructiveButtonTitle:nil
+                                        otherButtonTitles:@"拍照",@"从相册选取", nil];
+
+    }else{
+       actionSheet  = [[UIActionSheet alloc]initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"拍照",@"从相册选取",@"gif库",@"免费啦礼包库", nil];
+
+  
+    }
+    [actionSheet showInView:self.view];
+}
+#pragma mark --- action sheet delegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    xj_is_push = YES;
+    if (self.imgeType==2) {
+        if (buttonIndex == 0)  {
+            //       拍照
+            UIImagePickerController* picker = [[UIImagePickerController alloc]init];
+            picker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+            picker.delegate   = self;
+            picker.allowsEditing = YES;
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+        else if (buttonIndex == 1) {
+            //        相册
+            UIImagePickerController* picker = [[UIImagePickerController alloc]init];
+            //设置图片源(相册)
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.delegate   = self;
+            picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+            [picker setMediaTypes:[[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil]];
+            //设置可以编辑
+            picker.allowsEditing = YES;
+            //        picker.view.backgroundColor = [UIColor whiteColor];
+            //打开拾取界面
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+    }else{
+        if (buttonIndex == 0)  {
+            //       拍照
+            UIImagePickerController* picker = [[UIImagePickerController alloc]init];
+            picker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+            picker.delegate   = self;
+            picker.allowsEditing = YES;
+            [self presentViewController:picker animated:YES completion:nil];
+        }
+        else if (buttonIndex == 1) {
+            //        相册
+            UIImagePickerController* picker = [[UIImagePickerController alloc]init];
+            //设置图片源(相册)
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            picker.delegate   = self;
+            picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
+            [picker setMediaTypes:[[NSArray alloc] initWithObjects:(NSString *)kUTTypeImage, nil]];
+            //设置可以编辑
+            picker.allowsEditing = YES;
+            //        picker.view.backgroundColor = [UIColor whiteColor];
+            //打开拾取界面
+            [self presentViewController:picker animated:YES completion:nil];
+        } else if(buttonIndex == 2){
+            //gif
+            XJPickARGiftGifViewController* gifVC = [[XJPickARGiftGifViewController alloc] initWithDelegate:self];
+            UINavigationController* na = [[UINavigationController alloc] initWithRootViewController:gifVC];
+            //        [self.navigationController pushViewController:gifVC animated:YES];
+            [self presentViewController:na animated:YES completion:nil];
+            
+        }  else if(buttonIndex == 3){
+            //gif
+            XJPickARGiftCustiomViewController* gifVC = [[XJPickARGiftCustiomViewController alloc] initWithDelegate:self];
+            UINavigationController* na = [[UINavigationController alloc] initWithRootViewController:gifVC];
+            [self presentViewController:na animated:YES completion:nil];
+        }
+
+    }
+}
+//imagePicker did delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    _is_gif_imgupdate = NO;
+    NSString* mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    UIImage *editedImage, *orginalIma,*imageToUse;
+    if (CFStringCompare((CFStringRef) mediaType, kUTTypeImage, 0) == kCFCompareEqualTo)
+    {
+        editedImage = (UIImage*)[info objectForKey:UIImagePickerControllerEditedImage];
+        orginalIma =  (UIImage*)[info objectForKey:UIImagePickerControllerOriginalImage];
+        if (editedImage) {
+            imageToUse = editedImage;
+        } else {
+            imageToUse = orginalIma;
+        }
+        
+        //将该图像保存到媒体库中
+        //        UIImageWriteToSavedPhotosAlbum(imageToUse, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        
+    }
+    FL_Log(@"消失之前");
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [picker dismissViewControllerAnimated:YES completion:nil];
+        if (imageToUse) {
+            [self  saveImage: imageToUse type:self.imgeType];
+        }
+        FL_Log(@"消失之后");
+    });
+    
+}
+#pragma mark ---------------pick gif delegate
+- (void)xjPickARGiftGifViewController:(XJPickARGiftGifViewController*)chooseGif didchooseDone:(NSString*)filename imgurl:(NSString*)imgurl{
+    FL_Log(@"ssssss==-=【%@】",imgurl);
+    _is_gif_imgupdate = YES;
+    self.xjIssueModel.flactivitytopicThumbnailFileName = imgurl;
+    self.xjIssueModel.flactivitytopicThumbnailStr = imgurl;
+//    [[FLAppDelegate share] showSimplleHUDWithTitle:@"" view:self.view];
+    [self.xjHideGiftView.xj_topicThBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[XJFinalTool xjReturnImageURLWithStr:imgurl isSite:NO]]] forState:UIControlStateNormal];
+}
+- (void)xjPickARGiftCustiomViewController:(XJPickARGiftCustiomViewController*)chooseCus
+                                      img:(UIImage*)img
+                                introduce:(NSString*)introduce
+                                      url:(NSString*)url  {
+    FL_Log(@"ssssssdadsas==-=【%@】",url);
+    _is_gif_imgupdate = NO;
+    [self saveImage:img type:1];
+    self.xjIssueModel.flactivityTopicIntroduceStr = introduce;
+    self.xjIssueModel.url = url;
+    
+    
+}
+
+- (void)saveImage:(UIImage*)image type:(NSInteger)xjtype{
+    
+    //    image = [XJFinalTool xj_fixOrientation:image];
+    
+    if (xjtype==1) {
+        [[FLAppDelegate share] showSimplleHUDWithTitle:@"" view:self.view];
+    }
+    //    [FLTool showWith:@"请稍后"];
+    
+    //            [self.portraitBtn setBackgroundImage:selfPhoto forState:UIControlStateNormal];
+    NSInteger iii = xjtype==1?1:4;
+    NSDictionary* parm = @{@"token":XJ_USER_SESSION,
+                           @"userId":XJ_USERID_WITHTYPE,
+                           @"picType":[NSNumber numberWithInteger:iii]
+                           };
+    UIImage* xjimage = [XJFinalTool xj_fixOrientation:image];
+    //    UIImageView* xjim = [[UIImageView alloc] initWithImage:image];
+    //    [self.view addSubview:xjim];
+    //    xjim.frame = CGRectMake(100, 100, 200, 300);
+    
+    FL_Log(@"=======dsad【%ld】",(long)xjimage.imageOrientation);
+    [FLNetTool setIssueDetailImage:xjimage parm:parm success:^(NSDictionary *data) {
+        FL_Log(@"成功nnsdadsafaweqwnnnnnnnn = %@",data);
+        if ([[data objectForKey:@"success"] boolValue]) {
+            NSString* imageUrlStr =  data[FL_NET_DATA_KEY][@"result"];
+            NSString* imageUrlName =  data[FL_NET_DATA_KEY][@"filename"];
+            if (xjtype==1) {
+                self.xjIssueModel.flactivitytopicThumbnailStr = [XJFinalTool xjReturnImageURLWithStr:imageUrlStr isSite:NO];
+                self.xjIssueModel.flactivitytopicThumbnailFileName = imageUrlName;
+                //            [FLTool showWith:[NSString stringWithFormat:@"请稍后==【%@】",data]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.xjHideGiftView.xj_topicThBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[XJFinalTool xjReturnImageURLWithStr:imageUrlStr isSite:NO]]] forState:UIControlStateNormal placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                    }];
+                });
+            }else {
+                //轮播图作为 线索图
+                self.xjIssueModel.flactivitytopicDetailchartArr = @[[XJFinalTool xjReturnImageURLWithStr:imageUrlStr isSite:NO]];
+                self.xjIssueModel.flactivitytopicDetailchartFileName = imageUrlName;
+                self.xj_compareImgStr = [XJFinalTool xj_getCompareCodeWithImg:image];
+                [self xj_hideHere];
+            }
+        }
+        [[FLAppDelegate share] hideHUD];
+    } failure:^(NSError *error) {
+        [[FLAppDelegate share] hideHUD];
+        //         [FLTool showWith:[NSString stringWithFormat:@"请稍后==【%@】",error]];
+    }];
+}
+#pragma 跳出仓礼包
+- (void)xj_hideHere{
+    //    XJArHideGiftView *view = [[XJArHideGiftView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width* 0.8, FLUISCREENBOUNDS.height* 0.7)];
+    
+    
+    __weak typeof(self) weakSelf = self;
+    _xjHideGiftView=nil;
+    self.xjHideGiftView.parentVC = weakSelf;
+    self.xjHideGiftView.xjLocationStr=xj_addess;
+    [self.xjHideGiftView xjHideGiftBack:^(NSString *xjtitle, NSString* xjNumber, NSString *xj_xiansuo, NSString *xj_range, BOOL xj_ispartinfo,NSInteger LBSorAR) {
+        FL_Log(@"%@",xjtitle);
+        self.xjIssueModel.LBSorAR=LBSorAR;
+        self.xjIssueModel.flactivityTopicSubjectStr = xjtitle;
+        self.xjIssueModel.flactivityMaxNumberLimit = xjNumber;
+        self.xjIssueModel.flactivitytopicDetailStr = xj_xiansuo?xj_xiansuo:@"";
+        self.xjIssueModel.flactivityTopicRangeStr = xj_range;
+        self.xjIssueModel.flactivitytopicLimitTags = xj_ispartinfo?
+        @"NAME,TEL,ADDRESS":@"";
+        if (xj_ispartinfo) {
+            self.xjIssueModel.flactivityPickConditionKey = @"";
+        }
+        [weakSelf xj_publishGiftTopic];//调用
+    }];
+    //添加图片
+    [self.xjHideGiftView  xjClickToAddImg:^{
+        weakSelf.imgeType=1;
+
+        [weakSelf xj_AddImageAction];
+    }];
+    //添加 地址
+    [self.xjHideGiftView xjClickToChooseMap:^{
+        
+    }];
+    [self lew_presentPopupView:self.xjHideGiftView animation:[LewPopupViewAnimationSpring new] dismissed:^{
+        NSLog(@"动画结束");
+    }];
+}
+#pragma mark -------------开始上传信息来发布 礼包活动
+- (void)xj_publishGiftTopic {
+    if (_is_gif_imgupdate) {
+        [self xj_publishDone];
+    }
+
+    if (![XJFinalTool xjStringSafe:self.xjIssueModel.flactivitytopicThumbnailFileName]) {
+        [FLTool showWith:@"礼物美照不能为空哟"];
+        return;
+        //        self.xjIssueModel.flactivitytopicThumbnailFileName = @"189539124869.png";
+        //        self.xjIssueModel.flactivitytopicThumbnailStr = @"http://pic.58pic.com/58pic/14/73/09/42A58PICmtI_1024.jpg";
+    }
+    if (![XJFinalTool xjStringSafe:xj_locationJD] ||![XJFinalTool xjStringSafe:xj_locationWD] ) {
+        
+        //        xj_locationJD = @"39.971510";
+        //        xj_locationWD = @"116.326195";
+        [FLTool showWith:@"地址信息不能为空"];
+        return;
+    }
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    //开始时间
+    NSDate* xjnow = [NSDate date];
+    NSString* xjnowStr = [FLTool returnStrWithNSDate: xjnow AndDateFormat:@"yyyy-MM-dd HH:mm"];
+    //截止时间
+    NSTimeInterval interval = 60 * 60 * 24 * 7;
+    NSString *xjendStr = [dateFormatter stringFromDate:[xjnow initWithTimeInterval:interval sinceDate:xjnow]];
+    NSDate* xjend  = [dateFormatter dateFromString:xjendStr];
+    
+    //失效时间
+    NSString *xjinvi = [dateFormatter stringFromDate:[xjend initWithTimeInterval:interval sinceDate:xjend]];
+    
+    FL_Log(@"test -  1=【%@】\n  2=【%@】\n 3=【%@】\n 4=【%@】\n 5=【%@】\n 6=【%@】\n 7=【%@】\n 8=【%@】\n 9=【%@】\n ",
+           FLFLXJUserTypePersonStrKey,
+           self.xjIssueModel.flactivityTopicSubjectStr,
+           self.xjIssueModel.flactivitytopicThumbnailFileName,
+           self.xjIssueModel.flactivitytopicDetailStr,
+           self.xjIssueModel.flactivityTopicRangeStr,
+           self.xjIssueModel.flactivityTopicIntroduceStr?self.xjIssueModel.flactivityTopicIntroduceStr:@"",
+           self.xjIssueModel.flactivityMaxNumberLimit,
+           self.xj_compareImgStr,
+           self.xjIssueModel.url?self.xjIssueModel.url:@""
+           );
+    NSDictionary* parm = @{@"state": @"1",
+                           @"topicType": FLFLXJUserTypePersonStrKey, //全免费、优惠券、个人
+                           @"userId":FLFLIsPersonalAccountType ? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID,
+                           @"creator":FLFLIsPersonalAccountType ? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID,
+                           @"userType":FLFLIsPersonalAccountType?FLFLXJUserTypePersonStrKey:FLFLXJUserTypeCompStrKey,
+                           @"topicTag":@"AR", //分类
+                           FLFLXJIssueInfoStartTimeKey:[NSString stringWithFormat:@"%@:00",xjnowStr] ,//开始时间
+                           @"thumbnail": self.xjIssueModel.flactivitytopicThumbnailFileName,//缩略图
+                           @"detailchart": self.xjIssueModel.flactivitytopicDetailchartFileName,//轮播图
+                           @"topicTheme": self.xjIssueModel.flactivityTopicSubjectStr,
+                           @"details": self.xjIssueModel.flactivitytopicDetailStr,//图文详情
+                           @"endTime": [NSString stringWithFormat:@"%@:00",xjendStr], //截止时间
+                           @"invalidTime": [NSString stringWithFormat:@"%@:00",xjinvi],// 失效时间
+                           @"topicPrice": @"",// 价值
+                           @"topicRange": self.xjIssueModel.flactivityTopicRangeStr, // 领取范围
+                           @"partInfo": self.xjIssueModel.flactivitytopicLimitTags,   //使用者提交的信息
+                           @"lbsOnly":[NSString stringWithFormat:@"%ld",self.xjIssueModel.LBSorAR],
+                           //isLBSonly = "2";//1:LBS 2：AR+KBS
+                           @"topicExplain": self.xjIssueModel.flactivityTopicIntroduceStr?self.xjIssueModel.flactivityTopicIntroduceStr:@"", // 使用说明
+                           @"topicCondition":FLFLXJSquareIssueNonePick, //领取条件
+                           @"lowestNum":  @"",// 最低助力
+                           @"rule": FLFLXJSquareIssuePerOnce,//领取规则
+                           @"ruleTimes": @"",// 没人几次
+                           @"zlqRule":  @"",// 助力规则
+                           @"longitude": xj_locationJD,//地址 经度
+                           @"latitude": xj_locationWD,//地址 纬度
+                           @"address": self.xjHideGiftView.xjLocationStr?self.xjHideGiftView.xjLocationStr:@"",// 地址
+                           @"ranges" :  @"",// 用户选择的好友
+                           @"hideGift":@"1",//是否是藏宝 1是
+                           @"topicNum":self.xjIssueModel.flactivityMaxNumberLimit,
+                           @"pictureCode": self.xj_compareImgStr,
+                           @"url":self.xjIssueModel.url?self.xjIssueModel.url:@""
+                           };
+    NSString* str = [FLTool returnDictionaryToJson:parm];
+    NSDictionary* parmLa = @{@"topicPara":str,
+                             @"token":XJ_USER_SESSION};
+    [FLNetTool issueANewActivityWithParm:parmLa success:^(NSDictionary *data) {
+        FL_Log(@"this is hide gift data= 【%@】",data[@"msg"]);
+        if ([data[FL_NET_KEY_NEW] boolValue]) {
+            if (_is_gif_imgupdate) {
+                
+            } else {
+                [self xj_getImgUrl];//请求图片路径
+            }
+
+            [self shuaxin];
+
+            self.xjIssueModel.xjTopicId = [data[FL_NET_DATA_KEY][@"topicId"] integerValue];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+- (void)xj_getImgUrl{
+    NSDictionary* parm = @{@"topic.topicId":[NSString stringWithFormat:@"%ld",self.xjIssueModel.xjTopicId]};
+    [FLNetTool getDetailImageStrInHTMLWithParm:parm success:^(NSDictionary *data) {
+        FL_Log(@"data in get detail imagein HTML =%@",data[FL_NET_DATA_KEY]);
+        if (data) {
+            NSArray* array = data[FL_NET_DATA_KEY];
+            for (NSDictionary* dic in array) {
+                if ([dic[@"businesstype"] integerValue] == 1) {
+                    self.xjIssueModel.flactivitytopicThumbnailStr = [XJFinalTool xjReturnImageURLWithStr:dic[@"url"] isSite:YES];
+                    [self xj_publishDone];
+                }
+            }
+        }
+    } failure:^(NSError *error) {
+        [FLTool showWith:@"网络异常请稍后重试"];
+    }];
+}
+
+- (void)xj_publishDone {
+    [self lew_dismissPopupView];
+    [self performSelector:@selector(xj_showDone) withObject:nil afterDelay:1];
+}
+- (void)xj_showDone {
+    __weak typeof(self) weakSelf = self;
+    XJHidePublishDoneView* view = [[XJHidePublishDoneView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width* 0.8, FLUISCREENBOUNDS.height* 0.7)];
+    view.parentVC = weakSelf;
+    NSString* xx = [XJFinalTool xjReturnImageURLWithStr:[NSString stringWithFormat:@"%@", self.xjIssueModel.flactivitytopicThumbnailStr] isSite:NO];
+    [view.xj_topicThemImgView sd_setImageWithURL:[NSURL URLWithString:xx]];
+    view.xj_addressLabel.text = self.xjHideGiftView.xjLocationStr;
+    [view xjClickToShareGift:^{
+        //        [weakSelf lew_dismissPopupView];
+        [weakSelf showMenu];
+    }];
+    [self lew_presentPopupView:view animation:[LewPopupViewAnimationSpring new] dismissed:^{
+    }];
+}
+#pragma  mark  -------------------------- 分享
+- (void)showMenu {
+    
+    if (_menuView) {
+        [_menuView removeFromSuperview];
+        _menuView = nil;
+    }
+    _menuView = [[CHTumblrMenuView alloc] init];
+    __weak typeof(self) weakSelf = self;
+    NSArray* nameArray = @[@"微信",@"朋友圈",@"QQ",@"QQ空间",@"新浪",@"免费啦"];
+    NSArray* imageArray = @[@"share_wechat",@"share_friend",@"share_qq",@"share_qzone",@"share_sina",@"share_mianfeila"];
+    NSArray* typeArray = @[UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQQ,UMShareToQzone,UMShareToSina,@"freela"];
+    for (NSInteger i = 0; i < nameArray.count; i ++ )
+    {
+        [_menuView addMenuItemWithTitle:nameArray[i] andIcon:[UIImage imageNamed:imageArray[i]] andSelectedBlock:^{
+            FL_Log(@"Phot2o selected= %ld",i);
+            [weakSelf shareToWithType:typeArray[i]];
+        }];
+    }
+    [_menuView show];
+}
+- (void)shareToWithType:(NSString*)type
+{
+    if ([type isEqualToString:@"freela"]) {
+        
+    } else {
+        NSInteger xjType ;
+        if ([type isEqualToString:@"qq"]) {
+            xjType = 1;
+        } else if ([type isEqualToString:@"qzone"]) {
+            xjType = 2;
+        } else if ([type isEqualToString:@"wxsession"]) {
+            xjType = 3;
+        } else if ([type isEqualToString:@"wxtimeline"]) {
+            xjType = 4;
+        } else if ([type isEqualToString:@"sina"]) {
+            xjType = 5;
+        }
+        
+        //        NSString* xjRelayContentStr = [NSString stringWithFormat:@"http://www.freela.com.cn/WeiXinOt/arTranspond.html"];
+        
+        NSString* xjRelayContentStr = [NSString stringWithFormat:@"%@/jsp/transpond/transpond-artranspond.jsp?topicId=%ld&userId=%@&userType=%@",FLBaseUrl,self.xjIssueModel.xjTopicId,XJ_USERID_WITHTYPE,XJ_USERTYPE_WITHTYPE];
+        
+        NSString* da = self.xjIssueModel.flactivitytopicThumbnailStr;
+        FL_Log(@"dasaiaf=【%@】",da);
+        
+        NSString* xjtu = [XJFinalTool xjReturnImageURLWithStr:[NSString stringWithFormat:@"%@", self.xjIssueModel.flactivitytopicThumbnailStr] isSite:NO];
+        
+        [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:xjtu];
+        [UMSocialData defaultData].extConfig.title = self.xjIssueModel.flactivityTopicSubjectStr;
+        [UMSocialData defaultData].extConfig.wechatSessionData.url = xjRelayContentStr;
+        [UMSocialData defaultData].extConfig.wechatTimelineData.url = xjRelayContentStr;
+        [UMSocialData defaultData].extConfig.qqData.url = xjRelayContentStr;
+        [UMSocialData defaultData].extConfig.qzoneData.url = xjRelayContentStr;
+        [UMSocialData defaultData].extConfig.sinaData.urlResource = [UMSocialData defaultData].urlResource;
+        
+        NSString* xjTopicExpline =  @"我给你藏好了一个AR大礼包，速速来找吧~";
+        [[UMSocialDataService defaultDataService]  postSNSWithTypes:@[type] content:xjTopicExpline image:nil location:nil urlResource:[UMSocialData defaultData].urlResource presentedController:self completion:^(UMSocialResponseEntity *response){
+            if (response.responseCode == UMSResponseCodeSuccess) {
+                FL_Log(@"分享成功！");
+                //                [self flRelayTopicWithNoTypeInHTMLVC];//插入转发记录
+            }
+        }];
+    }
+}
+#pragma mark  -----------------藏宝结束
 
 //跳转 地图界面
 - (void)xj_switchStyleAr{
@@ -500,15 +967,37 @@
                 [self xj_getRequestDetailsOfTopicWithId:self.xj_topicId];
 
                 self.xjMiddleLabel.hidden = YES;
+            }else if ([data[@"buttonKey"] isEqualToString: @"b10"]){
+                [self lingQuGuoHouZhiJieTiaoPiaoQuanYe];
             }
          
-        } else {
+        }else if ([data[@"buttonKey"] isEqualToString: @"b10"]){
+            [self lingQuGuoHouZhiJieTiaoPiaoQuanYe];
+            
+        }else {
             [FLTool showWith:[NSString stringWithFormat:@"%@",data[@"msg"]]];
         }
     } failure:^(NSError *error) {
 
     }];
 }
+-(void)lingQuGuoHouZhiJieTiaoPiaoQuanYe{
+    NSDictionary*dic=@{@"topicId":self.flmyReceiveMineModel.flMineIssueTopicIdStr,@"userId":FLFLIsPersonalAccountType? FL_USERDEFAULTS_USERID_NEW : FLFLXJBusinessUserID};
+    [FLNetTool xjxjGetDetailsIdWith:dic success:^(NSDictionary *data) {
+        if ([data[FL_NET_KEY_NEW] boolValue]) {
+            self.flmyReceiveMineModel.flDetailsIdStr=data[@"data"];
+            [self xj_clickToShowPickSuccess];
+
+//            XJTicketHTMLViewController* ticketVC = [[XJTicketHTMLViewController alloc] init];
+//            ticketVC.flmyReceiveMineModel = self.flmyReceiveMineModel;
+//            [self.navigationController pushViewController:ticketVC animated:YES];
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (void)FLFLHTMLHTMLsaveTopicClickOn:(id)iii{
     if([XJFinalTool xj_is_forbidden]){ //如果被禁用
         [FLTool showWith:@"账号异常,请联系管理员"];
@@ -569,7 +1058,7 @@
             
             if (partInfo&&partInfo.length>0) {
                 
-                [self FLFLHTML2GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
+                [self FLFLHTML3GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
                 
             }else{
                                 [self FLFLHTMLHTMLsaveTopicClickOn:nil]; //直接领取
@@ -620,6 +1109,33 @@
     [task resume];
     
 }
+-(BGFillInformation *)fillInformationView{
+    if (!_fillInformationView) {
+        _fillInformationView=[[BGFillInformation alloc] init];
+    }
+    return _fillInformationView;
+}
+- (void)FLFLHTML3GetPartInfoListTopid:(NSString*)topid userId:(NSString*)userId  partInfo:(NSString*)partInfo{
+   __weak XJXJScanViewController*weekSelf= self;
+    if (self.fillInformationView) {
+        [self.fillInformationView.cellDic removeAllObjects];
+    }
+    
+    self.fillInformationView.partInfostr=partInfo;
+    self.fillInformationView.hearderImageStr=self.flmyReceiveMineModel.xj_xiansuotuStr;
+    self.fillInformationView.xj_topicId=topid;
+    self.fillInformationView.flmyReceiveMineModel=self.flmyReceiveMineModel;
+    self.fillInformationView.tiJiaoBlock=^(){
+        [weekSelf xj_clickToShowPickSuccess];
+
+    };
+    UIWindow *window = [[UIApplication sharedApplication ].windows lastObject];
+    
+    [window addSubview:self.fillInformationView.maskView];
+    [window addSubview:self.fillInformationView];
+    [self.fillInformationView popUp];
+
+}
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
     //    [self.HTMLdata appendData:data];
@@ -629,7 +1145,7 @@
     NSArray* array1 = [str componentsSeparatedByString:@":["];
     NSArray*array2=[array1[1] componentsSeparatedByString: @"],"];
     
-    [self performSelectorOnMainThread:@selector(pushJSCtr:) withObject:array2[0] waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(push2JSCtr:) withObject:array2[0] waitUntilDone:YES];
     
 }
 -(void)pushJSCtr:(NSString*)str{
@@ -640,7 +1156,17 @@
     [self.navigationController pushViewController:vc animated:YES];
     
 }
+-(void)push2JSCtr:(NSString*)str{
+    BGFillInformation*cview=[[BGFillInformation alloc] initWithPartInfoStr:str];
+    cview.tiJiaoBlock=^(){
+    };
+    UIWindow *window = [[UIApplication sharedApplication ].windows lastObject];
+    
+    [window addSubview:cview.maskView];
+    [window addSubview:cview];
+    [cview popUp];
 
+}
 
 #pragma  mark --- --------------------------------详情
 - (void)getRequestDetailsOfTopicWithId:(NSString*)xjtopicid {
@@ -669,17 +1195,17 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if (self.isHtmlPop) {
-        [self xj_clickToShowPickSuccess];
-
-        self.isHtmlPop=NO;
-    }
-    for (UIViewController*ctr in [self.navigationController childViewControllers]) {
-        if ([ctr isKindOfClass:[XJXJFindARGiftViewController class]]) {
-            XJXJFindARGiftViewController* scCtr=(XJXJFindARGiftViewController*)ctr;
-            scCtr.isHtmlPop=NO;
-        }
-    }
+//    if (self.isHtmlPop) {
+//        [self xj_clickToShowPickSuccess];
+//
+//        self.isHtmlPop=NO;
+//    }
+//    for (UIViewController*ctr in [self.navigationController childViewControllers]) {
+//        if ([ctr isKindOfClass:[XJXJFindARGiftViewController class]]) {
+//            XJXJFindARGiftViewController* scCtr=(XJXJFindARGiftViewController*)ctr;
+//            scCtr.isHtmlPop=NO;
+//        }
+//    }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appHasGoneInForeground)
                                                  name:UIApplicationWillEnterForegroundNotification
@@ -791,6 +1317,8 @@
 }
 - (void)startSerialLocation{
     //开始定位
+    [AMapServices sharedServices].apiKey = FL_GAODE_API_KEY;//@"1e0aebfcb8521c830d96712e95f896ae";
+
     __weak XJXJScanViewController *weakSelf = self;
     //    [self.locationManager startUpdatingLocation];
     [self.locationManager requestLocationWithReGeocode:YES completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
@@ -807,6 +1335,11 @@
         FL_Log(@"location:%@", location);
         if (location) {
             self.xj_userLocation = location;
+            xj_locationJD=[NSString stringWithFormat:@"%f",location.coordinate.longitude];
+            xj_locationWD=[NSString stringWithFormat:@"%f",location.coordinate.latitude];
+            
+            xj_addess =[NSString stringWithFormat:@"%@%@%@%@",regeocode.city,regeocode.district,regeocode.street,regeocode.number];
+
             _xjCity = regeocode.city;
             //            [self xjSearchAroundWithLocationx:location.coordinate.longitude y:location.coordinate.latitude];
             [weakSelf xjSearchPOIsFromARKitServiceWithLocationx:location.coordinate.longitude
@@ -831,6 +1364,8 @@
     self.flmyReceiveMineModel.xjinvalidTime = data[@"invalidTime"];
     self.flmyReceiveMineModel.xjUrl = data[@"url"];
     self.flmyReceiveMineModel.xjUserType = data[@"userType"];
+    self.flmyReceiveMineModel.avatar=data[@"avatar"];
+    self.flmyReceiveMineModel.xjPublishName=data[@"nickName"];
     NSString* suolve = data[@"sitethumbnail"];
                 self.flmyReceiveMineModel.xj_suolvetuStr = suolve;
 
@@ -863,14 +1398,33 @@
     
     //    return self.flmyReceiveMineModel;
 }
+#pragma mark 刷新
+-(void)shuaxin{
+    [_dataSource removeAllObjects];
+    if (xjImgBaseView) {
+        for (UIView*view in [xjImgBaseView subviews]) {
+            [view removeFromSuperview];
+        }
+    }
+    [self startSerialLocation];
+
+}
 - (void)xj_clickToShowPickSuccess{
     __weak typeof(self) weakSelf = self;
+    [self shuaxin];
+
+    
+    
     //领取陈宫界面
     XJVersionTPickSuccessView *view = [[XJVersionTPickSuccessView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width , FLUISCREENBOUNDS.height)];
     view.parentVC = weakSelf;
     FL_Log(@"dsadsafa=%@",self.flmyReceiveMineModel.flMineTopicThemStr);
     view.xj_TopicThemeL.text =  self.flmyReceiveMineModel.flMineTopicThemStr;
-    
+    NSString*hh = [XJFinalTool xjReturnImageURLWithStr:self.flmyReceiveMineModel.avatar
+                                       isSite:NO];
+
+    [view.xj_imageView sd_setImageWithURL:[NSURL URLWithString:hh]];
+    view.xj_NickNameL.text=self.flmyReceiveMineModel.xjPublishName;
     if ([XJFinalTool xjStringSafe:self.flmyReceiveMineModel.xj_suolvetuStr]) {
         NSString* ss=self.flmyReceiveMineModel.xj_suolvetuStr;
         //判断路径的结尾是不是 .mp4
@@ -886,6 +1440,7 @@
     }];
     //点击完成
     [view xj_findGiftSuccessDone:^{
+        
         [weakSelf lew_dismissPopupView];
         //        [weakSelf.navigationController popViewControllerAnimated:YES];
         weakSelf.navigationController.navigationBar.hidden = YES;

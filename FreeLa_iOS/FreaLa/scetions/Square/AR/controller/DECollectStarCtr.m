@@ -205,6 +205,9 @@
         }];
     }
 }
+-(void)backAction{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 -(void)createUI{
     UIImageView*backguoundView=({
        UIImageView*imagV =[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"jixinghuodong_beijing"]];
@@ -214,6 +217,11 @@
         imagV;
 
     });
+    UIButton*backBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setImage:[UIImage imageNamed:@"btn_icon_goback_white"] forState:UIControlStateNormal];
+    backBtn.frame=CGRectMake(0, 20, 44, 44);
+    [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [backguoundView addSubview:backBtn];
     self.backgroundView=backguoundView;
     self.leftIconImageView=({
         UIImageView*imageV=[[UIImageView alloc]init];

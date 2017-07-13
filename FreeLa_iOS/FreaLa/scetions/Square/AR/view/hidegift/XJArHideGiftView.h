@@ -9,6 +9,12 @@
  
 
 #import <UIKit/UIKit.h>
+#define XJTopicRangeTag         123456
+#define XJTopicARorLBS          122456
+#define XJTopicPartInfoTag      124456
+#define XJScreenSmall           (FLUISCREENBOUNDS.width<400)
+//#define XJFontSize              (XJScreenSmall?10:14)
+#define XJFontSize              13
 
 // 一会要传的值为NSString类型
 typedef void (^xjHideGiftBlock)(NSString * xjtitle , NSString* xjNumber ,NSString* xj_xiansuo,NSString* xj_range,BOOL xj_ispartinfo,NSInteger LBSorAR);

@@ -347,14 +347,25 @@
 		01CDC6931C4898E300399A9B /* CYAttentionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDC6891C4898E300399A9B /* CYAttentionModel.m */; };
 		01CDC6941C4898E300399A9B /* CYAttentionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CDC68C1C4898E300399A9B /* CYAttentionCell.m */; };
 		01CDC6951C4898E300399A9B /* CYAttentionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01CDC68D1C4898E300399A9B /* CYAttentionCell.xib */; };
+		10033C641F0F5DF2003A2BA4 /* BGAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10033C631F0F5DF2003A2BA4 /* BGAnnotationView.m */; };
+		10033C671F0F5F8E003A2BA4 /* BGOutAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10033C661F0F5F8E003A2BA4 /* BGOutAnnotationView.m */; };
+		10033C6E1F0F7391003A2BA4 /* BGFillInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10033C6D1F0F7391003A2BA4 /* BGFillInformation.m */; };
 		1040A5A71EFFCA69003F0529 /* FLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1040A5A61EFFCA69003F0529 /* FLWelcomeViewController.m */; };
 		1040A5AA1EFFCB8A003F0529 /* FLLogIn_RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1040A5A91EFFCB8A003F0529 /* FLLogIn_RegisterViewController.m */; };
 		1040A5AC1EFFCC0A003F0529 /* log_bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1040A5AB1EFFCBAC003F0529 /* log_bg.mp4 */; };
 		1041D9781F05FBEB0042BCE7 /* CollectStarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1041D9771F05FBEB0042BCE7 /* CollectStarView.m */; };
 		1041D98A1F06483D0042BCE7 /* DECollectStarCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 1041D9891F06483D0042BCE7 /* DECollectStarCtr.m */; };
+		104874651F0E00C700893786 /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 1048745E1F0E00C700893786 /* LineDashPolyline.m */; };
+		104874661F0E00C700893786 /* MANaviAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 104874601F0E00C700893786 /* MANaviAnnotation.m */; };
+		104874671F0E00C700893786 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 104874621F0E00C700893786 /* MANaviPolyline.m */; };
+		104874681F0E00C700893786 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 104874641F0E00C700893786 /* MANaviRoute.m */; };
+		1048746B1F0E02F000893786 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1048746A1F0E02F000893786 /* CommonUtility.m */; };
+		104D0A8B1F130E36000D2F45 /* BGFillInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 104D0A8A1F130E36000D2F45 /* BGFillInformationTableViewCell.m */; };
+		104D0A8F1F137E4A000D2F45 /* BGHideARAndLBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 104D0A8E1F137E4A000D2F45 /* BGHideARAndLBSView.m */; };
 		1086BE001F0A131600F758C2 /* InstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BDFF1F0A131600F758C2 /* InstructionViewController.m */; };
 		1086BE061F0A153200F758C2 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BE051F0A153200F758C2 /* Helper.m */; };
 		1086BE091F0A1CE700F758C2 /* DEBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BE081F0A1CE700F758C2 /* DEBaseViewController.m */; };
+		10FEC05F1F14B52900866B47 /* BGHideOnlyAR.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FEC05E1F14B52900866B47 /* BGHideOnlyAR.m */; };
 		1E0378D61EADAD6C005919EC /* XJARSkyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0378D51EADAD6C005919EC /* XJARSkyViewController.m */; };
 		1E0378D91EADAD8C005919EC /* FINCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E0378D81EADAD8C005919EC /* FINCamera.m */; };
 		1E5E46961EB9DC8D00FD330B /* XJARClickAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5E46951EB9DC8D00FD330B /* XJARClickAnimationView.m */; };
@@ -1568,6 +1579,12 @@
 		01CDC68B1C4898E300399A9B /* CYAttentionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYAttentionCell.h; sourceTree = "<group>"; };
 		01CDC68C1C4898E300399A9B /* CYAttentionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYAttentionCell.m; sourceTree = "<group>"; };
 		01CDC68D1C4898E300399A9B /* CYAttentionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYAttentionCell.xib; sourceTree = "<group>"; };
+		10033C621F0F5DF2003A2BA4 /* BGAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGAnnotationView.h; sourceTree = "<group>"; };
+		10033C631F0F5DF2003A2BA4 /* BGAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGAnnotationView.m; sourceTree = "<group>"; };
+		10033C651F0F5F8E003A2BA4 /* BGOutAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGOutAnnotationView.h; sourceTree = "<group>"; };
+		10033C661F0F5F8E003A2BA4 /* BGOutAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGOutAnnotationView.m; sourceTree = "<group>"; };
+		10033C6C1F0F7391003A2BA4 /* BGFillInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGFillInformation.h; sourceTree = "<group>"; };
+		10033C6D1F0F7391003A2BA4 /* BGFillInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGFillInformation.m; sourceTree = "<group>"; };
 		1040A5A51EFFCA69003F0529 /* FLWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWelcomeViewController.h; sourceTree = "<group>"; };
 		1040A5A61EFFCA69003F0529 /* FLWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLWelcomeViewController.m; sourceTree = "<group>"; };
 		1040A5A81EFFCB8A003F0529 /* FLLogIn_RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLogIn_RegisterViewController.h; sourceTree = "<group>"; };
@@ -1577,12 +1594,28 @@
 		1041D9771F05FBEB0042BCE7 /* CollectStarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectStarView.m; sourceTree = "<group>"; };
 		1041D9881F06483D0042BCE7 /* DECollectStarCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DECollectStarCtr.h; sourceTree = "<group>"; };
 		1041D9891F06483D0042BCE7 /* DECollectStarCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DECollectStarCtr.m; sourceTree = "<group>"; };
+		1048745D1F0E00C700893786 /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
+		1048745E1F0E00C700893786 /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
+		1048745F1F0E00C700893786 /* MANaviAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviAnnotation.h; sourceTree = "<group>"; };
+		104874601F0E00C700893786 /* MANaviAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviAnnotation.m; sourceTree = "<group>"; };
+		104874611F0E00C700893786 /* MANaviPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviPolyline.h; sourceTree = "<group>"; };
+		104874621F0E00C700893786 /* MANaviPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviPolyline.m; sourceTree = "<group>"; };
+		104874631F0E00C700893786 /* MANaviRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MANaviRoute.h; sourceTree = "<group>"; };
+		104874641F0E00C700893786 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
+		104874691F0E02F000893786 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		1048746A1F0E02F000893786 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		104D0A891F130E36000D2F45 /* BGFillInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGFillInformationTableViewCell.h; sourceTree = "<group>"; };
+		104D0A8A1F130E36000D2F45 /* BGFillInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGFillInformationTableViewCell.m; sourceTree = "<group>"; };
+		104D0A8D1F137E4A000D2F45 /* BGHideARAndLBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHideARAndLBSView.h; sourceTree = "<group>"; };
+		104D0A8E1F137E4A000D2F45 /* BGHideARAndLBSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGHideARAndLBSView.m; sourceTree = "<group>"; };
 		1086BDFE1F0A131600F758C2 /* InstructionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstructionViewController.h; sourceTree = "<group>"; };
 		1086BDFF1F0A131600F758C2 /* InstructionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstructionViewController.m; sourceTree = "<group>"; };
 		1086BE041F0A153200F758C2 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		1086BE051F0A153200F758C2 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		1086BE071F0A1CE700F758C2 /* DEBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEBaseViewController.h; sourceTree = "<group>"; };
 		1086BE081F0A1CE700F758C2 /* DEBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEBaseViewController.m; sourceTree = "<group>"; };
+		10FEC05D1F14B52900866B47 /* BGHideOnlyAR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHideOnlyAR.h; sourceTree = "<group>"; };
+		10FEC05E1F14B52900866B47 /* BGHideOnlyAR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGHideOnlyAR.m; sourceTree = "<group>"; };
 		15FC110FF06F3E790FCABBDE /* Pods-FreaLa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreaLa.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreaLa/Pods-FreaLa.release.xcconfig"; sourceTree = "<group>"; };
 		1E0378D41EADAD6C005919EC /* XJARSkyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJARSkyViewController.h; sourceTree = "<group>"; };
 		1E0378D51EADAD6C005919EC /* XJARSkyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJARSkyViewController.m; sourceTree = "<group>"; };
@@ -4184,6 +4217,16 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		10033C681F0F6F55003A2BA4 /* 填写信息 */ = {
+			isa = PBXGroup;
+			children = (
+				10033C6C1F0F7391003A2BA4 /* BGFillInformation.h */,
+				10033C6D1F0F7391003A2BA4 /* BGFillInformation.m */,
+				104D0A881F130DEF000D2F45 /* Cell */,
+			);
+			path = "填写信息";
+			sourceTree = "<group>";
+		};
 		1041D9751F05F94B0042BCE7 /* 首页集星主活动弹出 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4191,6 +4234,43 @@
 				1041D9771F05FBEB0042BCE7 /* CollectStarView.m */,
 			);
 			path = "首页集星主活动弹出";
+			sourceTree = "<group>";
+		};
+		1048745C1F0E009400893786 /* routePlan */ = {
+			isa = PBXGroup;
+			children = (
+				104874691F0E02F000893786 /* CommonUtility.h */,
+				1048746A1F0E02F000893786 /* CommonUtility.m */,
+				1048745D1F0E00C700893786 /* LineDashPolyline.h */,
+				1048745E1F0E00C700893786 /* LineDashPolyline.m */,
+				1048745F1F0E00C700893786 /* MANaviAnnotation.h */,
+				104874601F0E00C700893786 /* MANaviAnnotation.m */,
+				104874611F0E00C700893786 /* MANaviPolyline.h */,
+				104874621F0E00C700893786 /* MANaviPolyline.m */,
+				104874631F0E00C700893786 /* MANaviRoute.h */,
+				104874641F0E00C700893786 /* MANaviRoute.m */,
+			);
+			path = routePlan;
+			sourceTree = "<group>";
+		};
+		104D0A881F130DEF000D2F45 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				104D0A891F130E36000D2F45 /* BGFillInformationTableViewCell.h */,
+				104D0A8A1F130E36000D2F45 /* BGFillInformationTableViewCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		104D0A8C1F137DEF000D2F45 /* 藏宝View */ = {
+			isa = PBXGroup;
+			children = (
+				104D0A8D1F137E4A000D2F45 /* BGHideARAndLBSView.h */,
+				104D0A8E1F137E4A000D2F45 /* BGHideARAndLBSView.m */,
+				10FEC05D1F14B52900866B47 /* BGHideOnlyAR.h */,
+				10FEC05E1F14B52900866B47 /* BGHideOnlyAR.m */,
+			);
+			path = "藏宝View";
 			sourceTree = "<group>";
 		};
 		1E5E46931EB9DC6A00FD330B /* second */ = {
@@ -5428,6 +5508,7 @@
 		7081547B1E35B1EC0038A3EB /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1048745C1F0E009400893786 /* routePlan */,
 				7081547C1E35B1EC0038A3EB /* ClusterAnnotation.h */,
 				7081547D1E35B1EC0038A3EB /* ClusterAnnotation.m */,
 				7081547E1E35B1EC0038A3EB /* CoordinateQuadTree.h */,
@@ -5458,6 +5539,8 @@
 		708154B31E35B1EC0038A3EB /* view */ = {
 			isa = PBXGroup;
 			children = (
+				104D0A8C1F137DEF000D2F45 /* 藏宝View */,
+				10033C681F0F6F55003A2BA4 /* 填写信息 */,
 				1041D9751F05F94B0042BCE7 /* 首页集星主活动弹出 */,
 				1E5E46931EB9DC6A00FD330B /* second */,
 				708154B41E35B1EC0038A3EB /* gaode */,
@@ -5491,6 +5574,10 @@
 				708154B91E35B1EC0038A3EB /* CustomCalloutView.m */,
 				708154BA1E35B1EC0038A3EB /* XJClusterAnnotationView.h */,
 				708154BB1E35B1EC0038A3EB /* XJClusterAnnotationView.m */,
+				10033C621F0F5DF2003A2BA4 /* BGAnnotationView.h */,
+				10033C631F0F5DF2003A2BA4 /* BGAnnotationView.m */,
+				10033C651F0F5F8E003A2BA4 /* BGOutAnnotationView.h */,
+				10033C661F0F5F8E003A2BA4 /* BGOutAnnotationView.m */,
 				708154BC1E35B1EC0038A3EB /* XJClusterTableViewCell.h */,
 				708154BD1E35B1EC0038A3EB /* XJClusterTableViewCell.m */,
 				708154BE1E35B1EC0038A3EB /* XJClusterTableViewCell.xib */,
@@ -7641,6 +7728,7 @@
 				708155181E35B1EC0038A3EB /* XJClusterTableViewCell.m in Sources */,
 				01CDC52B1C48960700399A9B /* EMCDDeviceManager+Remind.m in Sources */,
 				7092D9751CF82B2F005DE034 /* XJVersionTwoAllFreeModel.m in Sources */,
+				104D0A8B1F130E36000D2F45 /* BGFillInformationTableViewCell.m in Sources */,
 				70F7416B1BCFC6C600832C41 /* FLSexChoiceTableViewController.m in Sources */,
 				01CDC5571C48960800399A9B /* EaseEmojiEmoticons.m in Sources */,
 				700693C21C2C21B800EE6B8C /* FLMineTools.m in Sources */,
@@ -7711,6 +7799,7 @@
 				01CDC5401C48960800399A9B /* PSTCollectionViewFlowLayout.m in Sources */,
 				01CDC5341C48960700399A9B /* MWGridViewController.m in Sources */,
 				01CDC52A1C48960700399A9B /* EMCDDeviceManager+ProximitySensor.m in Sources */,
+				104D0A8F1F137E4A000D2F45 /* BGHideARAndLBSView.m in Sources */,
 				01CDC5651C48960800399A9B /* EaseBubbleView+Image.m in Sources */,
 				704A03EC1BC8EA83008B6EE5 /* FLTabBar.m in Sources */,
 				709A640D1CF882EB0097F2B2 /* XJTableViewCouponVersionTwo.m in Sources */,
@@ -7837,6 +7926,7 @@
 				704107641C4F378A0080FE5E /* FLMyBusAccountListModel.m in Sources */,
 				70B9BA6E1D2B70DD00347053 /* XJHFiveCallLocationJsController.m in Sources */,
 				702A85211CF5A700005DB6F8 /* XJBusTopViewNumberView.m in Sources */,
+				10FEC05F1F14B52900866B47 /* BGHideOnlyAR.m in Sources */,
 				01229ABF1C4A079C0010D81C /* ApplyViewController.m in Sources */,
 				704E44281C72FB39000C55B6 /* FLMoreTextPageViewController.m in Sources */,
 				01229ABD1C4A079C0010D81C /* AddFriendViewController.m in Sources */,
@@ -7874,6 +7964,7 @@
 				706604771C743DDF0064A6D0 /* AoiroSoraLayout.m in Sources */,
 				70F27C3C1BD5F1CA00D41AAD /* FLNetTool.m in Sources */,
 				1E5E46961EB9DC8D00FD330B /* XJARClickAnimationView.m in Sources */,
+				104874651F0E00C700893786 /* LineDashPolyline.m in Sources */,
 				70DA6EA61DB4A2B600BE68BE /* XJBaseTableViewController.m in Sources */,
 				707EF45B1CDB316B001A22B0 /* XJSearchResultTableViewController.m in Sources */,
 				01229CC81C4A08960010D81C /* BaseViewController.m in Sources */,
@@ -7895,6 +7986,7 @@
 				70B9BA9A1D2B748300347053 /* EaseMessageViewController.m in Sources */,
 				70264E5D1CEB186500A8DBCC /* XJMyReceiveTableViewCell.m in Sources */,
 				708155171E35B1EC0038A3EB /* XJClusterAnnotationView.m in Sources */,
+				10033C641F0F5DF2003A2BA4 /* BGAnnotationView.m in Sources */,
 				70064BBE1BF1A8B200A67B4D /* FLBusinessApplyEmailTableViewCell.m in Sources */,
 				012294991C48C1070010D81C /* CYNewFriendCell.m in Sources */,
 				70CF1CFD1C605AD600172E81 /* FLSetMessageTableViewCell.m in Sources */,
@@ -7922,11 +8014,13 @@
 				70BF97621D2B7D3A001DE857 /* XJChooseFriendToIssueVC.m in Sources */,
 				70BF97561D2B7C16001DE857 /* XJCreatGroupByChoiceView.m in Sources */,
 				01CDC5701C48960800399A9B /* EaseFacialView.m in Sources */,
+				104874681F0E00C700893786 /* MANaviRoute.m in Sources */,
 				70487EB21C40A5ED0035ABA9 /* FLMyIssueReceiveTableViewCell.m in Sources */,
 				7006AB241C9041C500E09C17 /* XJMineCusTomTwoTableViewCell.m in Sources */,
 				1E5EAE8B1EB820D800DF2C00 /* XJXJScanViewController.m in Sources */,
 				7041077A1C4F646D0080FE5E /* FLMyBusAccountDetailCheckModel.m in Sources */,
 				70AD78051E13CA4B00FF8123 /* UIViewController+LewPopupViewController.m in Sources */,
+				10033C6E1F0F7391003A2BA4 /* BGFillInformation.m in Sources */,
 				01CDC5591C48960800399A9B /* EaseEmotionManager.m in Sources */,
 				01229CD21C4A08A60010D81C /* InvitationManager.m in Sources */,
 				70447FAA1ECC83600060B5FD /* YFGIFImageView.m in Sources */,
@@ -7990,6 +8084,7 @@
 				01CDC5361C48960700399A9B /* MWPhotoBrowser.m in Sources */,
 				7056C6AB1BE7C78700D89A6E /* JKCountDownButton.m in Sources */,
 				01C317131C4DDD78000D17A5 /* CYUserModel.m in Sources */,
+				1048746B1F0E02F000893786 /* CommonUtility.m in Sources */,
 				70AD78001E13CA4B00FF8123 /* LewPopupBackgroundView.m in Sources */,
 				709237671E35DA3F001B2AA0 /* XJPickARGiftCustiomViewController.m in Sources */,
 				7014CF161CC4903F006F396F /* UIImage+xjFixOrientation.m in Sources */,
@@ -8021,6 +8116,7 @@
 				702DE7811DB60CE50092B07E /* IMYWebViewController.m in Sources */,
 				70DB31371C43A92700636FCA /* FLStartChoiceView.m in Sources */,
 				B42314901ECAA82C00E12056 /* FLCountDownActivityModel.m in Sources */,
+				10033C671F0F5F8E003A2BA4 /* BGOutAnnotationView.m in Sources */,
 				700656F31C4637A10079DB48 /* TAPageControl.m in Sources */,
 				01CDC52D1C48960700399A9B /* amrFileCodec.mm in Sources */,
 				70167C101CF7E3B300A112A6 /* XJSearchByNickNamePersonModel.m in Sources */,
@@ -8032,6 +8128,7 @@
 				01229C961C4A087A0010D81C /* TTGlobalUICommon.m in Sources */,
 				01CDC54A1C48960800399A9B /* EaseConversationModel.m in Sources */,
 				70CABAC51C21667B00CD0498 /* FLSquareAllFreeModel.m in Sources */,
+				104874671F0E00C700893786 /* MANaviPolyline.m in Sources */,
 				7005E5221C434308001368D8 /* FLMyIssueJudgePLTableViewCell.m in Sources */,
 				01CDC5681C48960800399A9B /* EaseBubbleView+Video.m in Sources */,
 				708154E41E35B1EC0038A3EB /* CoordinateQuadTree.m in Sources */,
@@ -8039,6 +8136,7 @@
 				01CDC5551C48960800399A9B /* EaseMessageReadManager.m in Sources */,
 				01CDC53B1C48960800399A9B /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				709CD55B1CD83B29004EBCDC /* BBLaunchAdMonitor.m in Sources */,
+				104874661F0E00C700893786 /* MANaviAnnotation.m in Sources */,
 				B464556C1ECA0AA800B9501A /* PGIndexBannerSubiew.m in Sources */,
 				1E0378D91EADAD8C005919EC /* FINCamera.m in Sources */,
 				7006A2F41C1EB6F400B1D71C /* FLMyIssueTableViewCell.m in Sources */,

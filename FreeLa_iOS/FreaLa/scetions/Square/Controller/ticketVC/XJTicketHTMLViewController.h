@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface XJTicketHTMLViewController : UIViewController
+#import "DEBaseViewController.h"
+@interface XJTicketHTMLViewController :DEBaseViewController
 @property (nonatomic, strong)FLMyReceiveListModel* flmyReceiveMineModel;
 /**请求时间id*/
 

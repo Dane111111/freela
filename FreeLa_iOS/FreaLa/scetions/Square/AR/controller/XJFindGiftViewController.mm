@@ -20,7 +20,7 @@
 #import "UIImage+YYAdd.h"
 #import "XJHFiveCallLocationJsController.h"
 #import "XJXJScanViewController.h"
-
+#import "BGFillInformation.h"
 @interface XJFindGiftViewController ()<UIGestureRecognizerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,NSURLSessionDelegate>
 
 @property (strong, nonatomic)  UIView *backView;
@@ -851,7 +851,7 @@
             NSString* xj_parinfo = data[FL_NET_DATA_KEY][@"partInfo"];
             if ([XJFinalTool xjStringSafe:xj_parinfo]) {
 //                [self  xj_showAddReceiveView];;//[self xjGetPartInfoList:xj_parinfo];//获取填写信息
-                [self FLFLHTML2GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
+                [self FLFLHTML3GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
 
             }else{
                 [self FLFLHTMLHTMLsaveTopicClickOn:@""];
@@ -897,6 +897,23 @@
     [task resume];
     
 }
+- (void)FLFLHTML3GetPartInfoListTopid:(NSString*)topid userId:(NSString*)userId  partInfo:(NSString*)partInfo{
+    BGFillInformation*cview=[[BGFillInformation alloc] initWithPartInfoStr:partInfo];
+    cview.hearderImageStr=self.flmyReceiveMineModel.xj_xiansuotuStr;
+    cview.xj_topicId=topid;
+    cview.flmyReceiveMineModel=self.flmyReceiveMineModel;
+    cview.tiJiaoBlock=^(){
+        [self xj_clickToShowPickSuccess];
+        
+    };
+    UIWindow *window = [[UIApplication sharedApplication ].windows lastObject];
+    
+    [window addSubview:cview.maskView];
+    [window addSubview:cview];
+    [cview popUp];
+    
+}
+
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
     //    [self.HTMLdata appendData:data];
@@ -1067,6 +1084,7 @@
 }
 
 - (void)xj_clickToShowPickSuccess{
+    _xj_searchGiftDoneImgView.hidden=YES;
     [self xj_ChangePickGiftDoneStatus];
     [self lew_dismissPopupView];
     __weak typeof(self) weakSelf = self;

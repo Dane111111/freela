@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface FLMyReceiveListModel : NSObject
+/**发布者头像*/
+@property(nonatomic,strong)NSString*avatar;
 /**月*/
 @property (nonatomic , strong)NSString* flMineIssueMonthStr;
 /**日*/

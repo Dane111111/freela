@@ -13,6 +13,7 @@
 @property (nonatomic,strong) UIView * NavView;
 
 @property (nonatomic,strong) UIView * BackView;
+@property(nonatomic,strong)UIButton*leftBtn;
 
 /**
  *  @brief 返回按钮点击事件
@@ -39,6 +40,8 @@
 //为了UI设置导航栏
 
 - (void) setNavWithLeftView:(UIView *) view;
+//设置返回按钮
+- (void)setNavBackArrowWithWidth:(CGFloat)width;
 
 //为了我妹设置导航栏
 

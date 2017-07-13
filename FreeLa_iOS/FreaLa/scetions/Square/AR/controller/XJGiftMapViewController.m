@@ -24,18 +24,25 @@
 #import "ClusterTableViewCell.h"
 #import "CustomCalloutView.h"
 #import "ClusterAnnotation.h"
-#import "XJClusterAnnotationView.h"
+//#import "XJClusterAnnotationView.h"
+//#import "XJOutClusterAnnotationView.h"
+
+#import "BGAnnotationView.h"
+#import "BGOutAnnotationView.h"
+
 #import "XJFindGiftViewController.h"
-#import "XJOutClusterAnnotationView.h"
 #import "XJJiaClusterAnnotationView.h"
 #import "XJOutClusterCallOutView.h"
 #import "XJBackGroundCircle.h"
 #import "XJJiaOutClusterAnnotationView.h"
 #import "XJHelpTouchView.h"
+#import "MANaviRoute.h"
+#import "CommonUtility.h"
 
 
 //#import <AMapLocationKit/AMapLocationKit.h>
 
+static const NSInteger RoutePlanningPaddingEdge                    = 20;
 
 #define kDefaultLocationZoomLevel       15.1
 #define kDefaultControlMargin           22
@@ -86,6 +93,16 @@
 
 @property (nonatomic) CGPoint touchStart;
 @property (strong, nonatomic) UIButton *flGoBackBtn;
+
+@property(nonatomic,strong)NSString*makeiconStr;
+/* 路径规划类型 */
+
+@property (nonatomic, strong) AMapRoute *route;
+/* 用于显示当前路线方案. */
+@property (nonatomic) MANaviRoute * naviRoute;
+/* 终点经纬度. */
+@property (nonatomic) CLLocationCoordinate2D destinationCoordinate;
+
 @end
 
 @implementation XJGiftMapViewController {
@@ -103,6 +120,22 @@
 - (void)xj_popGoBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
+#pragma mark mark icon
+-(void)getMake{
+    [FLNetTool deGetAdminMarkListWith:nil success:^(NSDictionary *data) {
+        if ([data[FL_NET_KEY_NEW] boolValue]) {
+            if (data[@"data"]) {
+                NSArray*arr=data[@"data"];
+                if (arr&&arr.count>0) {
+                    self.makeiconStr=arr[0][@"imgUrl"];
+                }
+            }
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _shouldRegionChangeReCalculate = NO;
@@ -111,7 +144,8 @@
     [self initMapView];
     [self xj_createHideGift];//创建 藏红包功能
     [self.view addSubview:self.flGoBackBtn];
- 
+
+    [self getMake];
 }
 #pragma mark - Life Cycle
 
@@ -145,6 +179,8 @@
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
      [self xj_checkUserLo];
+    
+    [self clear];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -171,11 +207,11 @@
     //在地图上添加圆
     [_mapView addOverlay: self.xj_circle];
     
-    if (self.xj_Backcircle) {
-        [self.mapView removeOverlay:self.xj_Backcircle];
-    }
-    self.xj_Backcircle = [XJBackGroundCircle circleWithCenterCoordinate:_xj_annotation.coordinate radius:20000];
-    [_mapView addOverlay:self.xj_Backcircle];
+//    if (self.xj_Backcircle) {
+//        [self.mapView removeOverlay:self.xj_Backcircle];
+//    }
+//    self.xj_Backcircle = [XJBackGroundCircle circleWithCenterCoordinate:_xj_annotation.coordinate radius:20000];
+//    [_mapView addOverlay:self.xj_Backcircle];
 }
 
 - (MAMapView *)mapView{
@@ -193,12 +229,12 @@
         //地图
         _mapView =[[MAMapView alloc] initWithFrame:CGRectMake(0,  0, CGRectGetWidth(self.view.bounds), FLUISCREENBOUNDS.height+240)];
         [xjRotationView addSubview:_mapView];
-        //半圆蒙层
-        UIImageView* image = [[UIImageView alloc] init];
-        image.image = [UIImage imageNamed:@"ar_map_top"];
-        image.frame = CGRectMake(0, 0, FLUISCREENBOUNDS.width, 160);
-//        [self.mapView addSubview:image];
-        [self.mapView insertSubview:image atIndex:1];
+//        //半圆蒙层
+//        UIImageView* image = [[UIImageView alloc] init];
+//        image.image = [UIImage imageNamed:@"ar_map_top"];
+//        image.frame = CGRectMake(0, 0, FLUISCREENBOUNDS.width, 160);
+////        [self.mapView addSubview:image];
+//        [self.mapView insertSubview:image atIndex:1];
         
         _mapView.delegate = self;
         [_mapView setRotateEnabled:YES];
@@ -268,17 +304,17 @@
     self.mapView.scaleOrigin = CGPointMake(self.mapView.scaleOrigin.x, 22);
 //    self.mapView.visibleMapRect = MAMapRectMake(220880104, 101476980, 272496, 466656);
     
-    [self.mapView setMapType:MAMapTypeStandardNight]; //设置夜间模式
-    _mapView.zoomEnabled = NO;//设置不能缩放
+    [self.mapView setMapType:MAMapTypeStandard]; //设置夜间模式
+    _mapView.zoomEnabled = YES;//设置不能缩放
 //    [_mapView setZoomLevel:17  animated:YES];
     _mapView.scrollEnabled = NO;//设置不能滑动
      _mapView.rotateEnabled= YES;
     _mapView.rotateCameraEnabled= NO;
     [_mapView setCameraDegree:40.f animated:NO duration:0.5];//设置倾斜度
-    _mapView.showsBuildings = NO;
-    _mapView.showTraffic = NO;
+    _mapView.showsBuildings = YES;
+    _mapView.showTraffic = YES;
     _mapView.showsScale = NO;
-    _mapView.showsLabels = NO;
+    _mapView.showsLabels = YES;
     _mapView.showsUserLocation = NO;
     //设置可见区域
 //    self.mapView.visibleMapRect = MAMapRectMake(220880104, 101476980, 272496, 466656);
@@ -456,7 +492,7 @@
             [mu addObject:poi];
         }
         self.xj_zhenAnnotations = mu.mutableCopy;
-        
+        [self addAnnotations2WithPOIs:self.xj_zhenAnnotations];
         if (self.xj_zhenAnnotations.count <= 30) {
             /*  if [response POIs].count ==  0
              [self.mapView addAnnotation:_xj_annotation];
@@ -466,27 +502,27 @@
             [self addAnnotationsWithPOIs:self.xj_jiaAnnotations];
         }
         
-        @synchronized(self)  {
-            self.shouldRegionChangeReCalculate = NO;
-            
-            // 清理
-            [self.selectedPoiArray removeAllObjects];
-            [self.customCalloutView dismissCalloutView];
-            [self.xjOutClusterCallOutView dismissCalloutView];
-            [self.mapView removeAnnotations:self.xj_zhenAnnotations];
-            
-            
-            __weak typeof(self) weakSelf = self;
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                /* 建立四叉树. */
-                if (self.xj_zhenAnnotations.count!=0) {
-                    [weakSelf.coordinateQuadTree buildTreeWithPOIs:self.xj_zhenAnnotations];
-                }
-                weakSelf.shouldRegionChangeReCalculate = YES;
-                
-                [weakSelf addAnnotationsToMapView:weakSelf.mapView];
-            });
-        }
+//        @synchronized(self)  {
+//            self.shouldRegionChangeReCalculate = NO;
+//            
+//            // 清理
+//            [self.selectedPoiArray removeAllObjects];
+//            [self.customCalloutView dismissCalloutView];
+//            [self.xjOutClusterCallOutView dismissCalloutView];
+//            [self.mapView removeAnnotations:self.xj_zhenAnnotations];
+//            
+//            
+//            __weak typeof(self) weakSelf = self;
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                /* 建立四叉树. */
+//                if (self.xj_zhenAnnotations.count!=0) {
+//                    [weakSelf.coordinateQuadTree buildTreeWithPOIs:self.xj_zhenAnnotations];
+//                }
+//                weakSelf.shouldRegionChangeReCalculate = YES;
+//                
+//                [weakSelf addAnnotationsToMapView:weakSelf.mapView];
+//            });
+//        }
         
 
     } failure:^(NSError *error) {
@@ -568,7 +604,18 @@
         [self.mapView addAnnotation:ann];
     }
 }
+- (void)addAnnotations2WithPOIs:(NSArray *)pois{
+    [self.mapView removeAnnotations:self.xj_zhenAnnotations];
+    for (AMapCloudPOI *aPOI in pois)
+    {
+        //        NSLog(@"%@", [aPOI formattedDescription]);
+        ClusterAnnotation *ann = [[ClusterAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(aPOI.location.latitude, aPOI.location.longitude) count:1];
+        ann.pois=@[aPOI].mutableCopy;
 
+        [self.mapView addAnnotation:ann];
+    }
+
+}
 //更改annotation
 - (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation {
     if ([annotation isKindOfClass:[XJPointAnnotation class]]) {
@@ -583,7 +630,7 @@
             annotationView.canShowCallout = NO;
             annotationView.draggable = YES;
             annotationView.calloutOffset = CGPointMake(0, -5);
-            annotationView.centerOffset = CGPointMake(0, 55);
+            annotationView.centerOffset = CGPointMake(0, 0);
         }
         
 //         annotationView.image = [UIImage imageNamed:@"ar_gift"];
@@ -639,6 +686,12 @@
             CloudPOIAnnotation* xxx = (CloudPOIAnnotation*)annotation;
             AMapCloudPOI* pois = xxx.cloudPOI;
             annotationView.xjHeaderImgPath = pois.customFields[@"topicPublisherIconPath"];
+            NSString* xjs = pois.customFields[@"topicPublisherIcon"];
+            if ([XJFinalTool xjStringSafe:xjs]) {
+                xjs = [XJFinalTool xjReturnImageURLWithStr:xjs isSite:NO];
+                annotationView.xjHeaderImgStr = xjs;
+            }
+
              /* 不弹出原生annotation */
             annotationView.canShowCallout = NO;
             return annotationView;
@@ -658,6 +711,12 @@
             CloudPOIAnnotation* xxx = (CloudPOIAnnotation*)annotation;
             AMapCloudPOI* pois = xxx.cloudPOI;
             annotationView.xjHeaderImgPath = pois.customFields[@"topicPublisherIconPath"];
+            NSString* xjs = pois.customFields[@"topicPublisherIcon"];
+            if ([XJFinalTool xjStringSafe:xjs]) {
+                xjs = [XJFinalTool xjReturnImageURLWithStr:xjs isSite:NO];
+                annotationView.xjHeaderImgStr = xjs;
+            }
+
             /* 不弹出原生annotation */
             annotationView.canShowCallout = NO;
             return annotationView;
@@ -674,13 +733,14 @@
             /* dequeue重用annotationView. */
             static NSString *const AnnotatioViewReuseID = @"AnnotatioViewReuseID";
             
-            XJClusterAnnotationView *annotationView = (XJClusterAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotatioViewReuseID];
+            BGAnnotationView *annotationView = (BGAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotatioViewReuseID];
             if (!annotationView) {
-                annotationView = [[XJClusterAnnotationView alloc] initWithAnnotation:annotation
+                annotationView = [[BGAnnotationView alloc] initWithAnnotation:annotation
                                                                      reuseIdentifier:AnnotatioViewReuseID];
             }
             /* 设置annotationView的属性. */
             annotationView.annotation = annotation;
+            
 //            annotationView.count = [(ClusterAnnotation *)annotation count];
             [annotationView xj_setCount:[(ClusterAnnotation *)annotation count] isInCircle:YES];
             if (annotationView.count==1) {
@@ -690,10 +750,11 @@
                     NSString* xjs = cloudPOI.customFields[@"topicPublisherIcon"];
                     if ([XJFinalTool xjStringSafe:xjs]) {
                         xjs = [XJFinalTool xjReturnImageURLWithStr:xjs isSite:NO];
-                        annotationView.xjHeaderImgStr = xjs;
+                        annotationView.xjHeaderImgStr =self.makeiconStr?self.makeiconStr: xjs;
                     }
                 }
             }
+
             /* 不弹出原生annotation */
             annotationView.canShowCallout = NO;
             return annotationView;
@@ -702,9 +763,9 @@
             /* dequeue重用annotationView. */
             static NSString *const AnnotatioViewReuseID = @"AnnotatioViewReuseID_out";
             
-            XJOutClusterAnnotationView *annotationView = (XJOutClusterAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotatioViewReuseID];
+            BGOutAnnotationView *annotationView = (BGOutAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotatioViewReuseID];
             if (!annotationView) {
-                annotationView = [[XJOutClusterAnnotationView alloc] initWithAnnotation:annotation
+                annotationView = [[BGOutAnnotationView alloc] initWithAnnotation:annotation
                                                                      reuseIdentifier:AnnotatioViewReuseID];
             }
             /* 设置annotationView的属性. */
@@ -720,7 +781,7 @@
                     NSString* xjs = cloudPOI.customFields[@"topicPublisherIcon"];
                     if ([XJFinalTool xjStringSafe:xjs]) {
                         xjs = [XJFinalTool xjReturnImageURLWithStr:xjs isSite:NO];
-                        annotationView.xjHeaderImgStr = xjs;
+                        annotationView.xjHeaderImgStr =self.makeiconStr?self.makeiconStr: xjs;
                     }
                 }
             }
@@ -882,7 +943,14 @@
 
 
 #pragma mark - MAMapViewDelegate
-
+/**
+ * @brief 单击地图回调，返回经纬度
+ * @param mapView 地图View
+ * @param coordinate 经纬度
+ */
+- (void)mapView:(MAMapView *)mapView didSingleTappedAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    [self clear];
+}
 - (void)mapView:(MAMapView *)mapView didDeselectAnnotationView:(MAAnnotationView *)view
 {
     [self.selectedPoiArray removeAllObjects];
@@ -893,28 +961,41 @@
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view
 {
-    if ([view isMemberOfClass:[XJClusterAnnotationView class]]) {
+    if ([view isMemberOfClass:[BGAnnotationView class]]) {
         ClusterAnnotation *annotation = (ClusterAnnotation *)view.annotation;
         for (AMapPOI *poi in annotation.pois)
         {
             [self.selectedPoiArray addObject:poi];
         }
+        AMapCloudPOI* poi = self.selectedPoiArray[0];
+        NSString* xjtopicid = [NSString stringWithFormat:@"%@",poi.customFields[@"topicId"]];
         
-        [self.customCalloutView setPoiArray:self.selectedPoiArray];
-        self.customCalloutView.delegate = self;
-        
-        // 调整位置
-        self.customCalloutView.center = CGPointMake(CGRectGetMidX(view.bounds), -CGRectGetMidY(self.customCalloutView.bounds) - CGRectGetMidY(view.bounds) - kCalloutViewMargin);
-        
-        [view addSubview:self.customCalloutView];
+        //需要请求 是否有领取资格
+        [self checkTakeCanOrNot:xjtopicid index:0];
+
+//        [self.customCalloutView setPoiArray:self.selectedPoiArray];
+//        self.customCalloutView.delegate = self;
+//        
+//        // 调整位置
+//        self.customCalloutView.center = CGPointMake(CGRectGetMidX(view.bounds), -CGRectGetMidY(self.customCalloutView.bounds) - CGRectGetMidY(view.bounds) - kCalloutViewMargin);
+//        
+//        [view addSubview:self.customCalloutView];
     }
-    if([view isKindOfClass:[XJOutClusterAnnotationView class]]) {
+    if([view isKindOfClass:[BGOutAnnotationView class]]) {
         ClusterAnnotation *annotation = (ClusterAnnotation *)view.annotation;
+        AMapCloudPOI* poi=annotation.pois[0];
+        
+        [self luXianGuiHuaWithZDLat:poi.location.latitude ZDLong:poi.location.longitude];
+
         self.xjOutClusterCallOutView.xjCount = [annotation.pois count];
         self.xjOutClusterCallOutView.center = CGPointMake(CGRectGetMidX(view.bounds), -CGRectGetMidY(self.customCalloutView.bounds) - CGRectGetMidY(view.bounds) - kCalloutViewMargin);
         [view addSubview:self.xjOutClusterCallOutView];
     }
     if([view isKindOfClass:[XJJiaOutClusterAnnotationView class]]){
+        CloudPOIAnnotation *annotation = (CloudPOIAnnotation *)view.annotation;
+        
+        [self luXianGuiHuaWithZDLat:annotation.cloudPOI.location.latitude ZDLong:annotation.cloudPOI.location.longitude];
+        
         self.xjOutClusterCallOutView.xjCount = 1;
         self.xjOutClusterCallOutView.center = CGPointMake(CGRectGetMidX(view.bounds), -CGRectGetMidY(self.customCalloutView.bounds) - CGRectGetMidY(view.bounds) - kCalloutViewMargin);
         [view addSubview:self.xjOutClusterCallOutView];
@@ -922,11 +1003,133 @@
     if ([view isMemberOfClass:[XJJiaClusterAnnotationView class]]) {
         [FLTool showWith:@"您没有在领取范围内，不能领取哟"];
     }
+}
+#pragma mark 路线规划
+-(void)luXianGuiHuaWithZDLat:(double)zdLat ZDLong:(double)zdLong{
+    AMapWalkingRouteSearchRequest *navi = [[AMapWalkingRouteSearchRequest alloc] init];
+    
+    /* 出发点. */
+    navi.origin = [AMapGeoPoint locationWithLatitude:self.xj_annotation.coordinate.latitude
+                                           longitude:self.xj_annotation.coordinate.longitude];
+    /* 目的地. */
+    navi.destination = [AMapGeoPoint locationWithLatitude:zdLat
+                                                longitude:zdLong];
+    self.destinationCoordinate=CLLocationCoordinate2DMake(zdLat, zdLong);
+    [self.search AMapWalkingRouteSearch:navi];
+
+    
+}
+#pragma mark 路径规划搜索回调
+- (void)onRouteSearchDone:(AMapRouteSearchBaseRequest *)request response:(AMapRouteSearchResponse *)response
+{
+    if (response.route == nil)
+    {
+        return;
+    }
+    self.route = response.route;
+
+//    if (response.count > 0)
+//    {
+//        //移除地图原本的遮盖
+//        [_mapView removeOverlays:_pathPolylines];
+//        _pathPolylines = nil;
+//        
+//        // 只显⽰示第⼀条 规划的路径
+//        _pathPolylines = [self polylinesForPath:response.route.paths[0]];
+//        NSLog(@"%@",response.route.paths[0]);
+//        //添加新的遮盖，然后会触发代理方法进行绘制
+//        [_mapView addOverlays:_pathPolylines];
+//    }
+
     
     
+    
+    if (response.count > 0)
+    {
+    
+        [self presentCurrentCourse];
+    }
+
+    //解析response获取路径信息，具体解析见 Demo
+}
+/* 展示当前路线方案. */
+- (void)presentCurrentCourse
+{
+    [self clear];
+
+    MANaviAnnotationType type = MANaviAnnotationTypeWalking;
+    self.naviRoute = [MANaviRoute naviRouteForPath:self.route.paths[0] withNaviType:type showTraffic:NO startPoint:[AMapGeoPoint locationWithLatitude:self.xj_annotation.coordinate.latitude longitude:self.xj_annotation.coordinate.longitude] endPoint:[AMapGeoPoint locationWithLatitude:self.destinationCoordinate.latitude longitude:self.destinationCoordinate.longitude]];
+    self.naviRoute.anntationVisible=NO;
+    self.naviRoute.walkingColor=[UIColor colorWithHexString:@"#00b0ff" alpha:1];
+    [self.naviRoute addToMapView:self.mapView];
+    
+    
+    /* 缩放地图使其适应polylines的展示. */
+//    [CommonUtility mapRectForOverlays:self.naviRoute.routePolylines];
+//    [self.mapView setVisibleMapRect:
+//                        edgePadding:UIEdgeInsetsMake(RoutePlanningPaddingEdge, RoutePlanningPaddingEdge, RoutePlanningPaddingEdge, RoutePlanningPaddingEdge)
+//                           animated:YES];
+}
+/* 清空地图上已有的路线. */
+- (void)clear
+{
+    if (self.naviRoute) {
+        [self.naviRoute removeFromMapView];
+
+    }
+}
+
+#pragma mark 路径规划失败回调
+
+- (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", error);
 }
 - (MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay
 {
+    if ([overlay isKindOfClass:[LineDashPolyline class]])
+    {
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:((LineDashPolyline *)overlay).polyline];
+        polylineRenderer.lineWidth   = 8;
+        polylineRenderer.lineDash = YES;
+        polylineRenderer.strokeColor = self.naviRoute.walkingColor;
+        polylineRenderer.lineJoinType=kMALineJoinMiter;
+        return polylineRenderer;
+    }
+    if ([overlay isKindOfClass:[MANaviPolyline class]])
+    {
+        MANaviPolyline *naviPolyline = (MANaviPolyline *)overlay;
+        MAPolylineRenderer *polylineRenderer = [[MAPolylineRenderer alloc] initWithPolyline:naviPolyline.polyline];
+        
+        polylineRenderer.lineWidth = 8;
+        polylineRenderer.lineJoinType=kMALineJoinMiter;
+        polylineRenderer.lineCapType=kMALineCapSquare;
+        if (naviPolyline.type == MANaviAnnotationTypeWalking)
+        {
+            polylineRenderer.strokeColor = self.naviRoute.walkingColor;
+        }
+        else if (naviPolyline.type == MANaviAnnotationTypeRailway)
+        {
+            polylineRenderer.strokeColor = self.naviRoute.railwayColor;
+        }
+        else
+        {
+            polylineRenderer.strokeColor = self.naviRoute.routeColor;
+        }
+        
+        return polylineRenderer;
+    }
+    if ([overlay isKindOfClass:[MAMultiPolyline class]])
+    {
+        MAMultiColoredPolylineRenderer * polylineRenderer = [[MAMultiColoredPolylineRenderer alloc] initWithMultiPolyline:overlay];
+        
+        polylineRenderer.lineWidth = 10;
+        polylineRenderer.strokeColors = [self.naviRoute.multiPolylineColors copy];
+        polylineRenderer.gradient = YES;
+        
+        return polylineRenderer;
+    }
+    
     if ([overlay isMemberOfClass:[MACircle class]])
     {
         MACircleRenderer *circleRenderer = [[MACircleRenderer alloc] initWithCircle:(MACircle*)overlay];

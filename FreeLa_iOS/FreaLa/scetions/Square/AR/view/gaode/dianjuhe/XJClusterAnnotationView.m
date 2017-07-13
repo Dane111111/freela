@@ -64,6 +64,7 @@ CGFloat ScaledValueForValue(CGFloat value)
 
 - (void)setupImgView {
     _xjImgView = [[UIImageView alloc] init];
+    _xjImgView.contentMode=UIViewContentModeScaleAspectFit;
     [self addSubview:_xjImgView];
     _xjImgView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [self setupLabel];
@@ -85,7 +86,7 @@ CGFloat ScaledValueForValue(CGFloat value)
     
     self.xjHeaderImgView = [[UIImageView alloc] init];
     self.xjHeaderImgView.frame = CGRectMake(0, 0, 22, 22);
-    self.xjHeaderImgView.center = CGPointMake(_xjImgView.centerX, 30);
+    self.xjHeaderImgView.center = CGPointMake(_xjImgView.centerX, 20);
     self.xjHeaderImgView.layer.cornerRadius = 11;
     self.xjHeaderImgView.layer.masksToBounds = YES;
 //    self.xjHeaderImgView.backgroundColor = [UIColor redColor];
@@ -129,7 +130,7 @@ CGFloat ScaledValueForValue(CGFloat value)
     self.countLabel.text = [NSString stringWithFormat:@"%ld个",count];// [@(_count) stringValue];
     self.countLabel.hidden = count==1?YES:NO;
     
-    NSString* imgName = count==1?@"ar_gift_light_single":@"ar_gift_light_more";
+    NSString* imgName = count==1?@"jialibaokong":@"ar_gift_light_more";
 //    _xjImgView.backgroundColor = [UIColor blackColor];
     _xjImgView.image = [UIImage imageNamed:imgName];
     [self setNeedsDisplay];
@@ -140,9 +141,9 @@ CGFloat ScaledValueForValue(CGFloat value)
     self.countLabel.hidden = count==1?YES:NO;
     NSString* imgName;
     if (isin) {
-        imgName = count==1?@"ar_gift_light_single":@"ar_gift_light_more";
+        imgName = count==1?@"jialibaokong":@"ar_gift_light_more";
     } else {
-        imgName = count==1?@"ar_fudai-singl":@"ar_fudai-much";
+        imgName = count==1?@"jialibaokong":@"ar_fudai-much";
     }
     _xjImgView.image = [UIImage imageNamed:imgName];
     [self setNeedsDisplay];

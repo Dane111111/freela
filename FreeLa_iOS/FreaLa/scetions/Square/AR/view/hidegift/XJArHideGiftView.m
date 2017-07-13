@@ -10,11 +10,6 @@
 #import "LewPopupBackgroundView.h"
 #import "UIViewController+LewPopupViewController.h"
 
-#define XJTopicRangeTag         123456
-#define XJTopicARorLBS          122456
-#define XJTopicPartInfoTag      124456
-#define XJScreenSmall           (FLUISCREENBOUNDS.width<400)
-#define XJFontSize              (XJScreenSmall?10:14)
 
 @interface XJArHideGiftView()<UITextFieldDelegate,FLChooseMapViewControllerDelegate>
 @property (nonatomic , strong) UILabel* xj_title_label;

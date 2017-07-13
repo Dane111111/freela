@@ -11,11 +11,12 @@
 #import "XJCircleAnimationView.h"
 
 #import "LewPopupViewController.h"
-#import "XJArHideGiftView.h"
+//#import "XJArHideGiftView.h"
 #import "XJHidePublishDoneView.h"
 #import "BearCutOutView.h"
 #import "XJPickARGiftGifViewController.h"
 #import "XJPickARGiftCustiomViewController.h"
+#import "BGHideARAndLBSView.h"
 
 #define kMainScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kMainScreenHeight  [UIScreen mainScreen].bounds.size.height
@@ -66,7 +67,7 @@
 @property (nonatomic , strong) UIButton* xj_changePlace;
 
 /**弹出层*/
-@property (nonatomic , strong) XJArHideGiftView* xjHideGiftView;
+@property (nonatomic , strong) BGHideARAndLBSView* xjHideGiftView;
 /**发布模型*/
 @property (nonatomic , strong) FLIssueInfoModel* xjIssueModel;
 
@@ -181,9 +182,11 @@
     return _xj_changePlace;
 }
 
-- (XJArHideGiftView *)xjHideGiftView {
+- (BGHideARAndLBSView *)xjHideGiftView {
     if (!_xjHideGiftView) {
-        _xjHideGiftView = [[XJArHideGiftView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width* 0.8, FLUISCREENBOUNDS.height* 0.7)];
+//        _xjHideGiftView = [[BGHideARAndLBSView alloc] initWithFrame:CGRectMake(0, 0, FLUISCREENBOUNDS.width* 0.8, FLUISCREENBOUNDS.height* 0.7)];
+        _xjHideGiftView = [[BGHideARAndLBSView alloc] initWithFrame:CGRectMake(0, 0, 260, 370)];
+
     }
     return _xjHideGiftView;
 }
@@ -1024,7 +1027,7 @@
     _is_gif_imgupdate = YES;
     self.xjIssueModel.flactivitytopicThumbnailFileName = imgurl;
     self.xjIssueModel.flactivitytopicThumbnailStr = imgurl;
-    [[FLAppDelegate share] showSimplleHUDWithTitle:@"" view:self.view];
+//    [[FLAppDelegate share] showSimplleHUDWithTitle:@"" view:self.view];
     [self.xjHideGiftView.xj_topicThBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[XJFinalTool xjReturnImageURLWithStr:imgurl isSite:NO]]] forState:UIControlStateNormal];
 }
 - (void)xjPickARGiftCustiomViewController:(XJPickARGiftCustiomViewController*)chooseCus

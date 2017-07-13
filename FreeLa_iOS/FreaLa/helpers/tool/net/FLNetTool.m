@@ -1199,7 +1199,15 @@
     }];
 
 }
++(void)deGetAdminMarkListWith:(NSDictionary*)parm success:(void(^)(NSDictionary *data))success failure: (void(^)(NSError *error))failure{
+    NSString* requestStr = [[NSString stringWithFormat:@"%@/app/publishs!getAdminMark.action",FLBaseUrl] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [FLHTTPRequestTool postWithURL:requestStr params:parm success:^(id json) {
+        success(json);
+    } failure:^(NSError *error) {
+        failure(error);
+    }];
 
+}
 @end
 
 

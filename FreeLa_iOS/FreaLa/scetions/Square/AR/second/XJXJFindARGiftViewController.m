@@ -20,6 +20,7 @@
 #import "XJGiftAddReceiveInfoView.h"
 #import "XJHFiveCallLocationJsController.h"
 #import "XJXJScanViewController.h"
+#import "BGFillInformation.h"
 
 @interface XJXJFindARGiftViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate,FINCameraDelagate,UIAccelerometerDelegate,SDCycleScrollViewDelegate,NSURLSessionDelegate>
 {
@@ -245,18 +246,18 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    if (self.isHtmlPop) {
-        [self xj_clickToShowPickSuccess];
-        self.isHtmlPop=NO;
-        
-    }
-    
-    for (UIViewController*ctr in [self.navigationController childViewControllers]) {
-        if ([ctr isKindOfClass:[XJXJScanViewController class]]) {
-            XJXJScanViewController* scCtr=(XJXJScanViewController*)ctr;
-            scCtr.isHtmlPop=NO;
-        }
-    }
+//    if (self.isHtmlPop) {
+//        [self xj_clickToShowPickSuccess];
+//        self.isHtmlPop=NO;
+//        
+//    }
+//    
+//    for (UIViewController*ctr in [self.navigationController childViewControllers]) {
+//        if ([ctr isKindOfClass:[XJXJScanViewController class]]) {
+//            XJXJScanViewController* scCtr=(XJXJScanViewController*)ctr;
+//            scCtr.isHtmlPop=NO;
+//        }
+//    }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appHasGoneInForeground)
                                                  name:UIApplicationWillEnterForegroundNotification
@@ -784,6 +785,9 @@
 }
 
 - (void)xj_clickToShowPickSuccess{
+    
+    _xj_searchGiftDoneImgView.hidden=YES;
+
     for ( FLMyReceiveListModel*model  in _dataSource) {
         if ([model.flMineIssueTopicIdStr integerValue] ==[self.flmyReceiveMineModel.flMineIssueTopicIdStr integerValue]) {
             [_dataSource removeObject:model];
@@ -903,7 +907,7 @@
             if ([XJFinalTool xjStringSafe:xj_parinfo]) {
 //                [self  xj_showAddReceiveView];;//[self xjGetPartInfoList:xj_parinfo];//获取填写信息
                 
-                [self FLFLHTML2GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
+                [self FLFLHTML3GetPartInfoListTopid:xjtopicid userId:XJ_USERID_WITHTYPE partInfo:data[@"data"][@"partInfo"]];
 
             }else{
                 [self FLFLHTMLHTMLsaveTopicClickOn:@""];
@@ -982,6 +986,23 @@
     [task resume];
 
 }
+- (void)FLFLHTML3GetPartInfoListTopid:(NSString*)topid userId:(NSString*)userId  partInfo:(NSString*)partInfo{
+    BGFillInformation*cview=[[BGFillInformation alloc] initWithPartInfoStr:partInfo];
+    cview.hearderImageStr=self.flmyReceiveMineModel.xj_xiansuotuStr;
+    cview.xj_topicId=topid;
+    cview.flmyReceiveMineModel=self.flmyReceiveMineModel;
+    cview.tiJiaoBlock=^(){
+        [self xj_clickToShowPickSuccess];
+        
+    };
+    UIWindow *window = [[UIApplication sharedApplication ].windows lastObject];
+    
+    [window addSubview:cview.maskView];
+    [window addSubview:cview];
+    [cview popUp];
+    
+}
+
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
 //    [self.HTMLdata appendData:data];
@@ -991,7 +1012,7 @@
     NSArray* array1 = [str componentsSeparatedByString:@":["];
     NSArray*array2=[array1[1] componentsSeparatedByString: @"],"];
 
-    [self performSelectorOnMainThread:@selector(pushJSCtr:) withObject:array2[0] waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(push2JSCtr:) withObject:array2[0] waitUntilDone:YES];
 
 }
 -(void)pushJSCtr:(NSString*)str{
@@ -1002,6 +1023,18 @@
     [self.navigationController pushViewController:vc animated:YES];
 
 }
+-(void)push2JSCtr:(NSString*)str{
+    BGFillInformation*cview=[[BGFillInformation alloc] initWithPartInfoStr:str];
+    cview.tiJiaoBlock=^(){
+    };
+    UIWindow *window = [[UIApplication sharedApplication ].windows lastObject];
+    
+    [window addSubview:cview.maskView];
+    [window addSubview:cview];
+    [cview popUp];
+    
+}
+
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
  willCacheResponse:(NSCachedURLResponse *)proposedResponse
  completionHandler:(void (^)(NSCachedURLResponse * __nullable cachedResponse))completionHandler{

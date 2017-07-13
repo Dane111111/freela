@@ -31,10 +31,12 @@
     self.title = @"票券";
     [self xjGetTicketNum];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setHidden:NO];
-    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
+    [self setNavTitle:@"票券" withColor:[UIColor blackColor]];
+
+//    [self.navigationController.navigationBar setHidden:NO];
+//    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor whiteColor]];
+//    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+//    [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName]];
     [self seeInfoInHtmlVC];
 }
 
@@ -44,8 +46,10 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
     self.tabBarController.tabBar.hidden = YES;
+    [self.leftBtn setImage:[UIImage imageNamed:@"return_x"] forState:UIControlStateNormal];
+
 }
 
 - (void)seeInfoInHtmlVC
