@@ -814,6 +814,14 @@
  接口参数:无参数
  */
 +(void)deGetAdminMarkListWith:(NSDictionary*)parm success:(void(^)(NSDictionary *data))success failure: (void(^)(NSError *error))failure;
+/**
+ *  获取点赞个数接口
+ 接口名称:http://www.freela.com.cn/app/stat!findTopicCollectNumByIds.action?
+ 接口参数:topicid数组
+ */
+
++(void)defindTopicCollectNumWith:(NSDictionary*)parm success:(void(^)(NSDictionary *data))success failure: (void(^)(NSError *error))failure;
+
 @end
 
 

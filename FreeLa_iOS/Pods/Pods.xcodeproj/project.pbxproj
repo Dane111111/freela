@@ -579,13 +579,13 @@
 		0EE1F4C80B6550AC45CB609E3410FBA0 /* MJRefreshGifHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshGifHeader.h; path = MJRefresh/Custom/Header/MJRefreshGifHeader.h; sourceTree = "<group>"; };
 		0F23DFED47A3BC523A4FCC6EC721ADFC /* MASConstraintMaker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASConstraintMaker.h; path = Masonry/MASConstraintMaker.h; sourceTree = "<group>"; };
 		0FB756C20665BF955533DA6E6A15429C /* YYImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYImageCache.h; path = YYKit/Image/YYImageCache.h; sourceTree = "<group>"; };
-		109DB152C851B170025B9EC829408FE6 /* libPEPhotoCropEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libPEPhotoCropEditor.a; path = libPEPhotoCropEditor.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		109DB152C851B170025B9EC829408FE6 /* libPEPhotoCropEditor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPEPhotoCropEditor.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		10B0A42DDB463D4CEB573AE8253943BA /* YYWeakProxy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYWeakProxy.h; path = YYKit/Utility/YYWeakProxy.h; sourceTree = "<group>"; };
 		1125C14810EA19C106515445DDE487B6 /* MJExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJExtension-dummy.m"; sourceTree = "<group>"; };
 		114CFF1E6034405118C7776620F573C3 /* SDWebImagePrefetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImagePrefetcher.m; path = SDWebImage/SDWebImagePrefetcher.m; sourceTree = "<group>"; };
 		11BD3BB2DDE8DBC7B259DBAE9ADB589F /* YYFrameImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYFrameImage.m; path = YYKit/Image/YYFrameImage.m; sourceTree = "<group>"; };
 		12B0ADBB8ECFEF265A36BC639EE25D26 /* MJRefresh.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefresh.h; path = MJRefresh/MJRefresh.h; sourceTree = "<group>"; };
-		12FAE9D1A424E366057ADED7008DFC0A /* libHexColors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libHexColors.a; path = libHexColors.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FAE9D1A424E366057ADED7008DFC0A /* libHexColors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHexColors.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1413081C1D6A8E6179A1F95611ABCB8C /* YYKVStorage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYKVStorage.m; path = YYKit/Cache/YYKVStorage.m; sourceTree = "<group>"; };
 		14CCE8333E772D86A4E8009A2E9C37CD /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		15590ACDCA7C55921B4C0D2E306E2C03 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AssetsLibrary.framework; sourceTree = DEVELOPER_DIR; };
@@ -607,7 +607,7 @@
 		1F0FC41166544145F2114404CDB5A987 /* EaseMob.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EaseMob.h; path = EaseMobSDKFull/include/EaseMobClientSDK/EaseMob.h; sourceTree = "<group>"; };
 		1F8BC215F63C0E60BD3A75C777E17E2D /* MJProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJProperty.h; path = MJExtension/MJProperty.h; sourceTree = "<group>"; };
 		1FDF1CB2C6BEBFF0448D96061A8CD08C /* UIScrollView+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+YYAdd.m"; path = "YYKit/Base/UIKit/UIScrollView+YYAdd.m"; sourceTree = "<group>"; };
-		20AAEC667E8D17C083A2FE3B23BFCBF9 /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReachability.a; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		20AAEC667E8D17C083A2FE3B23BFCBF9 /* libReachability.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReachability.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		20FFA82A87B8FF4B3CA228315A7857B2 /* UIGestureRecognizer+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIGestureRecognizer+YYAdd.h"; path = "YYKit/Base/UIKit/UIGestureRecognizer+YYAdd.h"; sourceTree = "<group>"; };
 		212FD2D151892B04FB6DB886832C7FE5 /* YYTextUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextUtilities.m; path = YYKit/Text/String/YYTextUtilities.m; sourceTree = "<group>"; };
 		2195C4C0B3A6DB8EA55428189E2051F4 /* YYThreadSafeArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYThreadSafeArray.h; path = YYKit/Utility/YYThreadSafeArray.h; sourceTree = "<group>"; };
@@ -624,7 +624,7 @@
 		26BDC11684045949757426B1AC44C4D7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		2749D998513EF103435F3818AF30CDB4 /* YYTextMagnifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextMagnifier.h; path = YYKit/Text/Component/YYTextMagnifier.h; sourceTree = "<group>"; };
 		27E0F1BFA9E2CE34249D462FFDE4B977 /* commonDefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = commonDefs.h; path = EaseMobSDKFull/include/Utility/commonDefs.h; sourceTree = "<group>"; };
-		2830BC9D2E76B089C71B5729D99AA245 /* libSAMKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSAMKeychain.a; path = libSAMKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2830BC9D2E76B089C71B5729D99AA245 /* libSAMKeychain.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSAMKeychain.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B3F226C1D234029272644F43D00FA8 /* MJRefreshAutoGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoGifFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m; sourceTree = "<group>"; };
 		28C489F93E233DB1147CA0497433E6BC /* EMMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMMessage.h; path = EaseMobSDKFull/include/ChatService/EMChatManager/types/EMMessage.h; sourceTree = "<group>"; };
 		29CEA9ED555EF7BFAF13D55076D8DEEA /* UITableView+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+YYAdd.m"; path = "YYKit/Base/UIKit/UITableView+YYAdd.m"; sourceTree = "<group>"; };
@@ -634,7 +634,7 @@
 		2AF401CA45C3255501E1AD3749046C77 /* NSData+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+YYAdd.m"; path = "YYKit/Base/Foundation/NSData+YYAdd.m"; sourceTree = "<group>"; };
 		2B2E6C70F07B9130D8F3BCDE4E102892 /* Masonry.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
 		2B77FBB9819CDB8AC7D14C6F59565847 /* MJExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJExtension-prefix.pch"; sourceTree = "<group>"; };
-		2BCB083D06C668DC0B22F8B1BDD3A17D /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BCB083D06C668DC0B22F8B1BDD3A17D /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C859A3B01969CE4B9F940AD408183F0 /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
 		2D86D5A693BE7040F9C1F086E2A77D2B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		2DC52B80F5C1ED3AA9FF83503D143FAF /* NSAttributedString+YYText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+YYText.m"; path = "YYKit/Text/String/NSAttributedString+YYText.m"; sourceTree = "<group>"; };
@@ -655,7 +655,7 @@
 		36393C46D23BE0DF23CF5815AED997D5 /* Masonry-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
 		3695AD9F9AF89BBD0D55A210AF129BFB /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+FDTemplateLayoutCellDebug.h"; path = "Classes/UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
 		372695F67F34C2E345D2C919758C798C /* MJRefreshBackNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackNormalFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m; sourceTree = "<group>"; };
-		388ABA5B4F680578379C3C2807B27694 /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libYYKit.a; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		388ABA5B4F680578379C3C2807B27694 /* libYYKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libYYKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F95BB392714BB34100D8F23C341870 /* MJRefreshBackGifFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackGifFooter.m; path = MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m; sourceTree = "<group>"; };
 		390D51FB921FA26E65633000D571225A /* NSObject+YYAddForKVO.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+YYAddForKVO.h"; path = "YYKit/Base/Foundation/NSObject+YYAddForKVO.h"; sourceTree = "<group>"; };
 		39644CD71FE506F3D642B9669972DCEF /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJExtension.m"; path = "MJRefresh/UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
@@ -684,7 +684,7 @@
 		46CB35F56C50A184523DC5FBFBE35979 /* YYCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYCache.m; path = YYKit/Cache/YYCache.m; sourceTree = "<group>"; };
 		46CC9C12B681AEC9BE57AF9FC469E2CE /* IChatManagerBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IChatManagerBase.h; path = EaseMobSDKFull/include/ChatService/EMChatManager/internal/IChatManagerBase.h; sourceTree = "<group>"; };
 		470FC1C8FFEC16260137521A09B0FDDB /* EMChatVideo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMChatVideo.h; path = EaseMobSDKFull/include/ChatService/EMChatManager/types/EMChatVideo.h; sourceTree = "<group>"; };
-		47A6D6CF49FA32CB25B0EA7879A2C044 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSDWebImage.a; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A6D6CF49FA32CB25B0EA7879A2C044 /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B5A1C2A57F1179AECAD367D398614F /* EMChatManagerChatDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMChatManagerChatDelegate.h; path = EaseMobSDKFull/include/ChatService/EMChatManager/delegates/internal/EMChatManagerChatDelegate.h; sourceTree = "<group>"; };
 		483FDD63D650CE2E43A79A4C927C177B /* NSBundle+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+MJRefresh.m"; path = "MJRefresh/NSBundle+MJRefresh.m"; sourceTree = "<group>"; };
 		4848BC5D95F945D7DEC98AAB69401D6B /* _YYWebImageSetter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = _YYWebImageSetter.h; path = YYKit/Image/Categories/_YYWebImageSetter.h; sourceTree = "<group>"; };
@@ -744,7 +744,7 @@
 		5DE44334D434F4D33644BC6E8E6EB126 /* UITextField+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextField+YYAdd.h"; path = "YYKit/Base/UIKit/UITextField+YYAdd.h"; sourceTree = "<group>"; };
 		5E13BF23954CBCE8BB366D9B0B5EEFC8 /* IChatManagerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IChatManagerDelegate.h; path = EaseMobSDKFull/include/ChatService/EMChatManager/delegates/IChatManagerDelegate.h; sourceTree = "<group>"; };
 		5EF8051665847E163CD5B9442B93B465 /* MKAnnotationView+YYWebImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MKAnnotationView+YYWebImage.h"; path = "YYKit/Image/Categories/MKAnnotationView+YYWebImage.h"; sourceTree = "<group>"; };
-		5F1545A8C07EA804055906DA3A886FBD /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJExtension.a; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F1545A8C07EA804055906DA3A886FBD /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F46968E61B16EEDEA1F623858FCF932 /* IDeviceManagerBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IDeviceManagerBase.h; path = EaseMobSDKFull/include/Utility/EMDeviceManager/internal/IDeviceManagerBase.h; sourceTree = "<group>"; };
 		5F48653DDCCE2C2148D138F6845F5237 /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/SDWebImageDownloader.h; sourceTree = "<group>"; };
 		5F79727AA25A63A925E8D5700A7ABCAB /* UIImage+GIF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+GIF.h"; path = "SDWebImage/UIImage+GIF.h"; sourceTree = "<group>"; };
@@ -847,7 +847,7 @@
 		904F406C6621E9B531A4366997E58E98 /* SAMKeychain.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SAMKeychain.bundle; path = Support/SAMKeychain.bundle; sourceTree = "<group>"; };
 		909221F13084F188038923772DB93229 /* MJRefreshBackFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshBackFooter.m; path = MJRefresh/Base/MJRefreshBackFooter.m; sourceTree = "<group>"; };
 		90BED8682AB7E8FECE6539B861F57D1D /* SAMKeychain.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SAMKeychain.h; path = Sources/SAMKeychain.h; sourceTree = "<group>"; };
-		9148BCD219709AB62F083F75B0411097 /* libUITableView+FDTemplateLayoutCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libUITableView+FDTemplateLayoutCell.a"; path = "libUITableView+FDTemplateLayoutCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9148BCD219709AB62F083F75B0411097 /* libUITableView+FDTemplateLayoutCell.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libUITableView+FDTemplateLayoutCell.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C0E0D57293F5B6D7227C7DBF32475A /* UIImage+PECrop.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+PECrop.m"; path = "Lib/UIImage+PECrop.m"; sourceTree = "<group>"; };
 		91CBF158268C0FCD5A8EDD010FBE9602 /* UITableView+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITableView+YYAdd.h"; path = "YYKit/Base/UIKit/UITableView+YYAdd.h"; sourceTree = "<group>"; };
 		91E32FD8A8E22A0D1747C925A800D7B2 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
@@ -855,7 +855,7 @@
 		9326392DDF6141C80DD27BD744620C2D /* MJRefreshHeader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshHeader.m; path = MJRefresh/Base/MJRefreshHeader.m; sourceTree = "<group>"; };
 		933BE7BB94DA432527567E6C85FDD216 /* NSObject+YYModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+YYModel.h"; path = "YYKit/Model/NSObject+YYModel.h"; sourceTree = "<group>"; };
 		93568E62AD0E2E9D85A2FC872BAC0977 /* YYImageCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYImageCache.m; path = YYKit/Image/YYImageCache.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94D1973BCDF76DD7B76D725CEF340A86 /* SAMKeychain.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SAMKeychain.xcconfig; sourceTree = "<group>"; };
 		957C17043FE810F231A53C8FFD41795F /* MJRefreshComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshComponent.h; path = MJRefresh/Base/MJRefreshComponent.h; sourceTree = "<group>"; };
 		95A0E347C22BB84E8C5791ABCC32B846 /* EMError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EMError.h; path = EaseMobSDKFull/include/Utility/ErrorManager/EMError.h; sourceTree = "<group>"; };
@@ -912,7 +912,7 @@
 		AA62BC315DFEAE087F7818950C53C072 /* MJRefreshBackStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshBackStateFooter.h; path = MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.h; sourceTree = "<group>"; };
 		AABF7E2A6528A20D8A75BC29199E6E4F /* UIApplication+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+YYAdd.h"; path = "YYKit/Base/UIKit/UIApplication+YYAdd.h"; sourceTree = "<group>"; };
 		AACF858EFBBFF3DC826D437A8458EE08 /* YYDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYDiskCache.m; path = YYKit/Cache/YYDiskCache.m; sourceTree = "<group>"; };
-		ABA1DD4BC7851BD1292B63D38BA69039 /* libPods-FreaLa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-FreaLa.a"; path = "libPods-FreaLa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABA1DD4BC7851BD1292B63D38BA69039 /* libPods-FreaLa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FreaLa.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC02BD004A00E29475C626721AA15E7A /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableView+FDKeyedHeightCache.m"; path = "Classes/UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
 		AC2DFCDEF69D372AC1AF1832AFA7C82F /* UIFont+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIFont+YYAdd.m"; path = "YYKit/Base/UIKit/UIFont+YYAdd.m"; sourceTree = "<group>"; };
 		AC4388F7957153EB1BE48F74A2B77E64 /* CHTCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CHTCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -971,7 +971,7 @@
 		C8CA225BCD9BFE1B9A02CD986CB5AD13 /* MJRefreshStateHeader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshStateHeader.h; path = MJRefresh/Custom/Header/MJRefreshStateHeader.h; sourceTree = "<group>"; };
 		C8FDB405F213C9A2E6B26C76DE006291 /* YYWebImageOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYWebImageOperation.m; path = YYKit/Image/YYWebImageOperation.m; sourceTree = "<group>"; };
 		C918D717C03BA1992E2B5A3F4E553C75 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+MJRefresh.m"; path = "MJRefresh/UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
-		C938CB741F91D1DF3B0ACB446682DFAA /* libCHTCollectionViewWaterfallLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCHTCollectionViewWaterfallLayout.a; path = libCHTCollectionViewWaterfallLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C938CB741F91D1DF3B0ACB446682DFAA /* libCHTCollectionViewWaterfallLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCHTCollectionViewWaterfallLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94BC7FA8A287E19FF1D8DB9F5A21201 /* YYTransaction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTransaction.m; path = YYKit/Utility/YYTransaction.m; sourceTree = "<group>"; };
 		C96511C80466EEFA22B0668ECB29F8E1 /* YYTextContainerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYTextContainerView.m; path = YYKit/Text/Component/YYTextContainerView.m; sourceTree = "<group>"; };
 		C9B16D1542E086AE1616078AEC242C00 /* MJRefreshConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshConst.m; path = MJRefresh/MJRefreshConst.m; sourceTree = "<group>"; };
@@ -1000,7 +1000,7 @@
 		D788225450F329598CDB0CB7A22B5B72 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		D7D8D1924365F621C019A404F68692F8 /* NSString+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+YYAdd.h"; path = "YYKit/Base/Foundation/NSString+YYAdd.h"; sourceTree = "<group>"; };
 		D7DC9FDAA1772F3DC6193A43991434E7 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
-		D9367586C8B5C883EB3D10E0E8D5200D /* libAFNetworkingHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworkingHelper.a; path = libAFNetworkingHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9367586C8B5C883EB3D10E0E8D5200D /* libAFNetworkingHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworkingHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9373DCD7A72AA44800483B119147EE8 /* YYGestureRecognizer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYGestureRecognizer.m; path = YYKit/Utility/YYGestureRecognizer.m; sourceTree = "<group>"; };
 		D96BCD6BCB1A72334F1DDAE7815A0B2D /* IChatManagerConversation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IChatManagerConversation.h; path = EaseMobSDKFull/include/ChatService/EMChatManager/internal/IChatManagerConversation.h; sourceTree = "<group>"; };
 		D98D59543AB3999866837637480B705E /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MultiFormat.h"; path = "SDWebImage/UIImage+MultiFormat.h"; sourceTree = "<group>"; };
@@ -1009,7 +1009,7 @@
 		DC0F0B6DC64FCD3AF832ABE766A83067 /* NSString+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+MJExtension.m"; path = "MJExtension/NSString+MJExtension.m"; sourceTree = "<group>"; };
 		DC2969AB62C98B9157119892C20A4D21 /* YYAnimatedImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYAnimatedImageView.h; path = YYKit/Image/YYAnimatedImageView.h; sourceTree = "<group>"; };
 		DD28CF6596DAD009356F611AEA5B2DF9 /* YYTextUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYTextUtilities.h; path = YYKit/Text/String/YYTextUtilities.h; sourceTree = "<group>"; };
-		DD4AE9329DDE18790731BEB355C5D591 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD4AE9329DDE18790731BEB355C5D591 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD82615AD022D556E1203079AAF314FC /* NSDictionary+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+YYAdd.h"; path = "YYKit/Base/Foundation/NSDictionary+YYAdd.h"; sourceTree = "<group>"; };
 		DE5F95F5DBF9038A4FFA4F120DCC4103 /* NSBundle+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+YYAdd.m"; path = "YYKit/Base/Foundation/NSBundle+YYAdd.m"; sourceTree = "<group>"; };
 		DEA35F20263E1D7C027369AA3F5C9B7B /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
@@ -1019,7 +1019,7 @@
 		E13C7928F275A13DCA90621EC1E91135 /* MJRefreshAutoStateFooter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJRefreshAutoStateFooter.h; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.h; sourceTree = "<group>"; };
 		E21325CEB47F82F7FD0A875255080013 /* YYSpriteSheetImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYSpriteSheetImage.m; path = YYKit/Image/YYSpriteSheetImage.m; sourceTree = "<group>"; };
 		E3E0BF46F6BC33FCD3C595B38F66AF3A /* YYFileHash.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYFileHash.h; path = YYKit/Utility/YYFileHash.h; sourceTree = "<group>"; };
-		E4C7E9A7F9AC99B839D31823CA550D56 /* libMPColorTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMPColorTools.a; path = libMPColorTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4C7E9A7F9AC99B839D31823CA550D56 /* libMPColorTools.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPColorTools.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4F9A1397AB9E8C0C8B58D10B8D35501 /* YYFileHash.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YYFileHash.m; path = YYKit/Utility/YYFileHash.m; sourceTree = "<group>"; };
 		E5371858F68ADC64E3D8732BDF2036B4 /* SAMKeychainQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SAMKeychainQuery.m; path = Sources/SAMKeychainQuery.m; sourceTree = "<group>"; };
 		E71C572E0B7FAE88C3BEB01E0B04AFB1 /* YYImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YYImage.h; path = YYKit/Image/YYImage.h; sourceTree = "<group>"; };
@@ -1030,7 +1030,7 @@
 		EA1DDD7EFD03BFEFFA43C328719B9328 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSLayoutConstraint+MASDebugAdditions.h"; path = "Masonry/NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
 		EA9CB56296E8D902A7490B34D70A45D6 /* UIFont+YYAdd.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIFont+YYAdd.h"; path = "YYKit/Base/UIKit/UIFont+YYAdd.h"; sourceTree = "<group>"; };
 		EB56087C8C60439DAFFA9C55F6459F95 /* MJRefreshAutoNormalFooter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJRefreshAutoNormalFooter.m; path = MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.m; sourceTree = "<group>"; };
-		EC8B2C95F6DC08194C21F08BB36B0646 /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMBProgressHUD.a; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8B2C95F6DC08194C21F08BB36B0646 /* libMBProgressHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMBProgressHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECA1D336530697FB4FE04DF6BD28238F /* View+MASAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "View+MASAdditions.m"; path = "Masonry/View+MASAdditions.m"; sourceTree = "<group>"; };
 		ED64E07A09EE1373A59DEED29C9E0C6D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
 		EE573A89FD5C35650030F6876FD762C6 /* SAMKeychain-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SAMKeychain-prefix.pch"; sourceTree = "<group>"; };
@@ -1062,7 +1062,7 @@
 		FBBF0FD5915BC6E533C7645998E760A2 /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJKeyValue.h"; path = "MJExtension/NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
 		FBCF738AA9BD49089D6C5E804FA21CFD /* UIButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+WebCache.h"; path = "SDWebImage/UIButton+WebCache.h"; sourceTree = "<group>"; };
 		FC1E7AB1BA7AB9727323C8A585A4A4BA /* MASViewAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MASViewAttribute.h; path = Masonry/MASViewAttribute.h; sourceTree = "<group>"; };
-		FC223604327C3C309AD86A1FFD68E851 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJRefresh.a; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC223604327C3C309AD86A1FFD68E851 /* libMJRefresh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMJRefresh.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4B2BFDA024F1BE833B95073B42131D /* MJRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJRefresh-prefix.pch"; sourceTree = "<group>"; };
 		FD579D03D38ACAA0FF5FBD0C49D7B3B9 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
 		FE13B15F52A4D2B3451EC6EB465484DC /* NSNumber+YYAdd.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+YYAdd.m"; path = "YYKit/Base/Foundation/NSNumber+YYAdd.m"; sourceTree = "<group>"; };
@@ -1304,7 +1304,6 @@
 				A533B2BDF6F29E023399EC954C01BB7F /* Resources */,
 				E62574ED199EDA3F07A3568DD14ADDC0 /* Support Files */,
 			);
-			name = MJRefresh;
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
@@ -1339,7 +1338,6 @@
 				61B5F317096E69BF9BDBD4317B676F76 /* Support Files */,
 				B546DBA596438E51391917090317C71E /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1372,7 +1370,6 @@
 				B7FE9690004ECFAFDE5AE85BC4E27899 /* Reachability.m */,
 				F23C0909FBBA4916DBBA3402598B6C5B /* Support Files */,
 			);
-			name = Reachability;
 			path = Reachability;
 			sourceTree = "<group>";
 		};
@@ -1423,7 +1420,6 @@
 				A4F0E9DA7F01D79998813DF04642D46A /* Core */,
 				561C7B8255DA433EBC295499DF05D76F /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -1549,7 +1545,6 @@
 				6B9E6F4605B47CC524F1ABAD801206AB /* Frameworks */,
 				D53CAE87040E1D80196BD070614E0470 /* Resources */,
 			);
-			name = EaseMobSDKFull;
 			path = EaseMobSDKFull;
 			sourceTree = "<group>";
 		};
@@ -1563,7 +1558,6 @@
 				580644275B303E4CB5881F5B7E9B66F2 /* Resources */,
 				EBB03BBF5D669F637DC7A6AF8B5F3920 /* Support Files */,
 			);
-			name = SAMKeychain;
 			path = SAMKeychain;
 			sourceTree = "<group>";
 		};
@@ -1770,7 +1764,6 @@
 				6E89357F2752B7EE6BE9F6295A317B53 /* no-arc */,
 				CFE5B9FBFC301A475452628542DA3483 /* Support Files */,
 			);
-			name = YYKit;
 			path = YYKit;
 			sourceTree = "<group>";
 		};
@@ -1830,7 +1823,6 @@
 				DC0F0B6DC64FCD3AF832ABE766A83067 /* NSString+MJExtension.m */,
 				DAE7B3E4106F7AC2FD278DCE445012B6 /* Support Files */,
 			);
-			name = MJExtension;
 			path = MJExtension;
 			sourceTree = "<group>";
 		};
@@ -1841,7 +1833,6 @@
 				DFB7C3951D3A0BF04438EA5DC25A274E /* AFNetworkingHelper.m */,
 				E1052BF360251E7DF3DF77443CCB90A4 /* Support Files */,
 			);
-			name = AFNetworkingHelper;
 			path = AFNetworkingHelper;
 			sourceTree = "<group>";
 		};
@@ -1861,7 +1852,6 @@
 				7BD06CFCD18A605204177FDAFE75131D /* Resources */,
 				3E69E690B891BFBCA15A5FEFAB48ED58 /* Support Files */,
 			);
-			name = PEPhotoCropEditor;
 			path = PEPhotoCropEditor;
 			sourceTree = "<group>";
 		};
@@ -1887,7 +1877,6 @@
 				1C7475C5F9983FC3E8DDF4DC97B74798 /* MPColorTools.m */,
 				972616F8C98BFF09F388A34F5743C3DA /* Support Files */,
 			);
-			name = MPColorTools;
 			path = MPColorTools;
 			sourceTree = "<group>";
 		};
@@ -1962,7 +1951,6 @@
 				06A6666CE752BFDC4C94581C457DCE83 /* HexColors.m */,
 				E68200482A9A948EEADAC3E36EE23C17 /* Support Files */,
 			);
-			name = HexColors;
 			path = HexColors;
 			sourceTree = "<group>";
 		};
@@ -2021,7 +2009,6 @@
 				42C6DE8A451D90B74650785969650874 /* ViewController+MASAdditions.m */,
 				2CB09287D9D7F22C1147D14FB77C7448 /* Support Files */,
 			);
-			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -2125,7 +2112,6 @@
 				BCAE8EB5D0785564DB3CAE290C8EA65E /* MBProgressHUD.m */,
 				E3F9953C7F3C31179B998D40628BD440 /* Support Files */,
 			);
-			name = MBProgressHUD;
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -2142,7 +2128,6 @@
 				1783F08B6564CB82DB1111D71C6F0E09 /* UITableView+FDTemplateLayoutCellDebug.m */,
 				45FFE0A041A03D142982A582C2ADD60C /* Support Files */,
 			);
-			name = "UITableView+FDTemplateLayoutCell";
 			path = "UITableView+FDTemplateLayoutCell";
 			sourceTree = "<group>";
 		};
@@ -2198,7 +2183,6 @@
 				AC4388F7957153EB1BE48F74A2B77E64 /* CHTCollectionViewWaterfallLayout.m */,
 				D81C0FDED536612AC34078438376935E /* Support Files */,
 			);
-			name = CHTCollectionViewWaterfallLayout;
 			path = CHTCollectionViewWaterfallLayout;
 			sourceTree = "<group>";
 		};
@@ -2790,6 +2774,9 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 			};

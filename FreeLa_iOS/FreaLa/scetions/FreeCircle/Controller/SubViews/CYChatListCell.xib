@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,39 +12,36 @@
             <rect key="frame" x="0.0" y="0.0" width="342" height="78"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="77.5"/>
+                <frame key="frameInset" width="342" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FfN-Zc-cbh" userLabel="头像">
-                        <rect key="frame" x="10" y="10" width="60" height="60.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="85H-2y-IkV"/>
                             <constraint firstAttribute="width" constant="60" id="x7A-JM-vA0"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="史蒂夫成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb2-Tm-wUW" userLabel="用户名">
-                        <rect key="frame" x="80" y="10" width="56" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="史蒂夫成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sb2-Tm-wUW" userLabel="用户名">
+                        <frame key="frameInset" minX="80" minY="10" width="56" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.3961738782" green="0.3961738782" blue="0.3961738782" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.3961738782" green="0.3961738782" blue="0.3961738782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8mW-i4-y7h" userLabel="时间">
-                        <rect key="frame" x="302" y="32" width="29.5" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.3961738782" green="0.3961738782" blue="0.3961738782" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.3961738782" green="0.3961738782" blue="0.3961738782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v6Y-Xv-8l0" userLabel="分割线">
-                        <rect key="frame" x="80" y="76.5" width="262" height="1"/>
-                        <color key="backgroundColor" red="0.9244686365" green="0.92444097999999997" blue="0.92445665600000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.9244686365" green="0.92444097999999997" blue="0.92445665600000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="GlH-Zk-5UK"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昨天从亿加元参加助力获得100代金券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ust-Hi-wuq" userLabel="消息">
-                        <rect key="frame" x="80" y="57" width="184.5" height="13.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="昨天从亿加元参加助力获得100代金券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ust-Hi-wuq" userLabel="消息">
+                        <frame key="frameInset" minX="80" minY="57" width="184.5" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.3961738782" green="0.3961738782" blue="0.3961738782" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.3961738782" green="0.3961738782" blue="0.3961738782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

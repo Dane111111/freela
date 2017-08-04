@@ -23,7 +23,7 @@
     
 }
 - (void)mj_keyValuesDidFinishConvertingToObject{
-    _countDownTime = [self getCountDownStringWithEndTime:_invalidTime];
+    _countDownTime = [self getCountDownStringWithEndTime:_endTime];
 }
 
 -(NSString *)getCountDownStringWithEndTime:(NSString *)endTime {

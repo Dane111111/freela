@@ -59,6 +59,14 @@
 #define DEVICE_WIDTH   [UIScreen mainScreen].bounds.size.width
 // 屏幕高度
 #define DEVICE_HEIGHT  [UIScreen mainScreen].bounds.size.height
+/// 根据iphone6 效果图的尺寸 算出实际设备中尺寸
+
+#define DEF_I6_SIZE(f)    ( ( (int)( (DEVICE_WIDTH * ((f)/375.f)) * 2 ) ) / 2.f )
+/// 根据iphone5 效果图的尺寸 算出实际设备中尺寸
+#define DEF_I5_SIZE(f)    ( ( (int)( (DEVICE_WIDTH * ((f)/320.f)) * 2 ) ) / 2.f )
+/// 根据iphone5 效果图的尺寸 算出实际设备中尺寸
+#define DEF_I6plus_SIZE(f)    ( ( (int)( (DEVICE_WIDTH * ((f)/450.f)) * 2 ) ) / 2.f )
+
 
 #define FL_TopColumnView_Height   (80 * FL_SCREEN_PROPORTION_height)  //顶部分栏高度
 #define FL_TopColumnView_Height_S 35 //顶部分栏高度

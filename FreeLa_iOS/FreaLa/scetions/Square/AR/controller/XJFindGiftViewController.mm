@@ -21,6 +21,9 @@
 #import "XJHFiveCallLocationJsController.h"
 #import "XJXJScanViewController.h"
 #import "BGFillInformation.h"
+#import "FLCheckTicketsView.h"
+#import "XJVersionTPickSuccess2View.h"
+
 @interface XJFindGiftViewController ()<UIGestureRecognizerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,NSURLSessionDelegate>
 
 @property (strong, nonatomic)  UIView *backView;
@@ -87,6 +90,10 @@
 @property (nonatomic , strong) BearCutOutView *cutOutView_2;
 /**换个地方的背景*/
 @property (nonatomic , strong) XJSaoChangePlaceView* xjChangePlaceView;
+
+@property(nonatomic,strong)XJVersionTPickSuccess2View*scusssView;
+@property(nonatomic,strong)FLCheckTicketsView*checkTicketsView;
+
 @end
 
 @implementation XJFindGiftViewController
@@ -971,6 +978,9 @@
     self.flmyReceiveMineModel.xjinvalidTime = data[@"invalidTime"];
     self.flmyReceiveMineModel.xjUrl = data[@"url"];
     self.flmyReceiveMineModel.xjUserType = data[@"userType"];
+    self.flmyReceiveMineModel.avatar=data[@"avatar"];
+    self.flmyReceiveMineModel.xjPublishName=data[@"nickName"];
+
     self.flmyReceiveMineModel.xj_suolvetuStr = data[@"thumbnail"];
     NSString* suolve = data[@"sitethumbnail"];
     if ([XJFinalTool xjStringSafe:suolve]) {
@@ -1082,8 +1092,109 @@
     [self FLFLHTMLInsertParticipate];//canyu
     //[self FLFLHTMLHTMLsaveTopicClickOn];
 }
+//-(XJVersionTPickSuccess2View*)scusssView{
+//    if (!_scusssView) {
+//        _scusssView = [[XJVersionTPickSuccess2View alloc] init];
+//        
+//    }
+//    return _scusssView;
+//}
+//-(FLCheckTicketsView *)checkTicketsView{
+//    if (!_checkTicketsView) {
+//        _checkTicketsView=[[FLCheckTicketsView alloc]initWithSuperView:self.view];
+//    }
+//    return _checkTicketsView;
+//}
 
 - (void)xj_clickToShowPickSuccess{
+    _xj_searchGiftDoneImgView.hidden=YES;
+    [self xj_ChangePickGiftDoneStatus];
+    [self lew_dismissPopupView];
+    __weak typeof(self) weakSelf = self;
+    
+    
+    
+    //领取陈宫界面
+    if (_scusssView) {
+        [_scusssView removeFromSuperview];
+        [_scusssView.maskView removeFromSuperview];
+    }
+    _scusssView = [[XJVersionTPickSuccess2View alloc] init];
+
+    [self.view addSubview: self.scusssView.maskView ];
+    [self.view addSubview:self.scusssView];
+    self.scusssView.parentVC = weakSelf;
+    FL_Log(@"dsadsafa=%@",self.flmyReceiveMineModel.flMineTopicThemStr);
+    self.scusssView.flmyReceiveMineModel =  self.flmyReceiveMineModel;
+    //    NSString*hh = [XJFinalTool xjReturnImageURLWithStr:self.flmyReceiveMineModel.avatar
+    //                                       isSite:NO];
+    //    [view.xj_imageView sd_setImageWithURL:[NSURL URLWithString:hh]];
+    //    view.xj_NickNameL.text=self.flmyReceiveMineModel.xjPublishName;
+    if ([XJFinalTool xjStringSafe:self.flmyReceiveMineModel.xj_suolvetuStr]) {
+        NSString* ss=self.flmyReceiveMineModel.xj_suolvetuStr;
+        //判断路径的结尾是不是 .mp4
+        if(![self.flmyReceiveMineModel.xj_suolvetuStr hasSuffix:@".mp4"]&& ![self.flmyReceiveMineModel.xj_suolvetuStr hasSuffix:@".gif"]){
+            ss = [XJFinalTool xjReturnImageURLWithStr:self.flmyReceiveMineModel.xj_suolvetuStr
+                                               isSite:NO];
+        }
+        
+        self.scusssView.xj_imgUrlStr = ss;
+    }
+    //    [self lew_presentPopupView:view animation:[LewPopupViewAnimationSpring new] dismissed:^{
+    //        NSLog(@"动画结束");
+    //    }];
+    //点击完成
+    [self.scusssView popUp];
+    self.scusssView.popBlock=^(){
+        if (weakSelf.xj_searchGiftDoneImgView) {
+            [weakSelf.xj_searchGiftDoneImgView removeFromSuperview];
+        }
+        [weakSelf xj_stop];
+        
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+
+    };
+    [self.scusssView xj_findGiftSuccessDone:^{
+        
+        [weakSelf.scusssView popDown];
+        
+        //        [weakSelf lew_dismissPopupView];
+        //        [weakSelf.navigationController popViewControllerAnimated:YES];
+        weakSelf.navigationController.navigationBar.hidden = YES;
+        //        [weakSelf xjSearchPOIsFromARKitServiceWithLocationx:self.xj_userLocation.coordinate.longitude
+        //                                                          y:self.xj_userLocation.coordinate.latitude
+        //                                                       city:_xjCity?_xjCity:@"北京"];
+        //        //跳到票券页
+        //        XJTicketHTMLViewController* ticketVC = [[XJTicketHTMLViewController alloc] init];
+        //        ticketVC.flmyReceiveMineModel = self.flmyReceiveMineModel;
+        //        FL_Log(@"thi1s is te1h acti1on to push the page of ticke3t");
+        //        [weakSelf.navigationController pushViewController:ticketVC animated:YES];
+        if(_checkTicketsView){
+            [_checkTicketsView removeFromSuperview];
+            [_checkTicketsView.maskView removeFromSuperview];
+            
+        }
+        _checkTicketsView=[[FLCheckTicketsView alloc]initWithSuperView:self.view];
+        
+
+        [self checkTicketsView];
+        self.checkTicketsView.flMyReceiveInMineModel=self.flmyReceiveMineModel;
+        [self.checkTicketsView popUp];
+
+        self.checkTicketsView.popDownlock=^(){
+            if (weakSelf.xj_searchGiftDoneImgView) {
+                [weakSelf.xj_searchGiftDoneImgView removeFromSuperview];
+            }
+            [weakSelf xj_stop];
+
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        };
+        
+    }];
+}
+#pragma mark 没用的
+
+- (void)xj_clickToShowPickSuccessmeiyong{
     _xj_searchGiftDoneImgView.hidden=YES;
     [self xj_ChangePickGiftDoneStatus];
     [self lew_dismissPopupView];
@@ -1093,7 +1204,11 @@
     view.parentVC = weakSelf;
     FL_Log(@"dsadsafa=%@",self.flmyReceiveMineModel.flMineTopicThemStr);
     view.xj_TopicThemeL.text =  self.flmyReceiveMineModel.flMineTopicThemStr;
-    
+    NSString*hh = [XJFinalTool xjReturnImageURLWithStr:self.flmyReceiveMineModel.avatar
+                                                isSite:NO];
+    [view.xj_imageView sd_setImageWithURL:[NSURL URLWithString:hh]];
+    view.xj_NickNameL.text=self.flmyReceiveMineModel.xjPublishName;
+
     if ([XJFinalTool xjStringSafe:self.flmyReceiveMineModel.xj_suolvetuStr]) {
         NSString* ss=self.flmyReceiveMineModel.xj_suolvetuStr;
         //判断路径的结尾是不是 .mp4

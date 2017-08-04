@@ -11,7 +11,7 @@
 @interface XJOutClusterCallOutView : UIView
 
 @property (nonatomic , assign) NSInteger  xjCount;
-
+@property(nonatomic,assign)NSString*topic;
 
 - (void)dismissCalloutView;
 @end

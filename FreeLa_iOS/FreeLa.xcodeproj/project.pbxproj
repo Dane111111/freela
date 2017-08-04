@@ -350,6 +350,11 @@
 		10033C641F0F5DF2003A2BA4 /* BGAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10033C631F0F5DF2003A2BA4 /* BGAnnotationView.m */; };
 		10033C671F0F5F8E003A2BA4 /* BGOutAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10033C661F0F5F8E003A2BA4 /* BGOutAnnotationView.m */; };
 		10033C6E1F0F7391003A2BA4 /* BGFillInformation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10033C6D1F0F7391003A2BA4 /* BGFillInformation.m */; };
+		100474F61F2B251F00D35E15 /* NSDate+time.m in Sources */ = {isa = PBXBuildFile; fileRef = 100474F51F2B251F00D35E15 /* NSDate+time.m */; };
+		100475011F2B2C2F00D35E15 /* BGReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 100474FA1F2B2C2F00D35E15 /* BGReview.m */; };
+		100475021F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 100474FC1F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.m */; };
+		100475041F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 100475001F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.m */; };
+		100475081F2B2D4600D35E15 /* FLCheckTicketsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 100475071F2B2D4600D35E15 /* FLCheckTicketsView.m */; };
 		1040A5A71EFFCA69003F0529 /* FLWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1040A5A61EFFCA69003F0529 /* FLWelcomeViewController.m */; };
 		1040A5AA1EFFCB8A003F0529 /* FLLogIn_RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1040A5A91EFFCB8A003F0529 /* FLLogIn_RegisterViewController.m */; };
 		1040A5AC1EFFCC0A003F0529 /* log_bg.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1040A5AB1EFFCBAC003F0529 /* log_bg.mp4 */; };
@@ -360,6 +365,8 @@
 		104874671F0E00C700893786 /* MANaviPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 104874621F0E00C700893786 /* MANaviPolyline.m */; };
 		104874681F0E00C700893786 /* MANaviRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 104874641F0E00C700893786 /* MANaviRoute.m */; };
 		1048746B1F0E02F000893786 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1048746A1F0E02F000893786 /* CommonUtility.m */; };
+		104BD7CB1F34152900E849B5 /* XJBalloonAndPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 104BD7CA1F34152800E849B5 /* XJBalloonAndPhoto.m */; };
+		104BD7D11F341DFF00E849B5 /* XJVersionTPickSuccess2View.m in Sources */ = {isa = PBXBuildFile; fileRef = 104BD7D01F341DFF00E849B5 /* XJVersionTPickSuccess2View.m */; };
 		104D0A8B1F130E36000D2F45 /* BGFillInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 104D0A8A1F130E36000D2F45 /* BGFillInformationTableViewCell.m */; };
 		104D0A8F1F137E4A000D2F45 /* BGHideARAndLBSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 104D0A8E1F137E4A000D2F45 /* BGHideARAndLBSView.m */; };
 		1086BE001F0A131600F758C2 /* InstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1086BDFF1F0A131600F758C2 /* InstructionViewController.m */; };
@@ -1585,6 +1592,16 @@
 		10033C661F0F5F8E003A2BA4 /* BGOutAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGOutAnnotationView.m; sourceTree = "<group>"; };
 		10033C6C1F0F7391003A2BA4 /* BGFillInformation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGFillInformation.h; sourceTree = "<group>"; };
 		10033C6D1F0F7391003A2BA4 /* BGFillInformation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGFillInformation.m; sourceTree = "<group>"; };
+		100474F41F2B251F00D35E15 /* NSDate+time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+time.h"; sourceTree = "<group>"; };
+		100474F51F2B251F00D35E15 /* NSDate+time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+time.m"; sourceTree = "<group>"; };
+		100474F91F2B2C2F00D35E15 /* BGReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGReview.h; sourceTree = "<group>"; };
+		100474FA1F2B2C2F00D35E15 /* BGReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGReview.m; sourceTree = "<group>"; };
+		100474FB1F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJVersionTPickSuccess2TableViewCell.h; sourceTree = "<group>"; };
+		100474FC1F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJVersionTPickSuccess2TableViewCell.m; sourceTree = "<group>"; };
+		100474FF1F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJVersionTPickSuccessmoreTableViewCell.h; sourceTree = "<group>"; };
+		100475001F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJVersionTPickSuccessmoreTableViewCell.m; sourceTree = "<group>"; };
+		100475061F2B2D4600D35E15 /* FLCheckTicketsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLCheckTicketsView.h; sourceTree = "<group>"; };
+		100475071F2B2D4600D35E15 /* FLCheckTicketsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLCheckTicketsView.m; sourceTree = "<group>"; };
 		1040A5A51EFFCA69003F0529 /* FLWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLWelcomeViewController.h; sourceTree = "<group>"; };
 		1040A5A61EFFCA69003F0529 /* FLWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLWelcomeViewController.m; sourceTree = "<group>"; };
 		1040A5A81EFFCB8A003F0529 /* FLLogIn_RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLLogIn_RegisterViewController.h; sourceTree = "<group>"; };
@@ -1604,6 +1621,10 @@
 		104874641F0E00C700893786 /* MANaviRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MANaviRoute.m; sourceTree = "<group>"; };
 		104874691F0E02F000893786 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		1048746A1F0E02F000893786 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		104BD7C91F34152800E849B5 /* XJBalloonAndPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJBalloonAndPhoto.h; sourceTree = "<group>"; };
+		104BD7CA1F34152800E849B5 /* XJBalloonAndPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJBalloonAndPhoto.m; sourceTree = "<group>"; };
+		104BD7CF1F341DFF00E849B5 /* XJVersionTPickSuccess2View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XJVersionTPickSuccess2View.h; sourceTree = "<group>"; };
+		104BD7D01F341DFF00E849B5 /* XJVersionTPickSuccess2View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XJVersionTPickSuccess2View.m; sourceTree = "<group>"; };
 		104D0A891F130E36000D2F45 /* BGFillInformationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGFillInformationTableViewCell.h; sourceTree = "<group>"; };
 		104D0A8A1F130E36000D2F45 /* BGFillInformationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGFillInformationTableViewCell.m; sourceTree = "<group>"; };
 		104D0A8D1F137E4A000D2F45 /* BGHideARAndLBSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGHideARAndLBSView.h; sourceTree = "<group>"; };
@@ -3938,7 +3959,7 @@
 				01CDC5C51C48968700399A9B /* UMSocialSDKResourcesNew.bundle */,
 			);
 			name = UMSocial_Sdk_4.3;
-			path = helpers/sdks/UMSocial_Sdk_4.3;
+			path = ../../../../helpers/sdks/UMSocial_Sdk_4.3;
 			sourceTree = "<group>";
 		};
 		01CDC5AF1C48968700399A9B /* Header */ = {
@@ -4227,6 +4248,30 @@
 			path = "填写信息";
 			sourceTree = "<group>";
 		};
+		100474F81F2B2C2F00D35E15 /* 领取成功页 */ = {
+			isa = PBXGroup;
+			children = (
+				104BD7CF1F341DFF00E849B5 /* XJVersionTPickSuccess2View.h */,
+				104BD7D01F341DFF00E849B5 /* XJVersionTPickSuccess2View.m */,
+				100474F91F2B2C2F00D35E15 /* BGReview.h */,
+				100474FA1F2B2C2F00D35E15 /* BGReview.m */,
+				100474FB1F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.h */,
+				100474FC1F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.m */,
+				100474FF1F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.h */,
+				100475001F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.m */,
+			);
+			path = "领取成功页";
+			sourceTree = "<group>";
+		};
+		100475051F2B2CED00D35E15 /* 查看票券 */ = {
+			isa = PBXGroup;
+			children = (
+				100475061F2B2D4600D35E15 /* FLCheckTicketsView.h */,
+				100475071F2B2D4600D35E15 /* FLCheckTicketsView.m */,
+			);
+			path = "查看票券";
+			sourceTree = "<group>";
+		};
 		1041D9751F05F94B0042BCE7 /* 首页集星主活动弹出 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4251,6 +4296,15 @@
 				104874641F0E00C700893786 /* MANaviRoute.m */,
 			);
 			path = routePlan;
+			sourceTree = "<group>";
+		};
+		104BD7C81F34152800E849B5 /* 气球和照片飘动 */ = {
+			isa = PBXGroup;
+			children = (
+				104BD7C91F34152800E849B5 /* XJBalloonAndPhoto.h */,
+				104BD7CA1F34152800E849B5 /* XJBalloonAndPhoto.m */,
+			);
+			path = "气球和照片飘动";
 			sourceTree = "<group>";
 		};
 		104D0A881F130DEF000D2F45 /* Cell */ = {
@@ -4330,6 +4384,8 @@
 		700281F11C33B31300E0036F /* help */ = {
 			isa = PBXGroup;
 			children = (
+				100474F41F2B251F00D35E15 /* NSDate+time.h */,
+				100474F51F2B251F00D35E15 /* NSDate+time.m */,
 				700281F41C33B32600E0036F /* ItemModel.h */,
 				700281F51C33B32600E0036F /* ItemModel.m */,
 				014DF9071C3E05AC00A8B94C /* CYItemCell.h */,
@@ -5349,7 +5405,6 @@
 				70B88EF11E1389BA00BA2A0E /* gaode */,
 				701191781DEDC1DC003866F0 /* SMS_SDK */,
 				705047871CCF19AA00883079 /* JPush */,
-				01CDC5AC1C48968700399A9B /* UMSocial_Sdk_4.3 */,
 				01CDC5C71C48968700399A9B /* UMSocial_Sdk_Extra_Frameworks */,
 				01CDC4191C48960700399A9B /* CYEaseUI */,
 			);
@@ -5539,6 +5594,9 @@
 		708154B31E35B1EC0038A3EB /* view */ = {
 			isa = PBXGroup;
 			children = (
+				104BD7C81F34152800E849B5 /* 气球和照片飘动 */,
+				100475051F2B2CED00D35E15 /* 查看票券 */,
+				100474F81F2B2C2F00D35E15 /* 领取成功页 */,
 				104D0A8C1F137DEF000D2F45 /* 藏宝View */,
 				10033C681F0F6F55003A2BA4 /* 填写信息 */,
 				1041D9751F05F94B0042BCE7 /* 首页集星主活动弹出 */,
@@ -6372,6 +6430,7 @@
 				7003E2EE1C4E69760062105C /* FLMyReceiveTicketView.h */,
 				7003E2EF1C4E69760062105C /* FLMyReceiveTicketView.m */,
 				70264E5A1CEB186500A8DBCC /* XJMyReceiveTableViewCell.h */,
+				01CDC5AC1C48968700399A9B /* UMSocial_Sdk_4.3 */,
 				70264E5B1CEB186500A8DBCC /* XJMyReceiveTableViewCell.m */,
 				70EB80071D2BB42C00252D67 /* XJMyReceiveTableViewCell.xib */,
 				70F30E781D2E57D500D9A3FC /* XJMyTicketView.h */,
@@ -7779,6 +7838,7 @@
 				70E8E0B21C2A67EE005CD83E /* FLIssueChoiceModelViewController.m in Sources */,
 				01CDC5351C48960700399A9B /* MWPhoto.m in Sources */,
 				01CDC6141C48971000399A9B /* UIView+CYExtension.m in Sources */,
+				100475041F2B2C2F00D35E15 /* XJVersionTPickSuccessmoreTableViewCell.m in Sources */,
 				01CDC5291C48960700399A9B /* EMCDDeviceManager+Microphone.m in Sources */,
 				70FD9C331C23D453003E2A92 /* FLSquarePersonalIssueModel.m in Sources */,
 				01B622C61C51256E00A72A06 /* CYUserProfileTool.m in Sources */,
@@ -7941,6 +8001,8 @@
 				7031CBBC1D3DD9BC00FB34C9 /* FLAppDelegate+XJEaseMob.m in Sources */,
 				70FB83951C06AF0D009154F3 /* FLActivityDetailTableViewCell.m in Sources */,
 				01229C931C4A087A0010D81C /* SRRefreshView.m in Sources */,
+				100475081F2B2D4600D35E15 /* FLCheckTicketsView.m in Sources */,
+				100474F61F2B251F00D35E15 /* NSDate+time.m in Sources */,
 				70F6B3611C0819E3005CFCD8 /* FLActivitySignUpLimitTableViewCell.m in Sources */,
 				705EFEA11BEF10B800000C7F /* MJPopupBackgroundView.m in Sources */,
 				01229CAB1C4A088D0010D81C /* UIImageView+HeadImage.m in Sources */,
@@ -7963,6 +8025,7 @@
 				01229C3D1C4A08620010D81C /* ConversationListController.m in Sources */,
 				706604771C743DDF0064A6D0 /* AoiroSoraLayout.m in Sources */,
 				70F27C3C1BD5F1CA00D41AAD /* FLNetTool.m in Sources */,
+				104BD7CB1F34152900E849B5 /* XJBalloonAndPhoto.m in Sources */,
 				1E5E46961EB9DC8D00FD330B /* XJARClickAnimationView.m in Sources */,
 				104874651F0E00C700893786 /* LineDashPolyline.m in Sources */,
 				70DA6EA61DB4A2B600BE68BE /* XJBaseTableViewController.m in Sources */,
@@ -8053,7 +8116,9 @@
 				708155201E35B1EC0038A3EB /* XJPointAnnotation.m in Sources */,
 				702D21411E35EEF60078A73A /* XJGiftGifModel.m in Sources */,
 				B423148E1ECAA82C00E12056 /* FLAdvertTopicPictures.m in Sources */,
+				100475011F2B2C2F00D35E15 /* BGReview.m in Sources */,
 				704C7B6C1BF09BC4006EDCC5 /* FLBusinessApplyNameTableViewCell.m in Sources */,
+				104BD7D11F341DFF00E849B5 /* XJVersionTPickSuccess2View.m in Sources */,
 				7005E5261C434F0E001368D8 /* FLMyIssueJudgePlModel.m in Sources */,
 				7041D0411D31CD62008EFE53 /* XJMyPartInViewCell.m in Sources */,
 				70B9BA831D2B716F00347053 /* XJTopicPartInModel.m in Sources */,
@@ -8074,6 +8139,7 @@
 				01CDC6911C4898E300399A9B /* CYContactViewController.m in Sources */,
 				705EFEA21BEF10B800000C7F /* UIViewController+MJPopupViewController.m in Sources */,
 				7093A87D1BB2385D009CF29E /* FLViewoViewController.m in Sources */,
+				100475021F2B2C2F00D35E15 /* XJVersionTPickSuccess2TableViewCell.m in Sources */,
 				70F6B35E1C07FF48005CFCD8 /* FLActivitySignUpBaseView.m in Sources */,
 				01CDC52E1C48960700399A9B /* wav.mm in Sources */,
 				01CDC53D1C48960800399A9B /* PSTCollectionViewCell.m in Sources */,

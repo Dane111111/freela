@@ -59,6 +59,7 @@
 //#define FLUrlAndPort @"bd.freela.com.cn"    //阿里云测试
 #define FLUrlAndPort @"www.freela.com.cn"    //freela
 //#define FLUrlAndPort @"192.168.20.69"    //freela
+//#define FLUrlAndPort @"192.168.20.157:8080"    //若飞
 
 //#define FLUrlAndPort @"bd.freela.com.cn"    //建军
 //#define FLUrlAndPort @"192.168.20.54:8080"    //

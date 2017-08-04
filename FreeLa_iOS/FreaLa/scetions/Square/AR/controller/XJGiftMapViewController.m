@@ -970,7 +970,9 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         AMapCloudPOI* poi = self.selectedPoiArray[0];
         NSString* xjtopicid = [NSString stringWithFormat:@"%@",poi.customFields[@"topicId"]];
         
-        //需要请求 是否有领取资格
+        
+
+//        需要请求 是否有领取资格
         [self checkTakeCanOrNot:xjtopicid index:0];
 
 //        [self.customCalloutView setPoiArray:self.selectedPoiArray];
@@ -987,21 +989,25 @@ static const NSInteger RoutePlanningPaddingEdge                    = 20;
         
         [self luXianGuiHuaWithZDLat:poi.location.latitude ZDLong:poi.location.longitude];
 
-        self.xjOutClusterCallOutView.xjCount = [annotation.pois count];
+        self.xjOutClusterCallOutView.topic=poi.name;
         self.xjOutClusterCallOutView.center = CGPointMake(CGRectGetMidX(view.bounds), -CGRectGetMidY(self.customCalloutView.bounds) - CGRectGetMidY(view.bounds) - kCalloutViewMargin);
         [view addSubview:self.xjOutClusterCallOutView];
+        [FLTool showWith:@"太远了,走近才能领取哦!"];
+
     }
     if([view isKindOfClass:[XJJiaOutClusterAnnotationView class]]){
         CloudPOIAnnotation *annotation = (CloudPOIAnnotation *)view.annotation;
         
         [self luXianGuiHuaWithZDLat:annotation.cloudPOI.location.latitude ZDLong:annotation.cloudPOI.location.longitude];
         
-        self.xjOutClusterCallOutView.xjCount = 1;
+        self.xjOutClusterCallOutView.topic=@"太远了,走近些吧!";
         self.xjOutClusterCallOutView.center = CGPointMake(CGRectGetMidX(view.bounds), -CGRectGetMidY(self.customCalloutView.bounds) - CGRectGetMidY(view.bounds) - kCalloutViewMargin);
         [view addSubview:self.xjOutClusterCallOutView];
+        [FLTool showWith:@"太远了,走近才能领取哦!"];
+
     }
     if ([view isMemberOfClass:[XJJiaClusterAnnotationView class]]) {
-        [FLTool showWith:@"您没有在领取范围内，不能领取哟"];
+        [FLTool showWith:@"太远了,走近才能领取哦!"];
     }
 }
 #pragma mark 路线规划

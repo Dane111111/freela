@@ -616,7 +616,8 @@
 
 #pragma mark -------------开始上传信息来发布 礼包活动
 - (void)xj_publishGiftTopic {
-    
+//    [[FLAppDelegate share] showSimplleHUDWithTitle:@"" view:self.view];
+
     if (![XJFinalTool xjStringSafe:self.xjIssueModel.flactivitytopicThumbnailFileName]) {
         [FLTool showWith:@"礼物美照不能为空哟"];
         return;
@@ -694,6 +695,8 @@
                            @"token":XJ_USER_SESSION};
     [FLNetTool issueANewActivityWithParm:parmLa success:^(NSDictionary *data) {
         FL_Log(@"this is hide gift data= 【%@】",data[@"msg"]);
+//        [[FLAppDelegate share] hideHUD];
+
         if ([data[FL_NET_KEY_NEW] boolValue]) {
             self.xjIssueModel.xjTopicId = [data[FL_NET_DATA_KEY][@"topicId"] integerValue];
             if (_is_gif_imgupdate) {
@@ -702,8 +705,10 @@
                 [self xj_getImgUrl];//请求图片路径
             }
         }
+
     } failure:^(NSError *error) {
-        
+//        [[FLAppDelegate share] hideHUD];
+
     }];
 }
 - (void)xj_getImgUrl{

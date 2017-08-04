@@ -38,17 +38,19 @@
     });
     [self.contentView addSubview:self.valueFiled];
     [self.valueFiled mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(130, 32));
+        make.height.mas_equalTo(32);
         make.right.mas_equalTo(-15);
         make.top.equalTo(@0);
+        make.left.equalTo(self.keyLabel.mas_right).offset(15);
     }];
     UIView*shuXian=[[UIView alloc]init];
     shuXian.backgroundColor=[UIColor whiteColor];
     [self.contentView addSubview:shuXian];
     [shuXian mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(130, 1));
+        make.height.mas_equalTo(1);
         make.bottom.equalTo(@0);
         make.right.equalTo(self.valueFiled);
+        make.left.equalTo(self.valueFiled);
     }];
     
     UIView*hengXian=[[UIView alloc]init];

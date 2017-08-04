@@ -17,7 +17,9 @@
 @property (nonatomic , strong)NSString* flMineIssueDayStr;
 /**阅读数*/
 @property (nonatomic , strong)NSString* flMineIssueNumbersReadStr;
+/**点赞数*/
 
+@property (nonatomic,strong)NSString*flMineIssueNumbersCollectStr;
 /**转发数*/
 @property (nonatomic , strong)NSString* flMineIssueNumbersRelayStr;
 /**评论数*/
